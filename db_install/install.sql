@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS `drive2future`;
 CREATE SCHEMA IF NOT EXISTS `drive2future` DEFAULT CHARACTER SET utf8mb4;
 USE `drive2future`;
 SET
