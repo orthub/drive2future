@@ -8,7 +8,7 @@ function get_db()
     return $db;
   }
   
-  $dsn = sprintf('mysql:host=%s;dbname=%s;charset=%s', DB_HOST, DB_NAME);
+  $dsn = sprintf('mysql:host=%s;dbname=%s;', DB_HOST, DB_NAME);
   $db = new PDO($dsn, DB_USER, DB_PASS);
 
   return $db;
