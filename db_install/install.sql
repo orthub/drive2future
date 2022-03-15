@@ -22,6 +22,7 @@ SET
     `date` date NOT NULL,
     `begin_time` time NOT NULL,
     `end_time` time NOT NULL,
+    `description` TEXT NOT NULL,
     `appointment_types_id_a_type` int(11) NOT NULL,
     `rooms_id_room` int(11) NOT NULL,
     `class_id_class` int(11) NOT NULL
@@ -35,12 +36,22 @@ INSERT INTO
     `date`,
     `begin_time`,
     `end_time`,
+    `description`,
     `appointment_types_id_a_type`,
     `rooms_id_room`,
     `class_id_class`
   )
 VALUES
-  (1, '2022-03-30', '08:00:00', '12:00:00', 1, 1, 1);
+  (
+    1,
+    '2022-03-30',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Einführung in die STVO',
+    1,
+    1,
+    1
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `appointment_types`
@@ -55,7 +66,7 @@ VALUES
 INSERT INTO
   `appointment_types` (`id_a_type`, `description`)
 VALUES
-  (1, 'Auto');
+  (1, 'Vortrag');
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `class`
