@@ -5,6 +5,7 @@
 
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
+  <?php require_once __DIR__ . '/../lib/login_helper.php' ?>
   <h1>Login</h1>
   <form action="/controllers/login.php" method="POST">
     <label for="login-mail">Email</label><br />
