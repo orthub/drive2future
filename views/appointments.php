@@ -1,7 +1,7 @@
 <?php
     require_once __DIR__ . '/../lib/sessionHelper.php';
-    require_once __DIR__ . '/../controllers/appointments.php';
-    $appointments = get_appointments();
+    require_once __DIR__ .'/../controllers/appointments.php';
+    
 ?>
 
 <!DOCTYPE html>
