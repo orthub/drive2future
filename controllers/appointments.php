@@ -1,5 +1,6 @@
 <?php
-require_once '../models/db_connection.php';
+    require_once __DIR__ . '/../lib/sessionHelper.php';
+    require_once __DIR__ . '/../models/appointments.php';
 
 function get_appointments() {
     $sql = "Select * from appointments";
