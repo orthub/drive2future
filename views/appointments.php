@@ -8,10 +8,6 @@
 <html>
 <?php require_once __DIR__ . '/partials/head.php' ?>
 
-<head>
-  <link rel="stylesheet" href="/drive2future/assets/css/style.css">
-</head>
-
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <h1>Terminübersicht</h1>
