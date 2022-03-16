@@ -46,6 +46,6 @@ $check_mail_exist = search_mail($email);
 if ($check_mail_exist) {
   $match_mail_passwd = match_mail_password($email);
   if ($match_mail_passwd) {
-    header('Location: ' . '/views/appointmentOverview.php');
+    header('Location: ' . '/views/appointments.php');
   }
 }
