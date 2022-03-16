@@ -36,7 +36,6 @@ if (empty($password)) {
   $_SESSION['errors']['password'] = 'Passwort erforderlich';
 }
 
-
 if (!empty($_SESSION['errors'])) {
   header('Location: ' . '/views/login.php');
 }
@@ -44,18 +43,9 @@ if (!empty($_SESSION['errors'])) {
 
 $check_mail_exist = search_mail($email);
 
-
-// if ($email === $verify[0]['email']) {
-//   $valideEmail = true;
-// }
-
-// if ($valideEmail === true) {
-//   password_verify($password, $verify[0]['password']);
-//   $validePassword = true;
-// }
-
-// if ($valideEmail && $validePassword) {
-//   // session_start();
-//   $_SESSION['userId'] = $verify[0]['id'] . '_loggedIn';
-//   header('Location: ' . '/views/products.php');
-// }
+if ($check_mail_exist) {
+  $match_mail_passwd = match_mail_password($email);
+  if ($match_mail_passwd) {
+    header('Location: ' . '/views/appointmentOverview.php');
+  }
+}
