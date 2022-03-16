@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
 require_once '../controllers/appointments.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -38,8 +37,15 @@ require_once '../controllers/appointments.php';
     $class_id = intval(get_class_id(strval($_POST["classes"])));
 
 
-    if (add_appointment($date, $begin_time, $end_time, $description,
-    $app_types_id_type, $room_id, $class_id)) {
+    if (add_appointment(
+        $date,
+        $begin_time,
+        $end_time,
+        $description,
+        $app_types_id_type,
+        $room_id,
+        $class_id
+    )) {
         echo "Ihr Termin wurde erfolgreich gespeichert.<br>";
     } else {
         echo "Ihr Termin konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.<br>";

@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
 require_once '../controllers/appointments.php';
-$rooms = get_rooms();
-$classes = get_classes();
-$students = get_students();
 ?>
 
 <!DOCTYPE html>

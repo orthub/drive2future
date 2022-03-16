@@ -1,7 +1,6 @@
 <?php
-    require_once __DIR__ . '/../lib/sessionHelper.php';
-    require_once __DIR__ .'/../controllers/appointments.php';
-    
+require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../controllers/appointments.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,12 +19,12 @@
     </thead>
     <tbody>
       <?php foreach ($appointments as $app) : ?>
-      <tr>
-        <td><?php echo $app['date']; ?></td>
-        <td><?php echo $app['begin_time']; ?></td>
-        <td><?php echo $app['end_time']; ?></td>
-        <td><?php echo $app['description']; ?></td>
-      </tr>
+        <tr>
+          <td><?php echo $app['date']; ?></td>
+          <td><?php echo $app['begin_time']; ?></td>
+          <td><?php echo $app['end_time']; ?></td>
+          <td><?php echo $app['description']; ?></td>
+        </tr>
       <?php endforeach ?>
     </tbody>
   </table>
