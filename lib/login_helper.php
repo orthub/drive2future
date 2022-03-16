@@ -5,5 +5,5 @@
     } 
 
   }
-   unlink($_SESSION['errors']['email']);
-   unlink($_SESSION['errors']['password']);
+   unset($_SESSION['errors']['email']);
+   unset($_SESSION['errors']['password']);
