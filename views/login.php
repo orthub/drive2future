@@ -14,6 +14,7 @@
     <input id="login-passwd" type="password" name="login-passwd"><br />
     <input type="submit" value="Anmelden">
   </form>
+  <a href="/drive2future/views/register.php">Noch keinen Account? Hier gehts zur Registrierung</a>
   <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
