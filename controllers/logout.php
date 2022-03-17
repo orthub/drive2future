@@ -2,4 +2,4 @@
 session_start();
 unset($_SESSION['user_session']);
 session_destroy();
-header('Location: ' . '/');
+header('Location: ' . '/drive2future');
