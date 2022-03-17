@@ -15,3 +15,11 @@
 
 ## /lib
 - Hier befinden sich hilfsskripte
+
+---
+
+## Benutzerrechte
+Folgende Datei einbinden:
+/lib/user_role.php
+
+Die Variablen geben einen Boolean zurück $user_admin, $user_employee, $user_student
