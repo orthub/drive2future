@@ -2,7 +2,7 @@
   <div class="navbar">
     <div class="logo">
       <a href="todo" title="Zur Startseite">
-        <img src="todo" width="280" />
+        <img src="/drive2future/assets/img/softec_logo.svg" width="280" />
       </a>
     </div>
     <a class="nav-link" href="todo" title="Zur Terminübersicht">Terminübersicht</a>
