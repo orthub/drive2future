@@ -7,7 +7,7 @@
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <?php require_once __DIR__ . '/../lib/login_helper.php' ?>
   <h1>Login</h1>
-  <form action="/controllers/login.php" method="POST">
+  <form action="/drive2future/controllers/login.php" method="POST">
     <label for="login-mail">Email</label><br />
     <input id="login-mail" type="email" name="login-mail"><br />
     <label for="login-passwd">Passwort</label><br />

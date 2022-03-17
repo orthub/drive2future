@@ -10,7 +10,7 @@
   <?php echo $errors . '<br />' ?>
   <?php endforeach ?>
 
-  <form action="/controllers/register.php" method="POST">
+  <form action="/drive2future/controllers/register.php" method="POST">
     <label for="first_name">Vorname</label><br />
     <input id="first_name" type="text" name="first-name"><br /><br />
     <label for="last_name">Nachname</label><br />
