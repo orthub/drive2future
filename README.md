@@ -26,4 +26,4 @@ Die Variablen geben einen Boolean zurück $user_admin, $user_employee, $user_stu
 
 ---
 
-test TEST TEST Test
+TEST vom VALI
