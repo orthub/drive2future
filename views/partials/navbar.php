@@ -7,8 +7,8 @@
     </div>
     <a class="nav-link" href="todo" title="Zur Terminübersicht">Terminübersicht</a>
     <a class="nav-link" href="todo" title="Zu den Unterlagen">Unterlagen</a>
-    <a class="nav-link" href="/views/login.php">Login</a>
-    <a class="nav-link" href="/views/logout.php">Logout</a>
+    <a class="nav-link" href="/drive2future/views/login.php">Login</a>
+    <a class="nav-link" href="/drive2future/views/logout.php">Logout</a>
     <?php
         /*if (isset($_SESSION['isStaff']) or isset($_SESSION['customerRoles'])) { ?>
     <a class="nav-link" href="logout" title="Logout">Logout</a>
