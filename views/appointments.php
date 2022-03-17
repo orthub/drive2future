@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
 require_once __DIR__ . '/../controllers/appointments.php';
+require_once __DIR__ . '/../lib/user_role.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +20,28 @@ require_once __DIR__ . '/../controllers/appointments.php';
     </thead>
     <tbody>
       <?php foreach ($appointments as $app) : ?>
-        <tr>
-          <td><?php echo $app['date']; ?></td>
-          <td><?php echo $app['begin_time']; ?></td>
-          <td><?php echo $app['end_time']; ?></td>
-          <td><?php echo $app['description']; ?></td>
-        </tr>
+      <tr>
+        <td><?php echo $app['date']; ?></td>
+        <td><?php echo $app['begin_time']; ?></td>
+        <td><?php echo $app['end_time']; ?></td>
+        <td><?php echo $app['description']; ?></td>
+        <?php if ($user_employee) : ?>
+        <th>
+          <form method="POST">
+            <input type="hidden" value="<?php echo $app['id_appointment'] ?>">
+            <input type="submit" value="Bearbeiten" />
+          </form>
+        </th>
+        <?php endif ?>
+        <?php if ($user_employee) : ?>
+        <th>
+          <form method="POST">
+            <input type="hidden" value="<?php echo $app['id_appointment'] ?>">
+            <input type="submit" value="Löschen" />
+          </form>
+        </th>
+        <?php endif ?>
+      </tr>
       <?php endforeach ?>
     </tbody>
   </table>

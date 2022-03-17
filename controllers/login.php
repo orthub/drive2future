@@ -20,13 +20,13 @@ $check_email = filter_var($email, FILTER_VALIDATE_EMAIL);
 
 if (empty($email)) {
   $_SESSION['errors']['email'] = 'Email erforderlich';
-  header('Location: ' . '/views/login.php');
+  header('Location: ' . '/drive2future/views/login.php');
   exit();
 }
 
 if ($check_email === 'false') {
   $_SESSION['errors']['email'] = 'Bitte eine Valide Email-Adresse eingeben';
-  header('Location: ' . '/views/login.php');
+  header('Location: ' . '/drive2future/views/login.php');
   exit();
 }
 
@@ -37,7 +37,7 @@ if (empty($password)) {
 }
 
 if (!empty($_SESSION['errors'])) {
-  header('Location: ' . '/views/login.php');
+  header('Location: ' . '/drive2future/views/login.php');
 }
 
 
@@ -46,6 +46,8 @@ $check_mail_exist = search_mail($email);
 if ($check_mail_exist) {
   $match_mail_passwd = match_mail_password($email);
   if ($match_mail_passwd) {
-    header('Location: ' . '/views/appointments.php');
+    $user_id = get_user_id($email);
+    $_SESSION['user_session'] = $user_id . '_loggedIn';
+    header('Location: ' . '/drive2future/views/appointments.php');
   }
 }

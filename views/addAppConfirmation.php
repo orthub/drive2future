@@ -7,13 +7,10 @@ require_once '../controllers/appointments.php';
 <html>
 <?php require_once __DIR__ . '/partials/head.php' ?>
 
-<head>
-    <link rel="stylesheet" href="/drive2future/assets/css/style.css">
-</head>
 
 <body>
-    <?php require_once __DIR__ . '/partials/navbar.php' ?>
-    <h1>Termin hinzufügen</h1>
+  <?php require_once __DIR__ . '/partials/navbar.php' ?>
+  <h1>Termin hinzufügen</h1>
 
     <?php
     if (isset($_SESSION["app_type_id"])) {
@@ -86,7 +83,7 @@ require_once '../controllers/appointments.php';
         Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a>
     </div>
 
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+  <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>

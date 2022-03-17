@@ -12,14 +12,14 @@
         <p>Fax.: 01234/5678979</p>
       </div>
       <div class="links">
-        <p><a href="todo" title="Datenschutz">Datenschutz</a></p>
-        <p><a href="todo" title="Impressum">Impressum</a></p>
+        <p><a href="/drive2future/views/privacy.php" title="Datenschutz">Datenschutz</a></p>
+        <p><a href="/drive2future/views/imprint.php" title="Impressum">Impressum</a></p>
         <p><a href="https://www.wko.at/" title="Zur Seite der WKO">Zur Seite der WKO</a></p>
       </div>
     </div>
 
     <div class="copy">&copy; Copyright SOFTECH <script>
-        document.write(new Date().getUTCFullYear());
+      document.write(new Date().getUTCFullYear());
       </script>
     </div>
   </div>

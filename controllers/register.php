@@ -19,13 +19,13 @@ $password_match = htmlspecialchars($_POST['confirm-passwd']);
 
 if (empty($email)) {
   $_SESSION['errors']['email'] = 'Email erforderlich';
-  header('Location: ' . '/views/register.php');
+  header('Location: ' . '/drive2future/views/register.php');
   exit();
 }
 
 if ($validate_email === 'false') {
   $_SESSION['errors']['email'] = 'Bitte eine Valide Email-Adresse eingeben';
-  header('Location: ' . '/views/login.php');
+  header('Location: ' . '/drive2future/views/login.php');
   exit();
 }
 
@@ -35,13 +35,13 @@ if (empty($password)) {
 }
 
 if (!empty($_SESSION['errors'])) {
-  header('Location: ' . '/views/register.php');
+  header('Location: ' . '/drive2future/views/register.php');
 }
 
 
 if (mb_strlen($password) < 6) {
   $_SESSION['errors']['email'] = 'Passwort muss mindestens 6 Zeichen lang sein';
-  header('Location: ' . '/views/register.php');
+  header('Location: ' . '/drive2future/views/register.php');
 }
 
 
@@ -57,7 +57,7 @@ foreach ($email_exists_already as $email) {
 
 if ($email_exists_in_database) {
   $_SESSION['errors']['email'] = 'Email kann nicht verwendet werden';
-  header('Location: ' . '/views/register.php');
+  header('Location: ' . '/drive2future/views/register.php');
 }
 
 if ($password === $password_match) {
@@ -67,6 +67,6 @@ if ($password === $password_match) {
 if ($email_exists_in_database === false && $password_confirmed === true) {
   $create_new_user = create_new_user($first_name, $last_name, $validate_email, $password);
   if ($create_new_user) {
-    header('Location: ' . '/views/appointments.php');
+    header('Location: ' . '/drive2future/views/appointments.php');
   }
 }
