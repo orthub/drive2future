@@ -25,3 +25,5 @@ Folgende Datei einbinden:
 Die Variablen geben einen Boolean zurück $user_admin, $user_employee, $user_student
 
 ---
+
+test TEST TEST
