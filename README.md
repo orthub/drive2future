@@ -27,3 +27,4 @@ Die Variablen geben einen Boolean zurück $user_admin, $user_employee, $user_stu
 ---
 
 TEST vom VALI
+letzter test fürs pushen
