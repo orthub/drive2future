@@ -15,7 +15,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
     <?php require_once __DIR__ . '/partials/navbar.php' ?>
     <h1>Terminverwaltung</h1>
 
-    <a href="chooseAppointmentType.php">
+    <a href="createAppointment.php">
         <h3>Termin hinzufügen</h3>
     </a>
     <table>
