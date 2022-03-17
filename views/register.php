@@ -6,9 +6,11 @@
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
 
+  <?php if (!empty($_SESSION['errors'])) : ?>
   <?php foreach ($_SESSION['errors'] as $errors) : ?>
   <?php echo $errors . '<br />' ?>
   <?php endforeach ?>
+  <?php endif ?>
 
   <form action="/drive2future/controllers/register.php" method="POST">
     <label for="first_name">Vorname</label><br />
