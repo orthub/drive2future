@@ -84,3 +84,66 @@ function add_class_appointment($class_id, $app_id) {
 
     return $stmt;
 }
+
+//berechnen aller möglichen Startzeitpunkte eines Termins
+function calculate_valid_start_times ($duration, $bookings){
+    $result = [];
+    //umrechnen der Zeiten zu Minuten ausgehend von Mitternacht
+    $bookings = transform_appointments($bookings);
+    for ($start = 420; $start + $duration <= 1200; $start += 30){
+        $end = $start + $duration;
+        $overlap = false;
+        foreach ($bookings as $booked){
+            if ($end > $booked['start'] && $booked['end'] > $start){
+                $overlap = true;
+                break;
+            }
+        }
+        if(!$overlap){
+            $result[] = transform_minutes_to_time($start);
+        }
+    }
+    return $result;
+}
+
+//bestehende Termine für eine Liste von Usern an einem bestimmten Datum
+function get_appointments_for_users($date, $user_ids){
+
+    $query = "SELECT a.begin_time, a.end_time FROM appointments a 
+	INNER JOIN users_has_appointments uha ON a.id_appointment = uha.appointments_id_appointment
+    INNER JOIN users u ON uha.users_id_user = u.id_user
+    WHERE u.id_user IN (:user_ids) AND a.date = :date";
+    try{
+        $getAppointments = get_db()->prepare($query);
+        $params = [
+            ":user_ids" => join(', ', $user_ids),
+            ":date" => $date
+        ];
+        $getAppointments->execute($params);
+        return $getAppointments->fetchAll();
+    } catch(PDOException $e) {
+        // todo return ["message" => "Es ist ein Serverfehler aufgetreten. Bitte versuchen Sie es später erneut."];
+    }
+}
+function transform_appointments($appointments){
+    $transformed =[];
+    foreach ($appointments as $appointment){
+        $transformed[] = [
+            'start' => transform_time_to_minutes($appointment['begin_time']),
+            'end' => transform_time_to_minutes($appointment['end_time'])
+        ];
+    }
+    return $transformed;
+}
+
+function transform_time_to_minutes($time){
+    $parts = explode(":", $time);
+    return intval($parts[0]) * 60 + intval($parts[1]);
+}
+
+function transform_minutes_to_time($value){
+    $minutes = $value % 60;
+    $hours = intdiv($value, 60);
+    return sprintf('%02d:%02d:00', $hours, $minutes);
+}
+
