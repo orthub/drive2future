@@ -18,33 +18,27 @@ require_once __DIR__ . '/../controllers/appointments.php';
     <a href="createAppointment.php">
         <h3>Termin hinzufügen</h3>
     </a>
-    <table>
-        <thead>
-            <th>Datum</th>
-            <th>Beginn</th>
-            <th>Ende</th>
-            <th>Termin</th>
-            <th></th>
-            <th></th>
 
-        </thead>
-        <tbody>
-
-            <?php foreach ($appointments as $app) : ?>
-                <form action="editAppointment.php" method="post">
-                    <tr>
-                        <td><?php echo $app['date']; ?></td>
-                        <td><?php echo $app['begin_time']; ?></td>
-                        <td><?php echo $app['end_time']; ?></td>
-                        <td><?php echo $app['description']; ?></td>
-                        <td><?php echo "<button name='edit-app' 
-                        value='$app[id_appointment]'> edit </button>" ?></td>
-                        <td><?php echo "delete"; ?></td>
-                    </tr>
-                </form>
-            <?php endforeach ?>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="app-item ">
+            <div class="box-1">Datum</div>
+            <div class="box-2">Beginn</div>
+            <div class="box-3">Ende</div>
+            <div class="box-4">Termin</div>
+            <div class="box-5">Bearbeiten</div>
+            <div class="box-6">Löschen</div>
+        </div>
+        <div class="app-item">
+        <?php foreach ($appointments as $app) : ?>
+            <div class="box-1"><span>Datum: </span><?php echo $app['date']; ?></div>
+            <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
+            <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
+            <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
+            <div class="box-5"><?php echo "<button name='edit-app' value='$app[id_appointment]'> edit </button>" ?></div>
+            <div class="box-6"><?php echo "delete"; ?></div>
+        <?php endforeach ?>
+        </div>
+    </div>
     <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 

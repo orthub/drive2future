@@ -9,3 +9,19 @@ th, td {
     border: 1px solid #000000;
     width: auto;
 }
+
+.container{
+    .app-item{
+        display: flex;
+        flex-direction: row;
+        .box-1, .box-2, .box-3, .box-5, .box-6 {
+            width: 110px;
+        }
+        .box-4 {
+            width: 400px;
+        }
+        span{
+            display: none;
+        }
+    }
+}

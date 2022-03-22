@@ -5,4 +5,18 @@ th, td {
   width: auto;
 }
 
+.container .app-item {
+  display: flex;
+  flex-direction: row;
+}
+.container .app-item .box-1, .container .app-item .box-2, .container .app-item .box-3, .container .app-item .box-5, .container .app-item .box-6 {
+  width: 110px;
+}
+.container .app-item .box-4 {
+  width: 400px;
+}
+.container .app-item span {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
