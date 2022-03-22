@@ -52,3 +52,5 @@ if ($check_mail_exist) {
     header('Location: ' . '/drive2future/views/appointments.php');
   }
 }
+
+header('Location: ' . '/drive2future/views/login.php');
