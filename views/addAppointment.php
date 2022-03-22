@@ -25,16 +25,17 @@ require_once '../controllers/appointments.php';
     <form action="addAppConfirmation.php" method="post">
         <div>
             <label>Beginnzeit angeben:</label>
-            <input type="time" id="begin-time" name="begin-time"
-            min="07:00" max="19:30">
+            <select name="begin-time" id="begin-time" form="appointmentForm">
+                <?php
+                    $start_times = get_valid_appointment_times($_SESSION['date'],$_SESSION['duration'],[$_SESSION['user_id'],$_SESSION["student_id"]]);
+                    foreach($start_times as $start_time){
+                        $value = sprintf('%02d:%02d',...explode(':',$start_time));
+                        echo "<option value=\"{$start_time}\">{$value}</option>";
+                    }
+                ?>
+            </select>
         </div>
-        
-        <div>
-            <label>Endzeit angeben:</label>
-            <input type="time" id="end-time" name="end-time"
-            min="07:30" max="20:00">
-        </div>
-    <input type="submit" value="Termin hinzufügen"> <input type="reset">
+        <input type="submit" value="Termin hinzufügen"> <input type="reset">
     </form>
 
 

@@ -47,6 +47,7 @@ if ($check_mail_exist) {
   $match_mail_passwd = match_mail_password($email);
   if ($match_mail_passwd) {
     $user_id = get_user_id($email);
+    $_SESSION['user_id'] = $user_id;
     $_SESSION['user_session'] = $user_id . '_loggedIn';
     header('Location: ' . '/drive2future/views/appointments.php');
   }
