@@ -85,6 +85,14 @@ function add_class_appointment($class_id, $app_id) {
     return $stmt;
 }
 
+function get_appointment($app_id) {
+    $sql = "SELECT * FROM appointments "
+        . "WHERE id_appointment = '$app_id'";
+    $stmt = get_db()->query($sql);
+    $res = $stmt->fetchAll();
+    
+    return $res;
+}
 //berechnen aller möglichen Startzeitpunkte eines Termins
 function calculate_valid_start_times ($duration, $bookings){
     $result = [];
