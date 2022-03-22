@@ -25,9 +25,9 @@ require_once __DIR__ . '/../lib/user_role.php';
     <?php foreach ($appointments as $app) : ?>
       <div class="app-item">
         <div class="app-row">
-          <div class="box-1"><span>Datum: </span><?php echo $app['date']; ?></div>
-          <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
-          <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
+          <div class="box-1"><span>Datum: </span><?php echo date('d.m.Y' ,strtotime($app['date'])) ?></div>
+          <div class="box-2"><span>Beginn: </span><?php echo date('H:i',strtotime($app['begin_time'])) ?></div>
+          <div class="box-3"><span>Ende: </span><?php echo date('H:i',strtotime($app['end_time'])) ?></div>
           <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
         </div>
       </div>
