@@ -1,31 +1,161 @@
+body {
+  font-size: 10px;
+  font-family: Helvetica, sans-serif;
+  color: #202020;
+  margin: 0;
+  /*header {
+      .logo {
+          margin: 8px 50px 8px 30px;
+          @media (max-width: 700px) {
+              img {
+                  width: 200px;
+              }
+          }
+      }
+      .navbar {
+          display: flex;
+          align-items: center;
+          position: relative;
+          @media (max-width: 1400px) {
+              justify-content: space-between;
+          }
+          .navbar-collapse {
+              display: flex;
+              align-items: flex-end;
+              list-style-type: none;
+              width: 100%;
+              @media (max-width: 1400px) {
+                  flex-direction: column;
+              }
+              input[type="checkbox"] {
+                  display: none;
+              }
+              @media (max-width: 1400px) {
+                  input[type="checkbox"]:checked ~ .menu {
+                      display: block;
+                  }
+              }
+              .hamburger {
+                  display: none;
+                  user-select: none;
+                  @media (max-width: 1400px) {
+                      display: block;
+                      margin-right: 20px;
+                  }
+              }
+              .menu {
+                  background: white;
+                  display: flex;
+                  gap: 1em;
+                  list-style-type: none;
+                  @media (max-width: 1400px) {
+                      display: none;
+                      position: absolute;
+                      right: 0;
+                      top: 108px;
+                      text-align: right;
+                      padding: 16px 0px;
+                      width: 100%;
+                      opacity: 0.7;
+                  }
+                  @media (max-width: 700px) {
+                      top: 80px;
+                  }
+                  li {
+                      @media (max-width: 1400px) {
+                          margin-bottom: 15px;
+                      }
+                  }
+              }
+              .nav-link {
+                  margin-right: 35px;
+                  font-size: 2.4em;
+                  color: #5e3d15;
+                  font-weight: 500;
+                  text-decoration: none;
+                  @media (max-width: 1400px) {
+                      margin-right: 30px;
+                      padding-left: 20px;
+                  }
+                  &:hover {
+                      text-decoration: underline;
+                  }
+              }
+          }
+      }
+      .header-img {
+          width: 100%;
+          margin-bottom: 55px;
+          max-height: 330px;
+          min-height: 250px;
+          overflow: hidden;
+          object-fit: cover;
+      }
+  }*/
+}
+body h1 {
+  font-size: 3em;
+  margin-bottom: 50px;
+  color: #426cb4;
+}
+@media (max-width: 992px) {
+  body h1 {
+    font-size: 2.4em;
+    margin-bottom: 30px;
+  }
+}
+body .container {
+  padding: 0 240px;
+  margin-bottom: 80px;
+}
+@media (max-width: 1200px) {
+  body .container {
+    padding: 0 120px;
+  }
+}
+@media (max-width: 992px) {
+  body .container {
+    padding: 0 100px;
+  }
+}
+@media (max-width: 700px) {
+  body .container {
+    padding: 0 60px;
+  }
+}
+@media (max-width: 576px) {
+  body .container {
+    padding: 0 20px;
+  }
+}
+body .container .app-item {
+  display: flex;
+  flex-direction: column;
+}
+body .container .app-item .app-row {
+  display: flex;
+  flex-direction: row;
+}
+body .container .app-item .app-row .box-1,
+body .container .app-item .app-row .box-2,
+body .container .app-item .app-row .box-3,
+body .container .app-item .app-row .box-5,
+body .container .app-item .app-row .box-6 {
+  width: 110px;
+}
+body .container .app-item .app-row .box-4 {
+  width: 400px;
+}
+body .container .app-item .app-row span {
+  display: none;
+}
+
 th,
 td {
   padding: 5px;
   text-align: center;
   border: 1px solid #000000;
   width: auto;
-}
-
-.container .app-item {
-  display: flex;
-  flex-direction: column;
-}
-.container .app-item .app-row {
-  display: flex;
-  flex-direction: row;
-}
-.container .app-item .app-row .box-1,
-.container .app-item .app-row .box-2,
-.container .app-item .app-row .box-3,
-.container .app-item .app-row .box-5,
-.container .app-item .app-row .box-6 {
-  width: 110px;
-}
-.container .app-item .app-row .box-4 {
-  width: 400px;
-}
-.container .app-item .app-row span {
-  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
