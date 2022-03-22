@@ -20,23 +20,28 @@ require_once __DIR__ . '/../controllers/appointments.php';
     </a>
 
     <div class="container">
-        <div class="app-item ">
-            <div class="box-1">Datum</div>
-            <div class="box-2">Beginn</div>
-            <div class="box-3">Ende</div>
-            <div class="box-4">Termin</div>
-            <div class="box-5">Bearbeiten</div>
-            <div class="box-6">Löschen</div>
+        <div class="app-item">
+            <div class="app-row">
+                <div class="box-1">Datum</div>
+                <div class="box-2">Beginn</div>
+                <div class="box-3">Ende</div>
+                <div class="box-4">Termin</div>
+                <div class="box-5">Bearbeiten</div>
+                <div class="box-6">Löschen</div>
+            </div>
+
         </div>
         <div class="app-item">
-        <?php foreach ($appointments as $app) : ?>
-            <div class="box-1"><span>Datum: </span><?php echo $app['date']; ?></div>
-            <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
-            <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
-            <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
-            <div class="box-5"><?php echo "<button name='edit-app' value='$app[id_appointment]'> edit </button>" ?></div>
-            <div class="box-6"><?php echo "delete"; ?></div>
-        <?php endforeach ?>
+            <div class="app-row">
+                <?php foreach ($appointments as $app) : ?>
+                    <div class="box-1"><span>Datum: </span><?php echo $app['date']; ?></div>
+                    <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
+                    <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
+                    <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
+                    <div class="box-5"><?php echo "<button name='edit-app' value='$app[id_appointment]'> edit </button>" ?></div>
+                    <div class="box-6"><?php echo "delete"; ?></div>
+                <?php endforeach ?>
+            </div>
         </div>
     </div>
     <?php require_once __DIR__ . '/partials/footer.php' ?>

@@ -1,27 +1,35 @@
 body {
     //color:red;
-
 }
 
-th, td {
+th,
+td {
     padding: 5px;
     text-align: center;
     border: 1px solid #000000;
     width: auto;
 }
 
-.container{
-    .app-item{
+.container {
+    .app-item {
         display: flex;
-        flex-direction: row;
-        .box-1, .box-2, .box-3, .box-5, .box-6 {
-            width: 110px;
-        }
-        .box-4 {
-            width: 400px;
-        }
-        span{
-            display: none;
+        flex-direction: column;
+        .app-row {
+            display: flex;
+            flex-direction: row;
+            .box-1,
+            .box-2,
+            .box-3,
+            .box-5,
+            .box-6 {
+                width: 110px;
+            }
+            .box-4 {
+                width: 400px;
+            }
+            span {
+                display: none;
+            }
         }
     }
 }
