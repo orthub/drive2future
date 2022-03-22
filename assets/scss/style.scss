@@ -13,13 +13,18 @@ body {
             margin-bottom: 30px;
         }
     }
+
+    p {
+        font-size: 1.8em;
+        margin-top: 0;
+      }
     //header
-    /*header {
+    header {
         .logo {
-            margin: 8px 50px 8px 30px;
+            margin: 8px 120px 8px 30px;
             @media (max-width: 700px) {
                 img {
-                    width: 200px;
+                    width: 110px;
                 }
             }
         }
@@ -49,6 +54,7 @@ body {
                 .hamburger {
                     display: none;
                     user-select: none;
+                    cursor: pointer;
                     @media (max-width: 1400px) {
                         display: block;
                         margin-right: 20px;
@@ -81,7 +87,7 @@ body {
                 .nav-link {
                     margin-right: 35px;
                     font-size: 2.4em;
-                    color: #5e3d15;
+                    color: #426cb4;
                     font-weight: 500;
                     text-decoration: none;
                     @media (max-width: 1400px) {
@@ -102,7 +108,7 @@ body {
             overflow: hidden;
             object-fit: cover;
         }
-    }*/
+    }
 
     .container {
         padding: 0 240px;
@@ -139,6 +145,48 @@ body {
                     display: none;
                 }
             }
+        }
+    }
+
+    footer {
+        padding: 0 260px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        background-color: #d6d6d6;
+        @media (max-width: 1200px) {
+            padding: 0 120px;
+        }
+        @media (max-width: 992px) {
+            padding: 0 100px;
+        }
+        @media (max-width: 700px) {
+            padding: 0 60px;
+        }
+        @media (max-width: 576px) {
+            padding: 0 20px;
+        }
+        .company-info {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 30px;
+            padding-bottom: 20px;
+            @media (max-width: 800px) {
+                flex-direction: column;
+            }
+            a {
+                color: #202020;
+                display: block;
+            }
+            @media (max-width: 800px) {
+                .company,
+                .contact {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .copy {
+            font-size: 1.5em;
+            padding-bottom: 15px;
         }
     }
 }
