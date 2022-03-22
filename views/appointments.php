@@ -11,40 +11,29 @@ require_once __DIR__ . '/../lib/user_role.php';
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <h1>Terminübersicht</h1>
-  <table>
-    <thead>
-      <th>Datum</th>
-      <th>Beginn</th>
-      <th>Ende</th>
-      <th>Termin</th>
-    </thead>
-    <tbody>
-      <?php foreach ($appointments as $app) : ?>
-      <tr>
-        <td><?php echo $app['date']; ?></td>
-        <td><?php echo $app['begin_time']; ?></td>
-        <td><?php echo $app['end_time']; ?></td>
-        <td><?php echo $app['description']; ?></td>
-        <?php if ($user_employee) : ?>
-        <th>
-          <form method="POST">
-            <input type="hidden" value="<?php echo $app['id_appointment'] ?>">
-            <input type="submit" value="Bearbeiten" />
-          </form>
-        </th>
-        <?php endif ?>
-        <?php if ($user_employee) : ?>
-        <th>
-          <form method="POST">
-            <input type="hidden" value="<?php echo $app['id_appointment'] ?>">
-            <input type="submit" value="Löschen" />
-          </form>
-        </th>
-        <?php endif ?>
-      </tr>
-      <?php endforeach ?>
-    </tbody>
-  </table>
+
+  <div class="container">
+    <div class="app-item ">
+      <div class="app-row">
+        <div class="box-1">Datum</div>
+        <div class="box-2">Beginn</div>
+        <div class="box-3">Ende</div>
+        <div class="box-4">Termin</div>
+      </div>
+    </div>
+
+    <?php foreach ($appointments as $app) : ?>
+      <div class="app-item">
+        <div class="app-row">
+          <div class="box-1"><span>Datum: </span><?php echo $app['date']; ?></div>
+          <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
+          <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
+          <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
+        </div>
+      </div>
+    <?php endforeach ?>
+
+  </div>
   <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 

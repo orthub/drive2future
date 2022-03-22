@@ -1,8 +1,31 @@
-th, td {
+th,
+td {
   padding: 5px;
   text-align: center;
   border: 1px solid #000000;
   width: auto;
+}
+
+.container .app-item {
+  display: flex;
+  flex-direction: column;
+}
+.container .app-item .app-row {
+  display: flex;
+  flex-direction: row;
+}
+.container .app-item .app-row .box-1,
+.container .app-item .app-row .box-2,
+.container .app-item .app-row .box-3,
+.container .app-item .app-row .box-5,
+.container .app-item .app-row .box-6 {
+  width: 110px;
+}
+.container .app-item .app-row .box-4 {
+  width: 400px;
+}
+.container .app-item .app-row span {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
