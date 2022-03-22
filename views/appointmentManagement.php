@@ -29,15 +29,19 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
         </thead>
         <tbody>
+
             <?php foreach ($appointments as $app) : ?>
-                <tr>
-                    <td><?php echo $app['date']; ?></td>
-                    <td><?php echo $app['begin_time']; ?></td>
-                    <td><?php echo $app['end_time']; ?></td>
-                    <td><?php echo $app['description']; ?></td>
-                    <td><?php echo "edit" ?></td>
-                    <td><?php echo "delete"; ?></td>
-                </tr>
+                <form action="editAppointment.php" method="post">
+                    <tr>
+                        <td><?php echo $app['date']; ?></td>
+                        <td><?php echo $app['begin_time']; ?></td>
+                        <td><?php echo $app['end_time']; ?></td>
+                        <td><?php echo $app['description']; ?></td>
+                        <td><?php echo "<button name='edit-app' 
+                        value='$app[id_appointment]'> edit </button>" ?></td>
+                        <td><?php echo "delete"; ?></td>
+                    </tr>
+                </form>
             <?php endforeach ?>
         </tbody>
     </table>
