@@ -25,7 +25,7 @@ require_once '../controllers/appointments.php';
     <form action="addAppConfirmation.php" method="post">
         <div>
             <label>Beginnzeit angeben:</label>
-            <select name="begin-time" id="begin-time" form="appointmentForm">
+            <select name="begin-time" id="begin-time">
                 <?php
                     $start_times = get_valid_appointment_times($_SESSION['date'],$_SESSION['duration'],[$_SESSION['user_id'],$_SESSION["student_id"]]);
                     foreach($start_times as $start_time){
