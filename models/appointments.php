@@ -42,6 +42,7 @@ function get_students() {
     return $res;
 }
 
+// Termin zur Tabelle appointments hinzufügen
 function add_appointment(
     $date,
     $begin_time, 
@@ -53,13 +54,24 @@ function add_appointment(
 
     $sql = "INSERT INTO drive2future.appointments (date, begin_time, end_time, "
         . "description, appointment_types_id_a_type, rooms_id_room, class_id_class) "
-        . "VALUES ('$date', '$begin_time', '$end_time', '$description', "
-        . "'$appointment_types_id_a_type', '$rooms_id_room', '$class_id_class')";
-    $stmt = get_db()->query($sql);
-    
-    return $stmt;
+        . "VALUES (:date, :begin_time, :end_time, :description, "
+        . ":appointment_types_id_a_type, :rooms_id_room, :class_id_class)";
+
+    $insertAppointment = get_db()->prepare($sql);
+        $params = [
+            ":date" => $date,
+            ":begin_time" => $begin_time,
+            ":end_time" => $end_time,
+            ":description" => $description,
+            ":appointment_types_id_a_type" => $appointment_types_id_a_type, 
+            ":rooms_id_room" => $rooms_id_room,
+            ":class_id_class" => $class_id_class
+        ];
+        $insertAppointment->execute($params);
+        return $insertAppointment->fetchAll();
 }
 
+// Termin für einzelnen Benutzer speichern (bei Fahrstunde)
 function add_user_appointment($student, $app_id) {
     $sql = "INSERT INTO drive2future.users_has_appointments (users_id_user, "
         . "appointments_id_appointment) VALUES ('$student', '$app_id')";
@@ -68,13 +80,14 @@ function add_user_appointment($student, $app_id) {
     return $stmt;
 }
 
+// Termin für jeden Schüler einer Klasse speichern (bei Vortrag und Übung)
 function add_class_appointment($class_id, $app_id) {
     $sql = "SELECT * FROM drive2future.class_has_users "
         . "WHERE class_id_class = $class_id";
     $stmt = get_db()->query($sql);
     $class_students = $stmt->fetchAll();
 
-    // Termin für jeden Schüler speichern 
+    // Termin für jeden Schüler der angegeben Klasse speichern 
     foreach ($class_students as $student) {
         $student_id = intval($student["users_id_user"]);
         $sql = "INSERT INTO drive2future.users_has_appointments (users_id_user, "
@@ -93,6 +106,7 @@ function get_appointment($app_id) {
     
     return $res;
 }
+
 //berechnen aller möglichen Startzeitpunkte eines Termins
 function calculate_valid_start_times ($duration, $bookings){
     $result = [];

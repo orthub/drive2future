@@ -45,6 +45,9 @@ require_once '../controllers/appointments.php';
         $student_id = intval($_SESSION["student_id"]);
     }
 
+    // ToDo: Endzeit ausrechnen
+    $end_time = date("Y-m-d");
+
     try {
         get_db()->beginTransaction();
         // Eingegebene/Ausgewählte Termininfos in Tabelle appointments speichern
