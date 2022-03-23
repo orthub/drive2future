@@ -12,26 +12,30 @@ require_once '../controllers/appointments.php';
   <div class="container">
     <h1>Termin löschen</h1>
 
+    <?php if (isset($_SESSION["delete_app_id"])) {
+      $app_delete_id = intval($_SESSION["delete_app_id"]);
+    }
 
-  <?php if (isset($_SESSION["delete_app_id"])) {
-    $app_delete_id = intval($_SESSION["delete_app_id"]);
-  } 
-  
-  $sql = "DELETE";
-  if (get_db()->query($sql)) {
+    try {
+      get_db()->beginTransaction();
+      // Terrmine für die beteiligten Benutzer löschen
+      delete_user_appointment($app_delete_id);
+
+      // Termin aus der Tabelle appointments löschen
+      delete_appointment($app_delete_id);
+
+      get_db()->commit();
+      echo "Ihr Termin wurde erfolgreich gelöscht.<br>";
+    } catch (PDOException $e) {
+      get_db()->rollBack();
+      echo "Ihr Termin konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.<br>";
+    }
+    ?>
     
-  } else {
-    echo "Termin konnte nicht gelöscht werden.";
-  }
-  ?>
-    <form action="chooseAppTime.php" method="post">
-
-      <input type="submit" value="Weiter"> <input type="reset">
-    </form>
+    <div>
+      <a href="appointmentManagement.php"> Zurück zur Terminverwaltung</a>
+    </div>
   </div>
-
-
-  <a href="appointmentManagement.php"> Zurück zu Terminverwaltung </a>
 
   <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>

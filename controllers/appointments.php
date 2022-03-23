@@ -14,3 +14,4 @@ function get_valid_appointment_times($date, $duration,$user_ids){
 
     return calculate_valid_start_times($duration, $bookings);
 }
+
