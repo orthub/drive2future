@@ -36,17 +36,29 @@ require_once __DIR__ . '/../controllers/appointments.php';
                     <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
                     <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
                     <form action="editAppointment.php" method="post">
-                        <div class="box-5"><button <?php echo "name='edit-app' value='$app[id_appointment]'"?>> edit </button></div>
-                    </form>
-                    <form action="deleteAppConfirmation.php" method="post">
-                        <div class="box-6"><button <?php echo "name='delete-app' value='$app[id_appointment]'"?>> delete </button></div>
-                    </form>
+                        <div class="box-5">
+                            <button <?php echo "name='edit-app' value='$app[id_appointment]'" ?>>
+                                <a href="/drive2future" title="Zur Startseite">
+                                    <img src="/drive2future/assets/img/edit_icon.png" width="20" />
+                                </a>
+                        </button>
                 </div>
+                </form>
+                <form action="deleteAppConfirmation.php" method="post">
+                    <div class="box-6">
+                        <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
+                            <a href="/drive2future" title="Zur Startseite">
+                                <img src="/drive2future/assets/img/delete_icon.png" width="20" />
+                            </a> 
+                        </button>
+                    </div>
+                </form>
             </div>
-        <?php endforeach ?>
-
     </div>
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+<?php endforeach ?>
+
+</div>
+<?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>
