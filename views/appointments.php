@@ -23,7 +23,7 @@ require_once __DIR__ . '/../lib/user_role.php';
       </div>
     </div>
 
-    <?php foreach ($appointments as $app) : ?>
+    <?php foreach ($appointments_for_user as $app) : ?>
       <div class="app-item">
         <div class="app-row">
           <div class="box-1"><span>Datum: </span><?php echo date('d.m.Y', strtotime($app['date'])) ?></div>
