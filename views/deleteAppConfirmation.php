@@ -24,7 +24,7 @@ require_once '../controllers/appointments.php';
     Möchten Sie den Termin entgültig löschen?
   </div>
 
-  <form action="deleteAppConfirmation.php">
+  <form action="deleteAppointment.php">
     <input type="submit" value="Löschen">
   </form>
 

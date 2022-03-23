@@ -15,14 +15,14 @@
 
         <?php if (isset($_SESSION['user_session'])) : ?>
 
-          <?php require_once __DIR__ . '/../../lib/user_role.php';
-            if ($user_employee || $user_admin) : ?>
+          <li><a class="nav-link" href="/drive2future/views/appointments.php" title="Zur Terminübersicht">Terminübersicht</a></li>
 
-            <li><a class="nav-link" href="/drive2future/views/appointmentManagement.php">Terminverwaltung</a></li>
+          <?php require_once __DIR__ . '/../../lib/user_role.php';
+                if ($user_employee || $user_admin) : ?>
+
+          <li><a class="nav-link" href="/drive2future/views/appointmentManagement.php">Terminverwaltung</a></li>
 
           <?php endif ?>
-
-          <li><a class="nav-link" href="/drive2future/views/appointments.php" title="Zur Terminübersicht">Terminübersicht</a></li>
 
           <li><a class="nav-link" href="/drive2future/views/manageDocs.php" title="Zu den Unterlagen">Unterlagen</a></li>
 
@@ -35,7 +35,6 @@
         <?php endif ?>
 
       </div>
-      
     </ul>
 
   </div>

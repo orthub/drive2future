@@ -3,6 +3,7 @@ require_once __DIR__ . '/../lib/sessionHelper.php';
 require_once __DIR__ . '/../models/appointments.php';
 
 $appointments = get_appointments();
+$appointments_for_user = get_appointments_for_user(str_replace('_loggedIn', '', $_SESSION['user_session']));
 $rooms = get_rooms();
 $classes = get_classes();
 $students = get_students();
@@ -13,3 +14,4 @@ function get_valid_appointment_times($date, $duration,$user_ids){
 
     return calculate_valid_start_times($duration, $bookings);
 }
+
