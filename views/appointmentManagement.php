@@ -38,8 +38,12 @@ require_once __DIR__ . '/../controllers/appointments.php';
                     <div class="box-2"><span>Beginn: </span><?php echo $app['begin_time']; ?></div>
                     <div class="box-3"><span>Ende: </span><?php echo $app['end_time']; ?></div>
                     <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
-                    <div class="box-5"><?php echo "<button name='edit-app' value='$app[id_appointment]'> edit </button>" ?></div>
-                    <div class="box-6"><?php echo "delete"; ?></div>
+                    <form action="editAppointment.php" method="post">
+                        <div class="box-5"><button <?php echo "name='edit-app' value='$app[id_appointment]'"?>> edit </button></div>
+                    </form>
+                    <form action="deleteAppConfirmation.php" method="post">
+                        <div class="box-6"><button <?php echo "name='delete-app' value='$app[id_appointment]'"?>> delete </button></div>
+                    </form>
                 </div>
             </div>
         <?php endforeach ?>
