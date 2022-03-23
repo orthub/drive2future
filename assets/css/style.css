@@ -146,20 +146,22 @@ body .container {
 body .container .app-item {
   display: flex;
   flex-direction: column;
+  font-size: 1.8em;
 }
 body .container .app-item .app-row {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 body .container .app-item .app-row .box-1,
 body .container .app-item .app-row .box-2,
 body .container .app-item .app-row .box-3,
 body .container .app-item .app-row .box-5,
 body .container .app-item .app-row .box-6 {
-  width: 110px;
+  width: 130px;
 }
 body .container .app-item .app-row .box-4 {
-  width: 400px;
+  width: 450px;
 }
 body .container .app-item .app-row span {
   display: none;
