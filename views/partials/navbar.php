@@ -22,6 +22,8 @@
 
           <li><a class="nav-link" href="/drive2future/views/appointmentManagement.php">Terminverwaltung</a></li>
 
+          <li><a class="nav-link" href="/drive2future/views/classes.php">Klassen verwalten</a></li>
+
           <?php endif ?>
 
           <li><a class="nav-link" href="/drive2future/views/manageDocs.php" title="Zu den Unterlagen">Unterlagen</a></li>
