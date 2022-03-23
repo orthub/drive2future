@@ -7,19 +7,16 @@ require_once __DIR__ . '/../controllers/appointments.php';
 <html>
 <?php require_once __DIR__ . '/partials/head.php' ?>
 
-<head>
-    <link rel="stylesheet" href="/drive2future/assets/css/style.css">
-</head>
-
 <body>
     <?php require_once __DIR__ . '/partials/navbar.php' ?>
-    <h1>Terminverwaltung</h1>
-
-    <a href="createAppointment.php">
-        <h3>Termin hinzufügen</h3>
-    </a>
-
     <div class="container">
+        <h1>Terminverwaltung</h1>
+
+        <a href="createAppointment.php">
+            <h3>Termin hinzufügen</h3>
+        </a>
+
+
         <div class="app-item">
             <div class="app-row">
                 <div class="box-1">Datum</div>
