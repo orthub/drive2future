@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../lib/sessionHelper.php';
 require_once __DIR__ . '/../models/appointments.php';
 
-$appointments = get_appointments();
+$appointments = get_appointments_for_user(str_replace('_loggedIn', '', $_SESSION['user_session']));
 $rooms = get_rooms();
 $classes = get_classes();
 $students = get_students();

@@ -9,6 +9,19 @@ function get_appointments() {
     return $res;
 }
 
+function get_appointments_for_user($userid){
+    $sql = "SELECT `date`,`begin_time`,`end_time`,`description` 
+    FROM drive2future.users_has_appointments uha
+    join appointments a on uha.appointments_id_appointment = a.id_appointment 
+    where users_id_user = :userid;";
+
+    $insertAppointment = get_db()->prepare($sql);
+    $params = [":userid" => $userid];
+
+    $insertAppointment->execute($params);
+    return $insertAppointment->fetchAll();
+}
+
 function get_appointment_types() {
     $sql = "SELECT * FROM appointment_types";
     $stmt = get_db()->query($sql);
