@@ -112,12 +112,11 @@ body header .navbar .navbar-collapse .nav-link:hover {
   text-decoration: underline;
 }
 body header .header-img {
-  width: 100%;
-  margin-bottom: 55px;
-  max-height: 330px;
-  min-height: 250px;
+  min-height: 293px;
   overflow: hidden;
   object-fit: cover;
+  background: linear-gradient(#2b384f59, #01010269), url(/drive2future/assets/img/headerbild.jpg);
+  background-size: cover;
 }
 body .container {
   padding: 0 240px;

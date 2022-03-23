@@ -57,7 +57,10 @@ if ($valideEmail === true && $validePassword === true) {
   // }
   if ($match_mail_passwd) {
     $user_id = get_user_id($email);
-    // $_SESSION['user_id'] = $user_id;
+
+    // bitte drinnen lassen sonst geht der code von anderen nicht mehr
+    $_SESSION['user_id'] = $user_id;
+    
     $_SESSION['user_session'] = $user_id . '_loggedIn';
     header('Location: ' . '/drive2future/views/appointments.php');
   }
