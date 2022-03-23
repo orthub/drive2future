@@ -17,7 +17,7 @@ body {
     p {
         font-size: 1.8em;
         margin-top: 0;
-      }
+    }
     //header
     header {
         .logo {
@@ -101,12 +101,11 @@ body {
             }
         }
         .header-img {
-            width: 100%;
-            margin-bottom: 55px;
-            max-height: 330px;
-            min-height: 250px;
+            min-height: 293px;
             overflow: hidden;
             object-fit: cover;
+            background: linear-gradient(#2b384f59, #01010269), url(/drive2future/assets/img/headerbild.jpg);
+            background-size: cover;
         }
     }
 
@@ -128,18 +127,20 @@ body {
         .app-item {
             display: flex;
             flex-direction: column;
+            font-size: 1.8em;
             .app-row {
                 display: flex;
                 flex-direction: row;
+                margin-bottom: 20px;
                 .box-1,
                 .box-2,
                 .box-3,
                 .box-5,
                 .box-6 {
-                    width: 110px;
+                    width: 130px;
                 }
                 .box-4 {
-                    width: 400px;
+                    width: 450px;
                 }
                 span {
                     display: none;

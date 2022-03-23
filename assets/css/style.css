@@ -112,12 +112,11 @@ body header .navbar .navbar-collapse .nav-link:hover {
   text-decoration: underline;
 }
 body header .header-img {
-  width: 100%;
-  margin-bottom: 55px;
-  max-height: 330px;
-  min-height: 250px;
+  min-height: 293px;
   overflow: hidden;
   object-fit: cover;
+  background: linear-gradient(#2b384f59, #01010269), url(/drive2future/assets/img/headerbild.jpg);
+  background-size: cover;
 }
 body .container {
   padding: 0 240px;
@@ -146,20 +145,22 @@ body .container {
 body .container .app-item {
   display: flex;
   flex-direction: column;
+  font-size: 1.8em;
 }
 body .container .app-item .app-row {
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 body .container .app-item .app-row .box-1,
 body .container .app-item .app-row .box-2,
 body .container .app-item .app-row .box-3,
 body .container .app-item .app-row .box-5,
 body .container .app-item .app-row .box-6 {
-  width: 110px;
+  width: 130px;
 }
 body .container .app-item .app-row .box-4 {
-  width: 400px;
+  width: 450px;
 }
 body .container .app-item .app-row span {
   display: none;

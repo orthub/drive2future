@@ -40,5 +40,6 @@
     </ul>
 
   </div>
-  <img class="header-img" src="/drive2future/assets/img/verkehrszeichen.jpg" width="1920" />
+  <!--<img class="header-img" src="/drive2future/assets/img/headerbild.jpg" width="1920" />-->
+  <div class="header-img"></div>
 </header>
