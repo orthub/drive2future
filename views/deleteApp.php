@@ -7,18 +7,17 @@ require_once '../controllers/appointments.php';
 <html>
 <?php require_once __DIR__ . '/partials/head.php' ?>
 
-<head>
-  <link rel="stylesheet" href="/drive2future/assets/css/style.css">
-</head>
-
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
-  <h1>Termin löschen</h1>
+  <div class="container">
+    <h1>Termin löschen</h1>
 
-  <form action="chooseAppTime.php" method="post">
+    <form action="chooseAppTime.php" method="post">
 
-    <input type="submit" value="Weiter"> <input type="reset">
-  </form>
+      <input type="submit" value="Weiter"> <input type="reset">
+    </form>
+  </div>
+
 
 
   <?php require_once __DIR__ . '/partials/footer.php' ?>
