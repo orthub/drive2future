@@ -26,4 +26,5 @@
     </ul>
 
   </div>
+  <img class="header-img" src="/drive2future/assets/img/verkehrszeichen.jpg" width="1920" />
 </header>
