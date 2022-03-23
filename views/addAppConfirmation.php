@@ -14,6 +14,10 @@ require_once '../controllers/appointments.php';
         <h1>Termin hinzufügen</h1>
 
         <?php
+        if (isset($_SESSION["user_id"])) {
+            $user_id = intval($_SESSION["user_id"]);
+        }
+
         if (isset($_SESSION["app_type_id"])) {
             $app_type_id = intval($_SESSION["app_type_id"]);
         }
@@ -47,7 +51,7 @@ require_once '../controllers/appointments.php';
         }
 
         // ToDo: Endzeit ausrechnen
-        $end_time = date("Y-m-d");
+        $end_time = date("H:i");
 
         try {
             get_db()->beginTransaction();
@@ -64,6 +68,9 @@ require_once '../controllers/appointments.php';
 
             // ID des neuen Termins in Variable speichern
             $app_id = get_db()->lastInsertId();
+
+            // Termin für Lehrer speichern
+            add_user_appointment($user_id, $app_id);
 
             // Wurde ein Fahrschüler ausgewählt, wird der Datensatz erstellt
             if ($app_type_id === 3) {
