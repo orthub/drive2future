@@ -169,3 +169,16 @@ function transform_minutes_to_time($value){
     return sprintf('%02d:%02d:00', $hours, $minutes);
 }
 
+function delete_user_appointment($app_id) {
+    $sql = "DELETE FROM drive2future.users_has_appointments WHERE appointments_id_appointment = $app_id";
+    $stmt = get_db()->query($sql);
+    
+    return $stmt;
+}
+
+function delete_appointment($app_id) {
+    $sql = "DELETE FROM drive2future.appointments WHERE id_appointment = $app_id";
+    $stmt = get_db()->query($sql);
+    
+    return $stmt;
+}
