@@ -36,22 +36,19 @@ require_once '../controllers/appointments.php';
 
         if (isset($_SESSION["appDescription"])) {
             $description = strval($_SESSION["appDescription"]);
+        } else{
+            $description = "";
         }
 
         if (isset($_POST["begin-time"])) {
             $begin_time = strval($_POST["begin-time"]);
         }
-
-        if (isset($_POST["end-time"])) {
-            $end_time = strval($_POST["end-time"]);
-        }
-
         if (isset($_SESSION["student_id"])) {
             $student_id = intval($_SESSION["student_id"]);
         }
 
-        // ToDo: Endzeit ausrechnen
-        $end_time = date("H:i");
+        //Endzeit berechnen
+        $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']) ;
 
         try {
             get_db()->beginTransaction();
