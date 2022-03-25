@@ -12,10 +12,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
     <div class="container">
         <h1>Terminverwaltung</h1>
 
-        <a href="createAppointment.php">
-            <h3>Termin hinzufügen</h3>
-        </a>
-
+        <h2><a href="createAppointment.php">Termin hinzufügen +</a></h2>
 
         <div class="app-item">
             <div class="app-row">
@@ -41,24 +38,24 @@ require_once __DIR__ . '/../controllers/appointments.php';
                                 <a href="/drive2future" title="Zur Startseite">
                                     <img src="/drive2future/assets/img/edit_icon.png" width="20" />
                                 </a>
-                        </button>
+                            </button>
+                        </div>
+                    </form>
+                    <form action="deleteAppConfirmation.php" method="post">
+                        <div class="box-6">
+                            <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
+                                <a href="/drive2future" title="Zur Startseite">
+                                    <img src="/drive2future/assets/img/delete_icon.png" width="20" />
+                                </a>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                </form>
-                <form action="deleteAppConfirmation.php" method="post">
-                    <div class="box-6">
-                        <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
-                            <a href="/drive2future" title="Zur Startseite">
-                                <img src="/drive2future/assets/img/delete_icon.png" width="20" />
-                            </a> 
-                        </button>
-                    </div>
-                </form>
             </div>
-    </div>
-<?php endforeach ?>
+        <?php endforeach ?>
 
-</div>
-<?php require_once __DIR__ . '/partials/footer.php' ?>
+    </div>
+    <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>

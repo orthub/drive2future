@@ -14,6 +14,21 @@ body {
         }
     }
 
+    h2 {
+        font-size: 2em;
+        text-decoration: none;
+        color: #426cb4;
+        margin-bottom: 40px;
+        a{
+            text-decoration: none;
+            color: #426cb4;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
     p {
         font-size: 1.8em;
         margin-top: 0;
@@ -154,6 +169,27 @@ body {
                     display: none;
                 }
             }
+        }
+
+        label {
+            font-size: 1.8em;
+            display: block;
+        }
+
+        input {
+            font-size: 1.8em;
+            display: block;
+            margin-bottom: 20px;
+            width: 400px;
+        }
+
+        input[type="submit"] {
+            width: fit-content;
+            min-width: 200px;
+            padding: 5px 40px;
+            background-color: #304f84;
+            color: white;
+            border: none;
         }
     }
 

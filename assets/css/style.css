@@ -15,6 +15,19 @@ body h1 {
     margin-bottom: 30px;
   }
 }
+body h2 {
+  font-size: 2em;
+  text-decoration: none;
+  color: #426cb4;
+  margin-bottom: 40px;
+}
+body h2 a {
+  text-decoration: none;
+  color: #426cb4;
+}
+body h2 a:hover {
+  text-decoration: underline;
+}
 body p {
   font-size: 1.8em;
   margin-top: 0;
@@ -176,6 +189,24 @@ body .container .app-item .app-row .box-4 {
 }
 body .container .app-item .app-row span {
   display: none;
+}
+body .container label {
+  font-size: 1.8em;
+  display: block;
+}
+body .container input {
+  font-size: 1.8em;
+  display: block;
+  margin-bottom: 20px;
+  width: 400px;
+}
+body .container input[type=submit] {
+  width: fit-content;
+  min-width: 200px;
+  padding: 5px 40px;
+  background-color: #304f84;
+  color: white;
+  border: none;
 }
 body footer {
   padding: 0 260px;
