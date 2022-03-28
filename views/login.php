@@ -9,10 +9,10 @@
   <div class="container">
     <h1>Login</h1>
     <form action="/drive2future/controllers/login.php" method="POST">
-      <label for="login-mail">E-Mail</label><br />
-      <input id="login-mail" type="email" name="login-mail"><br />
-      <label for="login-passwd">Passwort</label><br />
-      <input id="login-passwd" type="password" name="login-passwd"><br />
+      <label for="login-mail">E-Mail</label>
+      <input id="login-mail" type="email" name="login-mail">
+      <label for="login-passwd">Passwort</label>
+      <input id="login-passwd" type="password" name="login-passwd">
       <input type="submit" value="Anmelden">
     </form>
     <p>Noch keinen Account? Hier geht's zur <a href="/drive2future/views/register.php">Registrierung</a></p>

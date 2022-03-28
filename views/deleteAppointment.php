@@ -25,15 +25,15 @@ require_once '../controllers/appointments.php';
       delete_appointment($app_delete_id);
 
       get_db()->commit();
-      echo "Ihr Termin wurde erfolgreich gelöscht.<br>";
+      echo "<p>Ihr Termin wurde erfolgreich gelöscht.</p><br>";
     } catch (PDOException $e) {
       get_db()->rollBack();
-      echo "Ihr Termin konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.<br>";
+      echo "<p>Ihr Termin konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.</p><br>";
     }
     ?>
     
     <div>
-      <a href="appointmentManagement.php"> Zurück zur Terminverwaltung</a>
+      <p><a href="appointmentManagement.php"> Zurück zur Terminverwaltung</a></p>
     </div>
   </div>
 
