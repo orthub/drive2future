@@ -14,7 +14,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
         <h2><a href="createAppointment.php">Termin hinzufügen +</a></h2>
 
-        <div class="app-item">
+        <div class="app-item app-headlines">
             <div class="app-row">
                 <div class="box-1">Datum</div>
                 <div class="box-2">Beginn</div>
@@ -32,24 +32,24 @@ require_once __DIR__ . '/../controllers/appointments.php';
                     <div class="box-2"><span>Beginn: </span><?php echo date('H:i', strtotime($app['begin_time'])); ?></div>
                     <div class="box-3"><span>Ende: </span><?php echo date('H:i', strtotime($app['end_time'])); ?></div>
                     <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
-                    <form action="editAppointment.php" method="post">
-                        <div class="box-5">
+                    <div class="box-5">
+                        <form action="editAppointment.php" method="post">
                             <button <?php echo "name='edit-app' value='$app[id_appointment]'" ?>>
                                 <a href="/drive2future" title="Zur Startseite">
                                     <img src="/drive2future/assets/img/edit_icon.png" width="20" />
                                 </a>
                             </button>
-                        </div>
-                    </form>
-                    <form action="deleteAppConfirmation.php" method="post">
-                        <div class="box-6">
+                        </form>
+                    </div>
+                    <div class="box-6">
+                        <form action="deleteAppConfirmation.php" method="post">
                             <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
                                 <a href="/drive2future" title="Zur Startseite">
                                     <img src="/drive2future/assets/img/delete_icon.png" width="20" />
                                 </a>
                             </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         <?php endforeach ?>

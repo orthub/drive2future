@@ -19,11 +19,11 @@ body {
         text-decoration: none;
         color: #426cb4;
         margin-bottom: 40px;
-        a{
+        a {
             text-decoration: none;
             color: #426cb4;
 
-            &:hover{
+            &:hover {
                 text-decoration: underline;
             }
         }
@@ -91,11 +91,11 @@ body {
                         opacity: 0.7;
                     }
                     @media (max-width: 700px) {
-                        top: 73px;
+                        top: 65px;
                     }
                     li {
                         @media (max-width: 1400px) {
-                            margin-bottom: 15px;
+                            margin-bottom: 10px;
                         }
                     }
                 }
@@ -109,6 +109,9 @@ body {
                         margin-right: 30px;
                         padding-left: 20px;
                     }
+                    @media (max-width: 1500px) {
+                        font-size: 2.1em;
+                    }
                     &:hover {
                         text-decoration: underline;
                     }
@@ -116,13 +119,16 @@ body {
             }
         }
         .header-img {
-            min-height: 293px;
+            min-height: 375px;
             overflow: hidden;
             object-fit: cover;
             background: linear-gradient(#2b384f59, #01010269), url(/drive2future/assets/img/headerbild.jpg);
             background-size: cover;
             background-position: center;
             margin-bottom: 90px;
+            @media (max-width: 1500px) {
+                min-height: 293px;
+            }
             @media (max-width: 992px) {
                 min-height: 250px;
             }
@@ -133,7 +139,7 @@ body {
     }
 
     .container {
-        padding: 0 240px;
+        padding: 0 180px;
         margin-bottom: 80px;
         @media (max-width: 1200px) {
             padding: 0 120px;
@@ -151,19 +157,84 @@ body {
             display: flex;
             flex-direction: column;
             font-size: 1.8em;
+
+            @media (max-width: 1150px) {
+                display: block;
+                margin-bottom: 50px;
+            }
+
+            &.app-headlines {
+                font-weight: bold;
+                @media (max-width: 1150px) {
+                    display: none;
+                }
+            }
             .app-row {
                 display: flex;
                 flex-direction: row;
                 margin-bottom: 20px;
-                .box-1,
-                .box-2,
-                .box-3,
+
+                @media (max-width: 1150px) {
+                    display: block;
+
+                    div {
+                        margin-bottom: 15px;
+                    }
+
+                    .box-5,
+                    .box-6 {
+                        display: inline-block;
+                        margin-right: 15px;
+                        button {
+                            background: none;
+                            border: none;
+                        }
+                    }
+                    span {
+                        font-weight: bold;
+                        width: 115px;
+                        display: inline-block;
+                    }
+                }
+
+                @media (min-width: 1151px) {
+                    .box-1 {
+                        width: 15%;
+                    }
+                    .box-2,
+                    .box-3 {
+                        width: 10%;
+                    }
+                    .box-5,
+                    .box-6 {
+                        width: 12%;
+                    }
+                    .box-4 {
+                        width: 41%;
+                    }
+                    span {
+                        display: none;
+                    }
+                }
                 .box-5,
                 .box-6 {
-                    width: 130px;
+                    button {
+                        background: none;
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .app-overview{
+            @media (min-width: 1151px) {
+                .box-1,
+                .box-2,
+                .box-3 {
+                    width: 15% !important;
                 }
                 .box-4 {
-                    width: 450px;
+                    width: 55% !important;
                 }
                 span {
                     display: none;
@@ -174,6 +245,17 @@ body {
         label {
             font-size: 1.8em;
             display: block;
+            margin-bottom: 20px;
+        }
+        select {
+            margin-bottom: 35px;
+            font-size: 1.8em;
+        }
+
+        textarea {
+            width: 50%;
+            height: 150px;
+            margin-bottom: 50px;
         }
 
         input {
@@ -185,16 +267,27 @@ body {
 
         input[type="submit"] {
             width: fit-content;
-            min-width: 200px;
+            min-width: 250px;
             padding: 5px 40px;
             background-color: #304f84;
             color: white;
             border: none;
+            cursor: pointer;
+        }
+
+        input[type="reset"] {
+            width: fit-content;
+            min-width: 250px;
+            padding: 5px 40px;
+            background-color: #525252;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
     }
 
     footer {
-        padding: 0 260px;
+        padding: 0 180px;
         padding-top: 20px;
         padding-bottom: 30px;
         background-color: #d6d6d6;

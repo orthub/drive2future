@@ -79,10 +79,10 @@ require_once '../controllers/appointments.php';
             }
 
             get_db()->commit();
-            echo "Ihr Termin wurde erfolgreich gespeichert.<br>";
+            echo "<p>Ihr Termin wurde erfolgreich gespeichert.</p><br>";
         } catch (PDOException $e) {
             get_db()->rollBack();
-            echo "Ihr Termin konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.<br>";
+            echo "<p>Ihr Termin konnte nicht gespeichert werden. Bitte versuchen Sie es erneut.</p><br>";
         }
         ?>
 
