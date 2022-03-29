@@ -46,6 +46,8 @@ function check_user_role(string $userId)
                           AND `roles`.`id_role` = `roles_id_role`';
   $stmt_check_user_role = get_db()->prepare($sql_check_user_role);
   $stmt_check_user_role->execute([':userId' => $userId]);
+
+  $res_check_user_role = $stmt_check_user_role->fetch(PDO::FETCH_ASSOC);
   
-  return $stmt_check_user_role->fetch(PDO::FETCH_ASSOC);
+  return $res_check_user_role;
 }
