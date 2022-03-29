@@ -12,15 +12,13 @@ function search_mail(string $email): bool
   return $res_search_mail;
 }
 
-function match_mail_password(string $email, string $password): bool
+function get_password_from_email(string $email)
 {
-  $sql_match_mail_password = 'SELECT `email`, `password` FROM `users`
-                              WHERE `email` = :Email
-                              AND `password` = :userPassword';
+  $sql_match_mail_password = 'SELECT `password` FROM `users`
+                              WHERE `email` = :Email';
   $stmt_match_mail_password = get_db()->prepare($sql_match_mail_password);
   $stmt_match_mail_password->execute([
     ':Email' => $email,
-    'userPassword' => $password
   ]);
   $res_match_mail_password = $stmt_match_mail_password->fetchColumn();
 

@@ -42,15 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if ($emailExist) {
-    $matchPasswd = match_mail_password($filteredEmail, $loginPasswd);
 
-    if (!$matchPasswd) {
+    $match = get_password_from_email($filteredEmail);
+    $isValidLogin = password_verify($loginPasswd, $match);
+
+    if (!$isValidLogin) {
       $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmen nicht';
       header('Location: ' . '/drive2future/views/login.php');
       exit();
     }
 
-    if ($matchPasswd) {
+    if ($isValidLogin) {
       $user_id = get_user_id($filteredEmail);
       // bitte drinnen lassen sonst geht der code von anderen nicht mehr
       $_SESSION['user_id'] = $user_id;
