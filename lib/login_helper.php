@@ -3,7 +3,7 @@
     foreach ($_SESSION['errors'] as $error) {
       echo $error . '<br />';
     } 
-
   }
    unset($_SESSION['errors']['email']);
    unset($_SESSION['errors']['password']);
+   unset($_SESSION['errors']['login-fail']);
