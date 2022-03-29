@@ -5,8 +5,8 @@
 
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
-  <?php require_once __DIR__ . '/../lib/login_helper.php' ?>
   <div class="container">
+    <?php require_once __DIR__ . '/../lib/login_helper.php' ?>
     <h1>Login</h1>
     <form action="/drive2future/controllers/login.php" method="POST">
       <label for="login-mail">E-Mail</label>
