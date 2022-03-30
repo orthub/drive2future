@@ -1,8 +1,10 @@
 <header>
   <div class="navbar">
     <div class="logo">
-      <a href="/drive2future" title="Zur Startseite">
-        <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
+      <?php echo (isset($_SESSION['user_session'])) ? '<a href="/drive2future/views/appointments.php" title="Zur Startseite">' : '<a href="/drive2future" title="Zur Startseite">' ?>
+
+
+      <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
       </a>
     </div>
 
