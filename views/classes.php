@@ -40,8 +40,6 @@ require_once __DIR__ . '/../controllers/classes.php';
           <div class="box-1"><span>Bezeichnung: </span><?php echo $class['class_label']; ?></div>
           <div class="box-2"><span>Status: </span>
             <div class="status"><?php echo $class['status']; ?></div>
-
-            <span>ändern: </span>
             <form action='../controllers/classes.php' method='POST'>
               <input type="submit" value="ändern" class="toggle">
               <input type="hidden" value="<?php echo $class['status']; ?>" name="status">
