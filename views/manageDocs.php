@@ -15,11 +15,9 @@ require_once __DIR__ . '/../lib/user_role.php';
 
         <?php if ($user_employee || $user_admin) : ?>
             <form action='..\controllers\files.php' method='POST' enctype="multipart/form-data">
-
-                <label>neue Datei:</label>
+                <label>Unterlagen hochladen</label>
                 <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
                 <input type="file" name="userfile">
-                <br>
 
                 <input type="submit" value="Datei hinzufügen">
             </form>
