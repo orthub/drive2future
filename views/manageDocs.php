@@ -47,7 +47,7 @@ require_once __DIR__ . '/../lib/user_role.php';
                         <div class="download">
                             <form action='../controllers/files.php' method='POST'>
                                 <input type='hidden' name="download" value="<?php echo $file['path'] ?>">
-                                <button type="submit" value="herunterladen" class="fs-18"><img src="/drive2future/assets/img/delete_icon.png" width="20" /></button>
+                                <button type="submit" value="herunterladen" class="fs-18"><img src="/drive2future/assets/img/download_icon.png" width="20" /></button>
                             </form>
                         </div>
                         <?php if ($user_employee || $user_admin) : ?><div class="delete">
