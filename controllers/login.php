@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $emailExist = search_mail($loginEmail, $loginPasswd);
 
     if ((bool)$emailExist === false) {
-      $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmen nicht';
+      $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmt nicht';
       $errors[] = 1;
     }
     
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $isValidLogin = password_verify($loginPasswd, $match);
       
       if (!$isValidLogin) {
-        $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmen nicht';
+        $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmt nicht';
         header('Location: ' . '/drive2future/views/login.php');
       }
   
