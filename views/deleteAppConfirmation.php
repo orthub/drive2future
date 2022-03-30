@@ -13,22 +13,25 @@ require_once '../controllers/appointments.php';
 
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
-  <h1>Termin löschen</h1>
 
+  <div class="container">
+    <h1>Termin löschen</h1>
+    <?php if (isset($_POST["delete-app"]) && !empty($_POST["delete-app"])) {
+      $_SESSION["delete_app_id"] = intval($_POST["delete-app"]);
+    } ?>
 
-  <?php if (isset($_POST["delete-app"]) && !empty($_POST["delete-app"])) {
-    $_SESSION["delete_app_id"] = intval($_POST["delete-app"]);
-  } ?>
+    <div>
+      <p>Möchten Sie den Termin entgültig löschen?</p>
+    </div>
 
-  <div>
-    Möchten Sie den Termin entgültig löschen?
+    <form action="deleteAppointment.php">
+      <input type="submit" value="Löschen">
+    </form>
+
+    <p><a href="appointmentManagement.php"> Zurück zu Terminverwaltung </a></p>
   </div>
 
-  <form action="deleteAppointment.php">
-    <input type="submit" value="Löschen">
-  </form>
 
-  <a href="appointmentManagement.php"> Zurück zu Terminverwaltung </a>
 
   <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>

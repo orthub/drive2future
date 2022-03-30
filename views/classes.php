@@ -22,8 +22,7 @@ require_once __DIR__ . '/../controllers/classes.php';
     ?>
 
     <form action='../views/classAdd.php' method='POST'>
-      <label>neue Klasse:</label>
-      <input type="submit" value="hinzufügen">
+      <input type="submit" value="Klasse hinzufügen">
     </form>
 
     <br>  
