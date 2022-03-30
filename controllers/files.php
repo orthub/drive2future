@@ -41,7 +41,7 @@ if(isset($_POST['delete'])){
     }
 }
 if(isset($_POST['download'])){
-    $file_to_download = '..\\Documents\\'.$_POST['download'];
+    $file_to_download = '../Documents/'.$_POST['download'];
 
     if (!file_exists($file_to_download)) {
         $_SESSION['errors']['File'] = 'File Existiert nicht';

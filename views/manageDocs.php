@@ -10,7 +10,8 @@ require_once __DIR__ . '/../lib/user_role.php';
 <body>
     <?php require_once __DIR__ . '/partials/navbar.php' ?>
     <div class="container">
-        <h1>Unterlagen</h1>
+
+        <h1>Unterlagen Verwalten</h1>
 
         <?php if ($user_employee || $user_admin) : ?>
             <form action='..\controllers\files.php' method='POST' enctype="multipart/form-data">
