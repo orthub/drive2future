@@ -28,3 +28,12 @@ Die Variablen geben einen Boolean zurück $user_admin, $user_employee, $user_stu
 
 TEST vom VALI
 letzter test fürs pushen
+
+
+###########################
+admin@drive2future.at
+Demo2future
+
+employee@drive2future.at
+DemoPloyee3
+###########################
