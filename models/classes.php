@@ -30,7 +30,7 @@ function change_Status($status,$id){
 }
 
 function get_students(){
-    $sql = 'SELECT `id_user`,`first_name`,`last_name`
+    $sql = 'SELECT `id_user`,`first_name`,`last_name`, `email`, `status`
     FROM `users`
     WHERE `roles_id_role` = 2';
     $stmt = get_db()->prepare($sql);

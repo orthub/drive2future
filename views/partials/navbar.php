@@ -26,6 +26,8 @@
 
         <li><a class="nav-link" href="/drive2future/views/classes.php#Anker1">Klassen verwalten</a></li>
 
+        <li><a class="nav-link" href="/drive2future/views/students.php">Schüler verwalten</a></li>
+
         <?php endif ?>
         <?php if ($user_admin) : ?>
         <li><a class="nav-link" href="/drive2future/views/registerEmployee.php">Lehrer hinzufügen</a></li>
