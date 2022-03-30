@@ -32,6 +32,12 @@ body p {
   font-size: 1.8em;
   margin-top: 0;
 }
+body .fs-18 {
+  font-size: 18px;
+}
+body button {
+  cursor: pointer;
+}
 body header .logo {
   margin: 8px 120px 8px 30px;
 }
@@ -177,6 +183,9 @@ body .container {
     padding: 0 20px;
   }
 }
+body .container .upload {
+  margin-bottom: 60px;
+}
 body .container .app-item {
   display: flex;
   flex-direction: column;
@@ -243,8 +252,17 @@ body .container .app-item .app-row .box-6 {
     display: none;
   }
 }
+body .container .app-item .app-row .name {
+  width: 60%;
+}
+body .container .app-item .app-row .download,
+body .container .app-item .app-row .delete {
+  width: 20%;
+}
 body .container .app-item .app-row .box-5 button,
-body .container .app-item .app-row .box-6 button {
+body .container .app-item .app-row .box-6 button,
+body .container .app-item .app-row .delete button,
+body .container .app-item .app-row .download button {
   background: none;
   border: none;
 }
@@ -260,6 +278,35 @@ body .container .app-overview .box-3 {
   body .container .app-overview span {
     display: none;
   }
+}
+body .container .doc-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8em;
+}
+body .container .doc-item .doc-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+body .container .doc-item .doc-row .delete button,
+body .container .doc-item .doc-row .download button {
+  background: none;
+  border: none;
+}
+body .container .doc-item .doc-row .name {
+  width: 55%;
+}
+body .container .doc-item .doc-row .name span {
+  display: block;
+  padding-right: 15px;
+  word-break: break-all;
+}
+body .container .doc-item .doc-row .download {
+  width: 30%;
+}
+body .container .doc-item .doc-row .delete {
+  width: 15%;
 }
 body .container label {
   font-size: 1.8em;

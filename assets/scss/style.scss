@@ -33,6 +33,14 @@ body {
         font-size: 1.8em;
         margin-top: 0;
     }
+
+    .fs-18 {
+        font-size: 18px;
+    }
+
+    button {
+        cursor: pointer;
+    }
     //header
     header {
         .logo {
@@ -153,6 +161,9 @@ body {
         @media (max-width: 576px) {
             padding: 0 20px;
         }
+        .upload {
+            margin-bottom: 60px;
+        }
         .app-item {
             display: flex;
             flex-direction: column;
@@ -216,8 +227,19 @@ body {
                         display: none;
                     }
                 }
+
+                .name {
+                    width: 60%;
+                }
+
+                .download,
+                .delete {
+                    width: 20%;
+                }
                 .box-5,
-                .box-6 {
+                .box-6,
+                .delete,
+                .download {
                     button {
                         background: none;
                         border: none;
@@ -226,7 +248,7 @@ body {
             }
         }
 
-        .app-overview{
+        .app-overview {
             @media (min-width: 1151px) {
                 .box-1,
                 .box-2,
@@ -238,6 +260,40 @@ body {
                 }
                 span {
                     display: none;
+                }
+            }
+        }
+
+        .doc-item {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.8em;
+
+            .doc-row {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 20px;
+                .delete,
+                .download {
+                    button {
+                        background: none;
+                        border: none;
+                    }
+                }
+                .name {
+                    width: 55%;
+                    span{
+                        display: block;
+                        padding-right: 15px;
+                        word-break: break-all;
+                    }
+                }
+
+                .download{
+                    width: 30%;
+                }
+                .delete {
+                    width: 15%;
                 }
             }
         }
