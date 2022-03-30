@@ -30,3 +30,24 @@ function create_new_user(string $first_name, string $last_name, string $email, s
   ]);
   return $stmt_create_new_user;
 }
+
+function create_new_employee(string $first_name, string $last_name, string $email, string $passwd, /*string $status*/)
+{
+  $passwd = password_hash($passwd, PASSWORD_DEFAULT);
+  $sql_create_new_employee = 'INSERT INTO `users` 
+                          SET `first_name` = :firstName,
+                              `last_name` = :lastName,
+                              `email` = :email,
+                              `password` = :passwd,
+                              `status` = " ",
+                              `roles_id_role` = 3';
+  $stmt_create_new_employee = get_db()->prepare($sql_create_new_employee);
+  $stmt_create_new_employee->execute([
+    ':firstName' => $first_name,
+    ':lastName' => $last_name,
+    ':email' => $email,
+    ':passwd' => $passwd
+    // ':userStatus' => $status
+  ]);
+  return $stmt_create_new_employee;
+}
