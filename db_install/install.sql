@@ -44,7 +44,7 @@ INSERT INTO
 VALUES
   (
     1,
-    '2022-03-30',
+    '2022-05-12',
     '08:00:00',
     '12:00:00',
     'Vortrag Einführung in die STVO',
@@ -66,7 +66,9 @@ VALUES
 INSERT INTO
   `appointment_types` (`id_a_type`, `description`)
 VALUES
-  (1, 'Vortrag');
+  (1, 'Vortrag'),
+  (2, 'Übung'),
+  (3, 'Fahrstunde');
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `class`
@@ -91,14 +93,6 @@ INSERT INTO
   )
 VALUES
   (1, 'Spring_22', '', '2022-03-30', '2022-04-28');
--- --------------------------------------------------------
-  --
-  -- Tabellenstruktur für Tabelle `class_has_documents`
-  --
-  CREATE TABLE `class_has_documents` (
-    `class_id_class` int(11) NOT NULL,
-    `documents_id_documents` int(11) NOT NULL
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `class_has_users`
@@ -137,9 +131,9 @@ VALUES
 INSERT INTO
   `license_type` (`id_license_type`, `description`)
 VALUES
-  (1, 'Auto'),
-  (2, 'Motorrad'),
-  (3, 'Traktor');
+  (1, 'Typ A'),
+  (2, 'Typ B'),
+  (3, 'Typ F');
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `roles`
@@ -171,8 +165,9 @@ VALUES
 INSERT INTO
   `rooms` (`id_room`, `room_name`)
 VALUES
-  (1, 'Garage'),
-  (2, 'Schulungsraum');
+  (1, 'Warteraum'),
+  (2, 'Schulungsraum'),
+  (3, 'Übungsraum');
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `users`
@@ -200,8 +195,24 @@ INSERT INTO
     `roles_id_role`
   )
 VALUES
-  (1, 'John', 'Doe', 'john@doe.com', 'test', '', 1),
-  (2, 'Jane', 'doe', 'jane@doe.com', 'test', '', 2);
+  (
+    1,
+    'John',
+    'Doe',
+    'admin@drive2future.at',
+    '$2y$10$Yyq//sOQUESbtcRDeq8UR.sWYxE16yYo6t/Ju2uz7yuGBc4wMjQL6',
+    'aktiv',
+    1
+  ),
+  (
+    2,
+    'Jane',
+    'Doe',
+    'employee@drive2future.at',
+    '$2y$10$PrnMtBS.x3y9Ev1iuIoqjeInXFAYybeGcv4P1HUF7kE4bB0SHRVE2',
+    'aktiv',
+    3
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `users_has_appointments`
@@ -255,19 +266,7 @@ ALTER TABLE
   `class`
 ADD
   PRIMARY KEY (`id_class`);
---
-  -- Indizes für die Tabelle `class_has_documents`
-  --
-ALTER TABLE
-  `class_has_documents`
-ADD
-  PRIMARY KEY (`class_id_class`, `documents_id_documents`),
-ADD
-  KEY `fk_class_has_documents_documents1_idx` (`documents_id_documents`),
-ADD
-  KEY `fk_class_has_documents_class1_idx` (`class_id_class`);
---
-  -- Indizes für die Tabelle `class_has_users`
+-- Indizes für die Tabelle `class_has_users`
   --
 ALTER TABLE
   `class_has_users`
@@ -419,17 +418,6 @@ ADD
 ADD
   CONSTRAINT `fk_appointments_rooms1` FOREIGN KEY (`rooms_id_room`) REFERENCES `rooms` (`id_room`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 --
-  -- Constraints der Tabelle `class_has_documents`
-  --
-ALTER TABLE
-  `class_has_documents`
-ADD
-  CONSTRAINT `fk_class_has_documents_class1` FOREIGN KEY (`class_id_class`) REFERENCES `class` (`id_class`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD
-  CONSTRAINT `fk_class_has_documents_documents1` FOREIGN KEY (`documents_id_documents`) REFERENCES `documents` (`id_documents`) ON DELETE NO ACTION ON UPDATE NO ACTION;
---
-  -- Constraints der Tabelle `class_has_users`
-  --
 ALTER TABLE
   `class_has_users`
 ADD
