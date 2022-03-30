@@ -15,6 +15,8 @@ if (!$user_admin) {
   <div class="container">
     <?php require_once __DIR__ . '/../lib/register_errors.php' ?>
 
+    <h1><a name="reg-employee">Lehrer hinzufügen</a></h1>
+
     <form action="/drive2future/controllers/registerEmployee.php" method="POST">
       <label for="first_name">Vorname</label>
       <input id="first_name" type="text" name="first-name"

@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if (count($errors) > 0) {
-    header('Location: ' . '/drive2future/views/login.php');
+    header('Location: ' . '/drive2future/views/login.php#login_anker');
   }
 
   if (count($errors) === 0) {
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (count($errors) > 0) {
-      header('Location: ' . '/drive2future/views/login.php');
+      header('Location: ' . '/drive2future/views/login.php#login_anker');
     }
 
     if ((bool)$emailExist) {
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       
       if (!$isValidLogin) {
         $_SESSION['errors']['login-fail'] = 'Email oder Passwort stimmt nicht';
-        header('Location: ' . '/drive2future/views/login.php');
+        header('Location: ' . '/drive2future/views/login.php#login_anker');
       }
   
       if ($isValidLogin) {

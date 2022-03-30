@@ -1,8 +1,10 @@
 <header>
   <div class="navbar">
     <div class="logo">
-      <a href="/drive2future" title="Zur Startseite">
-        <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
+      <?php echo (isset($_SESSION['user_session'])) ? '<a href="/drive2future/views/appointments.php" title="Zur Startseite">' : '<a href="/drive2future" title="Zur Startseite">' ?>
+
+
+      <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
       </a>
     </div>
 
@@ -25,6 +27,8 @@
         <li><a class="nav-link" href="/drive2future/views/appointmentManagement.php">Terminverwaltung</a></li>
 
         <li><a class="nav-link" href="/drive2future/views/classes.php#Anker1">Klassen verwalten</a></li>
+
+        <li><a class="nav-link" href="/drive2future/views/students.php">Schüler verwalten</a></li>
 
         <?php endif ?>
         <?php if ($user_admin) : ?>

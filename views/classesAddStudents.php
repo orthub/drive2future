@@ -1,5 +1,10 @@
 <?php 
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
+if($user_student){
+    header('Location: ' . '/drive2future/views/index.php');
+}
+
 if(isset($_POST['id']) && isset($_POST['label'])){
     $_SESSION['classid'] = $_POST['id'];
     $_SESSION['lable'] = $_POST['label'];
@@ -91,6 +96,10 @@ require_once __DIR__ . '/../controllers/classes.php';
                                 <input type="hidden" value="<?php echo $_SESSION['classid'] ?>" name="classId">
                                 <input type="hidden" value="<?php echo $student['id_user'] ?>" name="userId">
                             </form>
+                        <?php else :?> 
+
+                            bereits in Klasse
+
                         <?php endif?> 
                     </div>
                 </div>
