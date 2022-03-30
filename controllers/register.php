@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
   
   if (count($errors) > 0) {
-    header('Location: ' . '/drive2future/views/register.php');
+    header('Location: ' . '/drive2future/views/register.php#reg_anker');
   }
   
   if (count($errors) === 0) {
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (count($errors) > 0) {
-      header('Location: ' . '/drive2future/views/register.php');
+      header('Location: ' . '/drive2future/views/register.php#reg_anker');
     }
     
     if (count($errors) === 0) {
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
       }
       if (count($errors) > 0) {
-        header('Location: ' . '/drive2future/views/register.php');
+        header('Location: ' . '/drive2future/views/register.php#reg_anker');
       }
       if (count($errors) === 0) {
         $create_new_user = create_new_user($registerFirstname, $registerLastname, $registerEmail, $registerPassword);
