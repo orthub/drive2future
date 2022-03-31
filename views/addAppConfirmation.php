@@ -34,9 +34,9 @@ require_once '../controllers/appointments.php';
             $class_id = intval($_SESSION["class_id"]);
         }
 
-        if (isset($_SESSION["appDescription"])) {
-            $description = strval($_SESSION["appDescription"]);
-        } else{
+        if (isset($_SESSION["app_description"])) {
+            $description = strval($_SESSION["app_description"]);
+        } else {
             $description = "";
         }
 
@@ -48,7 +48,7 @@ require_once '../controllers/appointments.php';
         }
 
         //Endzeit berechnen
-        $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']) ;
+        $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']);
 
         try {
             get_db()->beginTransaction();
@@ -78,7 +78,17 @@ require_once '../controllers/appointments.php';
                 add_class_appointment($class_id, $app_id);
             }
 
-            get_db()->commit();
+            $was_successful = get_db()->commit();
+            if ($was_successful) {
+                unset($_SESSION["date"]);
+                unset($_SESSION["begin_time"]);
+                unset($_SESSION["end_time"]);
+                unset($_SESSION["description"]);
+                unset($_SESSION["app_type_id"]);
+                unset($_SESSION["room_id"]);
+                unset($_SESSION["class_id"]);
+            }
+
             echo "<p>Ihr Termin wurde erfolgreich gespeichert.</p><br>";
         } catch (PDOException $e) {
             get_db()->rollBack();

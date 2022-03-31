@@ -21,7 +21,7 @@ require_once '../controllers/appointments.php';
     } ?>
 
     <div>
-      <p>Möchten Sie den Termin entgültig löschen?</p>
+      <p>Möchten Sie den Termin endgültig löschen?</p>
     </div>
 
     <form action="deleteAppointment.php">

@@ -12,7 +12,7 @@ require_once '../controllers/appointments.php';
   <div class="container">
 
 
-    <h1>Termin hinzufügen</h1>
+    <h1>Termin bearbeiten</h1>
 
     <?php
     $class_students = get_class_students(intval($_POST["class-id"]));
@@ -32,7 +32,7 @@ require_once '../controllers/appointments.php';
     }
 
     if (isset($_POST["duration"])) {
-      $_SESSION["duration"] = $_POST["duration"];
+      $_SESSION["duration"] = intval($_POST["duration"]);
     }
 
     if (isset($_POST["class-id"])) {
@@ -46,7 +46,7 @@ require_once '../controllers/appointments.php';
 
     <!-- Termintyp überprüfen -->
     <?php if ($app_type_id === 3) { ?>
-      <form action="addAppointment.php" method="post">
+      <form action="editStartTime.php" method="post">
         <!-- FahrschülerIn wählen -->
         <div>
           <label for="student-id">FahrschülerIn wählen:</label>
@@ -64,7 +64,7 @@ require_once '../controllers/appointments.php';
 
       <!-- Weiterleitung bei Übung und Vortrag -->
     <?php } else if ($app_type_id === 1 || $app_type_id === 2) {
-      header("Location: addAppointment.php");
+      header("Location: editStartTime.php");
     } ?>
   </div>
 
