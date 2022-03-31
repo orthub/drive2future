@@ -7,7 +7,7 @@
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
     <?php require_once __DIR__ . '/../lib/login_errors.php' ?>
-    <h1>Login</h1>
+    <h1><a name="login_anker">Login</a></h1>
     <form action="/drive2future/controllers/login.php" method="POST">
       <label for="login-mail">E-Mail</label>
       <input id="login-mail" type="email" name="login-mail"

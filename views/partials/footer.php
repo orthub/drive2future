@@ -3,8 +3,8 @@
     <div class="company-info">
       <div class="company">
         <p>drive2future GmbH</p>
-        <p>Autostraße 1</p>
-        <p>Krems 3500</p>
+        <p>Plesserstraße 1</p>
+        <p>3380 Pöchlarn</p>
       </div>
       <div class="contact">
         <p><a href="mailto:info@drivetofuture.at" title="E-Mail an info@drivetofuture.at">info@drivetofuture.at</a></p>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="copy">&copy; Copyright SOFTECH <script>
-      document.write(new Date().getUTCFullYear());
+        document.write(new Date().getUTCFullYear());
       </script>
     </div>
   </div>
