@@ -42,7 +42,7 @@ require_once '../controllers/appointments.php';
       <!-- Datum wählen -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       </div>
 
       <!-- Dauer wählen -->
