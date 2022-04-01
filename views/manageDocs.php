@@ -10,7 +10,6 @@ require_once __DIR__ . '/../lib/user_role.php';
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
-    <?php var_dump($_SESSION['user_session']) ?>
 
     <?php if ($user_employee || $user_admin) : ?>
     <h1>Unterlagen verwalten</h1>
