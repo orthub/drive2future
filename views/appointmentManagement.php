@@ -35,7 +35,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
                     <div class="box-5">
                         <form action="editAppointment.php" method="post">
                             <button <?php echo "name='edit-app' value='$app[id_appointment]'" ?>>
-                                <a href="/drive2future" title="Zur Startseite">
+                                <a href="/drive2future">
                                     <img src="/drive2future/assets/img/edit_icon.png" width="20" />
                                 </a>
                             </button>
@@ -44,7 +44,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
                     <div class="box-6">
                         <form action="deleteAppConfirmation.php" method="post">
                             <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
-                                <a href="/drive2future" title="Zur Startseite">
+                                <a href="/drive2future">
                                     <img src="/drive2future/assets/img/delete_icon.png" width="20" />
                                 </a>
                             </button>

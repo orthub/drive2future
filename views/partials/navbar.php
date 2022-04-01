@@ -1,7 +1,7 @@
 <header>
   <div class="navbar">
     <div class="logo">
-      <?php echo (isset($_SESSION['user_session'])) ? '<a href="/drive2future/views/appointments.php" title="Zur Startseite">' : '<a href="/drive2future" title="Zur Startseite">' ?>
+      <?php echo (isset($_SESSION['user_session'])) ? '<a href="/drive2future/views/appointments.php">' : '<a href="/drive2future">' ?>
 
 
       <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
@@ -18,8 +18,7 @@
 
         <?php if (isset($_SESSION['user_session'])) : ?>
 
-        <li><a class="nav-link" href="/drive2future/views/appointments.php"
-            title="Zur Terminübersicht">Terminübersicht</a></li>
+        <li><a class="nav-link" href="/drive2future/views/appointments.php">Terminübersicht</a></li>
 
         <?php require_once __DIR__ . '/../../lib/user_role.php';
                 if ($user_employee || $user_admin) : ?>
@@ -35,7 +34,7 @@
         <li><a class="nav-link" href="/drive2future/views/registerEmployee.php">Lehrer hinzufügen</a></li>
         <?php endif ?>
 
-        <li><a class="nav-link" href="/drive2future/views/manageDocs.php" title="Zu den Unterlagen">Unterlagen</a></li>
+        <li><a class="nav-link" href="/drive2future/views/manageDocs.php">Unterlagen</a></li>
 
         <li><a class="nav-link" href="/drive2future/views/logout.php">Logout</a></li>
 
