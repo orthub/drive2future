@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once '../controllers/appointments.php';
 ?>
 

@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/../lib/sessionHelper.php' ?>
+<?php 
+require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require_once __DIR__ . '/partials/head.php' ?>
@@ -17,23 +20,23 @@
     ?>
 
     <form action='../controllers/classes.php' method='POST'>
-        <input type="hidden" name="isNewClass" value="true" >
+      <input type="hidden" name="isNewClass" value="true">
 
-        <label>Bezeichnung:</label>
-        <input type="text" name="bezeichnung" >
-        <br>
+      <label>Bezeichnung:</label>
+      <input type="text" name="bezeichnung">
+      <br>
 
-        <label>Beginn Datum:</label>
-        <input type="date" name="beginn_date" >
-        <br>
+      <label>Beginn Datum:</label>
+      <input type="date" name="beginn_date">
+      <br>
 
-        <label>End Datum:</label>
-        <input type="date" name="end_date" >
-        <br>
+      <label>End Datum:</label>
+      <input type="date" name="end_date">
+      <br>
 
-        <input type="submit" value="Hinzufügen" class="smallbutton">
+      <input type="submit" value="Hinzufügen" class="smallbutton">
 
-        
+
     </form>
 
   </div>

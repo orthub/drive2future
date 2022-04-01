@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once '../controllers/appointments.php';
 ?>
 
@@ -46,23 +47,23 @@ require_once '../controllers/appointments.php';
 
     <!-- Termintyp überprüfen -->
     <?php if ($app_type_id === 3) { ?>
-      <form action="addAppointment.php" method="post">
-        <!-- FahrschülerIn wählen -->
-        <div>
-          <label for="student-id">FahrschülerIn wählen:</label>
-          <select name="student-id" id="student-id">
-            <?php foreach ($class_students as $student) {
+    <form action="addAppointment.php" method="post">
+      <!-- FahrschülerIn wählen -->
+      <div>
+        <label for="student-id">FahrschülerIn wählen:</label>
+        <select name="student-id" id="student-id">
+          <?php foreach ($class_students as $student) {
               $student_name = strval($student["last_name"])
                 . " " . strval($student["first_name"]);
               $student_id = $student["id_user"];
               echo "<option value='$student_id'> $student_name </option>";
             } ?>
-          </select>
-        </div>
-        <input type="submit" value="Weiter"> <input type="reset">
-      </form>
+        </select>
+      </div>
+      <input type="submit" value="Weiter"> <input type="reset">
+    </form>
 
-      <!-- Weiterleitung bei Übung und Vortrag -->
+    <!-- Weiterleitung bei Übung und Vortrag -->
     <?php } else if ($app_type_id === 1 || $app_type_id === 2) {
       header("Location: addAppointment.php");
     } ?>

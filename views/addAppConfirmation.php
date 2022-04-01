@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once '../controllers/appointments.php';
 ?>
 
@@ -9,11 +10,11 @@ require_once '../controllers/appointments.php';
 
 
 <body>
-    <?php require_once __DIR__ . '/partials/navbar.php' ?>
-    <div class="container">
-        <h1>Termin hinzufügen</h1>
+  <?php require_once __DIR__ . '/partials/navbar.php' ?>
+  <div class="container">
+    <h1>Termin hinzufügen</h1>
 
-        <?php
+    <?php
         if (isset($_SESSION["user_id"])) {
             $user_id = intval($_SESSION["user_id"]);
         }
@@ -96,11 +97,11 @@ require_once '../controllers/appointments.php';
         }
         ?>
 
-        <div>
-            <p>Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a></p>
-        </div>
+    <div>
+      <p>Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a></p>
     </div>
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+  </div>
+  <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>

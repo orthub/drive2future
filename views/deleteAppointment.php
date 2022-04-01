@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once '../controllers/appointments.php';
 ?>
 
@@ -31,7 +32,7 @@ require_once '../controllers/appointments.php';
       echo "<p>Ihr Termin konnte nicht gelöscht werden. Bitte versuchen Sie es erneut.</p><br>";
     }
     ?>
-    
+
     <div>
       <p><a href="appointmentManagement.php"> Zurück zur Terminverwaltung</a></p>
     </div>
