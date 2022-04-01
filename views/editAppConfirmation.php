@@ -63,13 +63,14 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
       // Bleibt der Termintyp bei "Fahrstunde" kann trotzdem ein anderer Schüler ausgewählt werden
       // Falls anderer Termintyp oder andere Klasse gewählt wurde, Datensätze aus anderen Tabellen auch aktualisieren
-      if (intval($app_type_id === 3) ||
+      if (
+        intval($app_type_id === 3) ||
         intval($old_app["appointment_types_id_a_type"]) !== $app_type_id ||
         intval($old_app["class_id_class"]) !== $class_id
       ) {
 
         delete_class_appointment($old_app["class_id_class"], $edit_app_id);
-        
+
         // Wurde ein Fahrschüler ausgewählt, wird der Termin für ihn hinzugefügt
         if ($app_type_id === 3) {
           // Eintrag in user_has_appointments speichern
@@ -77,7 +78,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
         } else {
           // Termin für alle Schüler einer Klasse aktualisieren
           update_class_appointment($class_id, $edit_app_id);
-        } 
+        }
       }
 
       // Geänderte Termininfos in Tabelle appointments speichern
@@ -116,7 +117,8 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <p>Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a></p>
     </div>
 
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+  </div>
+  <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>
