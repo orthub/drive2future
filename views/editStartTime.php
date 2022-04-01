@@ -19,6 +19,9 @@ require_once '../controllers/appointments.php';
         if (isset($_POST["student-id"])) {
             $_SESSION["student_id"] = intval($_POST["student-id"]);
         }
+
+    print_r($_SESSION);
+
         ?>
 
     <!-- Start- und Endzeit festlegen -->
