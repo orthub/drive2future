@@ -93,8 +93,8 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
       <input type="submit" value="Änderungen speichern"> <input type="reset">
     </form>
-
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+  </div>
+  <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>
