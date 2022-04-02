@@ -51,11 +51,6 @@ require_once __DIR__ . '/../controllers/appointments.php';
       $student_id = intval($_SESSION["student_id"]);
     }
 
-    /* //todo unterschiedliche Namen für start_time / begin_time?
-    if (isset($_POST["start-time"])) {
-      $start_time = $_POST["start-time"];
-    }*/
-
      //Endzeit berechnen
      $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']);
 
@@ -98,19 +93,20 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
       $was_successful = get_db()->commit();
       if ($was_successful) {
+        unset($_SESSION["old_begin_time"]);
+        unset($_SESSION["old_end_time"]);
+        unset($_SESSION["duration"]);
+        unset($_SESSION["student_id"]);
         unset($_SESSION["edit_app_id"]);
         unset($_SESSION["date"]);
-        //todo unterschiedliche Namen für start_time / begin_time?
-        unset($_SESSION["start_time"]);
-        unset($_SESSION["end_time"]);
         unset($_SESSION["app_description"]);
         unset($_SESSION["app_type_id"]);
-        unset($_SESSION["app_description"]);
         unset($_SESSION["room_id"]);
         unset($_SESSION["class_id"]);
       }
 
       echo "<p>Ihr Termin wurde erfolgreich aktualisiert.</p><br>";
+
     } catch (PDOException $e) {
       get_db()->rollBack();
       echo "<p>Ihr Termin konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.</p><br>";

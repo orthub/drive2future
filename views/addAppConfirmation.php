@@ -44,6 +44,7 @@ require_once '../controllers/appointments.php';
         if (isset($_POST["begin-time"])) {
             $begin_time = strval($_POST["begin-time"]);
         }
+        
         if (isset($_SESSION["student_id"])) {
             $student_id = intval($_SESSION["student_id"]);
         }

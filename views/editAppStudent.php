@@ -18,7 +18,7 @@ require_once '../controllers/appointments.php';
     <?php
     $class_students = get_class_students(intval($_POST["class-id"]));
     
-    if (isset($_SESSIOM["edit_app_id"])) {
+    if (isset($_SESSION["edit_app_id"])) {
       // Aktuellen Fahrschüler aus der Datenbank holen
       $driving_student_app = get_driving_student_appointment($_SESSION["edit_app_id"])[0];
     }

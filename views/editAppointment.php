@@ -23,6 +23,9 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
     $edit_app = (get_appointment($edit_app_id))[0];
     $_SESSION["old_begin_time"] = $edit_app['begin_time'];
+    $_SESSION["old_end_time"] = $edit_app['end_time'];
+
+    $old_duration = transform_time_to_minutes($edit_app['end_time']) - transform_time_to_minutes($edit_app['begin_time']);
     ?>
 
     <form action="editAppStudent.php" method="post">
@@ -61,14 +64,13 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <!-- Datum ändern -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>"
-          min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       </div>
 
       <!-- Dauer ändern -->
       <div>
         <label for="duration">Dauer angeben (in Min.): </label>
-        <input type="number" id="duration" name="duration" value="30" step="30" min="30" max="780">
+        <input type="number" id="duration" name="duration" value="<?php echo $old_duration; ?>" step="30" min="30" max="780">
       </div>
 
       <!-- Klasse ändern -->
