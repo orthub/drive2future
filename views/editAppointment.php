@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once __DIR__ . '/../controllers/appointments.php';
 ?>
 
@@ -59,7 +60,10 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <!-- Datum ändern -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" value="<?php echo $edit_app['date']; ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" value="<?php echo $edit_app['date']; ?>"
+          min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>"
+          min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       </div>
 
       <!-- Dauer ändern -->

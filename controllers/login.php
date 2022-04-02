@@ -7,7 +7,7 @@ if (isset($_SESSION['errors'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  header('Location: ' . '/views/login.php');
+  header('Location: ' . '/drive2future/views/login.php');
   exit();
 }
 
