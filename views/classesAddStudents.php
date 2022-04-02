@@ -32,12 +32,12 @@ require_once __DIR__ . '/../controllers/classes.php';
         ?>
 
         <h2>Schüler in Klasse</h2>
-        <div class="app-item ">
+        <div class="app-item app-headlines">
             <div class="app-row">
         
-                <div class="box-1"><b>Nachname</b></div>
-                <div class="box-2"><b>Vorname</b></div>
-                <div class="box-3"><b>Entfernen</b></div>
+                <div class="box-33"><b>Nachname</b></div>
+                <div class="box-33"><b>Vorname</b></div>
+                <div class="box-33"><b>Entfernen</b></div>
         
             </div>
         </div>
@@ -45,12 +45,12 @@ require_once __DIR__ . '/../controllers/classes.php';
         <?php foreach ($studentsFromClass as $student) : ?>
             <div class="app-item">
                 <div class="app-row">
-                    <div class="box-1"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
-                    <div class="box-2"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
-                    <div class="box-3"><span>hinzufügen: </span>
+                    <div class="box-33"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
+                    <div class="box-33"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
+                    <div class="box-33"><span>entfernen: </span>
 
                         <form action='../controllers/classes.php' method='POST'>  
-                            <input type="submit" value="Schüler entfernen">
+                            <input type="submit" value="Schüler entfernen" class="toggle">
                             <input type="hidden" value="<?php echo $student['id_user']; ?>" name="userId">
                             <input type="hidden" value="<?php echo $_SESSION['classid'] ?>" name="classId">
                             <input type="hidden" name="isDelete">
@@ -62,12 +62,12 @@ require_once __DIR__ . '/../controllers/classes.php';
         <?php endforeach ?>
 
         <h2>alle Schüler</h2>
-        <div class="app-item">
+        <div class="app-item app-headlines">
             <div class="app-row">
         
-                <div class="box-1"><b>Nachname</b></div>
-                <div class="box-2"><b>Vorname</b></div>
-                <div class="box-3"><b>hinzufügen</b></div>
+                <div class="box-33"><b>Nachname</b></div>
+                <div class="box-33"><b>Vorname</b></div>
+                <div class="box-33"><b>hinzufügen</b></div>
         
             </div>
         </div>
@@ -75,9 +75,9 @@ require_once __DIR__ . '/../controllers/classes.php';
         <?php foreach ($students as $student) : ?>
             <div class="app-item">
                 <div class="app-row">
-                    <div class="box-1"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
-                    <div class="box-2"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
-                    <div class="box-3"><span>hinzufügen: </span>
+                    <div class="box-33"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
+                    <div class="box-33"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
+                    <div class="box-33"><span>hinzufügen: </span>
 
                         <?php $flag = true; ?>
 
@@ -91,7 +91,7 @@ require_once __DIR__ . '/../controllers/classes.php';
                         
                         <?php if($flag) :?> 
                             <form action='../controllers/classes.php' method='POST'>  
-                                <input type="submit" value="Schüler hinzufügen">
+                                <input type="submit" value="Schüler hinzufügen" class="toggle">
                                 <input type="hidden" name="addSchuler">
                                 <input type="hidden" value="<?php echo $_SESSION['classid'] ?>" name="classId">
                                 <input type="hidden" value="<?php echo $student['id_user'] ?>" name="userId">

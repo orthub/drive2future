@@ -17,7 +17,7 @@ require_once __DIR__ . '/../lib/user_role.php';
     <form action='..\controllers\files.php' method='POST' enctype="multipart/form-data" class="upload">
       <label>Unterlagen hochladen</label>
       <input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
-      <input type="file" name="userfile">
+      <input type="file" class="file" name="userfile">
 
       <input type="submit" value="Datei hinzufügen">
     </form>

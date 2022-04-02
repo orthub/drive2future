@@ -186,6 +186,9 @@ body .container {
 body .container .upload {
   margin-bottom: 60px;
 }
+body .container .file {
+  width: -webkit-fill-available;
+}
 body .container .app-item {
   display: flex;
   flex-direction: column;
@@ -248,9 +251,25 @@ body .container .app-item .app-row .box-6 {
   body .container .app-item .app-row .box-4 {
     width: 41%;
   }
+  body .container .app-item .app-row .box-33 {
+    width: 33%;
+  }
+  body .container .app-item .app-row .box-25 {
+    width: 25%;
+  }
   body .container .app-item .app-row span {
     display: none;
   }
+}
+body .container .app-item .app-row .toggle {
+  min-width: 100px;
+  font-size: 18px;
+  padding: 5px 15px;
+  display: inline;
+  margin-bottom: 0;
+}
+body .container .app-item .app-row .box-33 form, body .container .app-item .app-row .box-25 form {
+  display: inline;
 }
 body .container .app-item .app-row .name {
   width: 60%;
@@ -286,6 +305,11 @@ body .container .doc-item {
 }
 body .container .doc-item.doc-headlines {
   font-weight: bold;
+}
+@media (max-width: 700px) {
+  body .container .doc-item.doc-headlines .download, body .container .doc-item.doc-headlines .delete {
+    display: none;
+  }
 }
 body .container .doc-item .doc-row {
   display: flex;
@@ -425,6 +449,12 @@ body .container input {
   display: block;
   margin-bottom: 20px;
   width: 400px;
+}
+@media (max-width: 700px) {
+  body .container input {
+    min-width: 250px;
+    width: unset;
+  }
 }
 body .container input[type=submit] {
   width: fit-content;

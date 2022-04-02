@@ -164,6 +164,9 @@ body {
         .upload {
             margin-bottom: 60px;
         }
+        .file{
+            width: -webkit-fill-available;
+        }
         .app-item {
             display: flex;
             flex-direction: column;
@@ -223,8 +226,27 @@ body {
                     .box-4 {
                         width: 41%;
                     }
+                    .box-33{
+                        width: 33%;
+                    }
+                    .box-25{
+                        width: 25%;
+                    }
                     span {
                         display: none;
+                    }
+                }
+                .toggle{
+                    min-width: 100px;
+                    font-size: 18px;
+                    padding: 5px 15px;
+                    display: inline;
+                    margin-bottom: 0;
+                }
+                
+                .box-33, .box-25 {
+                    form{
+                        display:inline;
                     }
                 }
 
@@ -270,6 +292,11 @@ body {
             font-size: 1.8em;
             &.doc-headlines {
                 font-weight: bold;
+                @media (max-width: 700px) {
+                    .download, .delete{
+                        display: none;
+                    }
+                }
             }
 
             .doc-row {
@@ -423,6 +450,10 @@ body {
             display: block;
             margin-bottom: 20px;
             width: 400px;
+            @media (max-width: 700px) {
+                min-width: 250px;
+                width: unset;
+            }
         }
 
         input[type="submit"] {
