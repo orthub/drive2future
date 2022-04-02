@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../lib/sessionHelper.php';
 if (empty($_SESSION['user_session'])) {
     header('Location: ' . '/drive2future/views/login.php');
 }
@@ -44,7 +45,7 @@ if(isset($_POST['delete'])){
     }
 }
 if(isset($_POST['download'])){
-    $file_to_download = '/../Documents/'.$_POST['download'];
+    $file_to_download = '../Documents/'.$_POST['download'];
 
     if (!file_exists($file_to_download)) {
         $_SESSION['errors']['File'] = 'File Existiert nicht';
