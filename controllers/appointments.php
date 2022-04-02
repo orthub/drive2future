@@ -13,8 +13,16 @@ $classes = get_classes();
 $students = get_students();
 $appointment_types = get_appointment_types();
 
-function get_valid_appointment_times($date, $duration,$user_ids){
-    $bookings = get_appointments_for_users($date, $user_ids) ;
-
+function get_valid_appointment_times($date, $duration,$user_ids, $exclude_start_time = ""){
+    $bookings = get_appointments_for_users($date, $user_ids);
+    if ($exclude_start_time !=""){
+        foreach ($bookings as $ix=>$booking) {
+            if ($booking['begin_time'] == $exclude_start_time){
+                unset($bookings[$ix]);
+                break;
+            }
+        }
+    }
+    
     return calculate_valid_start_times($duration, $bookings);
 }

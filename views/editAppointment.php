@@ -22,6 +22,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
     }
 
     $edit_app = (get_appointment($edit_app_id))[0];
+    $_SESSION["old_begin_time"] = $edit_app['begin_time'];
     ?>
 
     <form action="editAppStudent.php" method="post">
@@ -60,8 +61,6 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <!-- Datum ändern -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" value="<?php echo $edit_app['date']; ?>"
-          min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
         <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>"
           min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       </div>
@@ -95,7 +94,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
       </div>
 
 
-      <input type="submit" value="Änderungen speichern"> <input type="reset">
+      <input type="submit" value="Weiter"> <input type="reset">
     </form>
   </div>
   <?php require_once __DIR__ . '/partials/footer.php' ?>

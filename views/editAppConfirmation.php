@@ -51,11 +51,13 @@ require_once __DIR__ . '/../controllers/appointments.php';
       $student_id = intval($_SESSION["student_id"]);
     }
 
+    /* //todo unterschiedliche Namen für start_time / begin_time?
     if (isset($_POST["start-time"])) {
       $start_time = $_POST["start-time"];
-    }
+    }*/
 
-    $end_time = "13:00";
+     //Endzeit berechnen
+     $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']);
 
     try {
       get_db()->beginTransaction();
@@ -98,6 +100,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
       if ($was_successful) {
         unset($_SESSION["edit_app_id"]);
         unset($_SESSION["date"]);
+        //todo unterschiedliche Namen für start_time / begin_time?
         unset($_SESSION["start_time"]);
         unset($_SESSION["end_time"]);
         unset($_SESSION["app_description"]);

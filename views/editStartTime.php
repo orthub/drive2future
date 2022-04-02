@@ -16,29 +16,37 @@ require_once '../controllers/appointments.php';
     <h1>Termin bearbeiten</h1>
 
     <?php
-        if (isset($_POST["student-id"])) {
-            $_SESSION["student_id"] = intval($_POST["student-id"]);
-        }
-
-    print_r($_SESSION);
-
-        ?>
+    if (isset($_POST["student-id"])) {
+      $_SESSION["student_id"] = $_POST["student-id"];
+      $user_ids = [$_SESSION['student_id'], $_SESSION['user_id']];
+    } else {
+      $sql = "SELECT users_id_user FROM drive2future.class_has_users "
+        . "WHERE class_id_class = :class_id";
+      $stmt = get_db()->prepare($sql);
+      $stmt->execute([':class_id' => $_SESSION['class_id']]);
+      $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+    ?>
 
     <!-- Start- und Endzeit festlegen -->
     <form action="editAppConfirmation.php" method="post">
       <div>
         <label>Beginnzeit angeben:</label>
-        <select name="begin-time" id="begin-time">
+        <select name="begin-time" id="begin-time" selected="<?php $_SESSION["old_begin_time"] ?>">
           <?php
-                    $start_times = get_valid_appointment_times($_SESSION['date'], $_SESSION['duration'], [$_SESSION['user_id'], $_SESSION["student_id"]]);
-                    foreach ($start_times as $start_time) {
-                        $value = sprintf('%02d:%02d', ...explode(':', $start_time));
-                        echo "<option value=\"{$start_time}\">{$value}</option>";
-                    }
-                    ?>
+          $start_times = get_valid_appointment_times($_SESSION['date'], $_SESSION['duration'], $user_ids, $_SESSION["old_begin_time"]);
+          foreach ($start_times as $start_time) {
+            $value = sprintf('%02d:%02d', ...explode(':', $start_time));
+            if ($start_time ==  $_SESSION["old_begin_time"]) {
+              echo "<option value=\"{$start_time}\" selected>{$value}</option>";
+            } else {
+              echo "<option value=\"{$start_time}\">{$value}</option>";
+            }
+          }
+          ?>
         </select>
       </div>
-      <input type="submit" value="Beginnzeit ändern"> <input type="reset">
+      <input type="submit" value="Änderungen speichern"> <input type="reset">
     </form>
 
   </div>
