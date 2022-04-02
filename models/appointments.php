@@ -280,3 +280,19 @@ function update_class_appointment($class_id, $app_id)
 
     return $stmt;
 }
+
+// Aktuell ausgewählter Fahrschüler für einen bestimmten Termin herausfinden (bei Termin bearbeiten)
+function get_driving_student_appointment($appointment_id)
+{
+    $sql = "SELECT uha.appointments_id_appointment, uha.users_id_user
+    FROM drive2future.users_has_appointments uha
+    INNER JOIN class_has_users chu ON uha.users_id_user = chu.users_id_user
+    INNER JOIN users u ON uha.users_id_user = u.id_user AND u.roles_id_role = 2
+    WHERE uha.appointments_id_appointment = $appointment_id";
+
+
+    $stmt = get_db()->query($sql);
+    $res = $stmt->fetchAll();
+
+    return $res;
+}
