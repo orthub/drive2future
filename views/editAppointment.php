@@ -16,6 +16,8 @@ require_once __DIR__ . '/../controllers/appointments.php';
     <h1>Termin bearbeiten</h1>
 
     <?php
+    $active_classes = get_active_classes();
+
     if (isset($_POST["edit-app"])) {
       $edit_app_id = intval($_POST["edit-app"]);
       $_SESSION["edit_app_id"] = $edit_app_id;
@@ -77,7 +79,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <div>
         <label for="class-id">Klasse wählen:</label>
         <select name="class-id" id="class-id">
-          <?php foreach ($classes as $class) {
+          <?php foreach ($active_classes as $class) {
             $class_name = strval($class["class_label"]);
             $class_id = $class["id_class"];
             echo "<option value='$class_id'";

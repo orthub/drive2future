@@ -214,10 +214,11 @@ function delete_appointment($app_id)
 }
 
 // Alle Schüler einer Klasse holen
-function get_class_students($class_id)
+function get_active_class_students($class_id)
 {
     $sql = "SELECT * FROM drive2future.class_has_users JOIN users "
-        . "ON users_id_user = id_user WHERE class_id_class = $class_id ORDER BY last_name ASC";
+        . "ON users_id_user = id_user WHERE class_id_class = $class_id "
+        . "AND status = 'aktiv' ORDER BY last_name ASC";
     $stmt = get_db()->query($sql);
     $res = $stmt->fetchAll();
 
@@ -291,6 +292,15 @@ function get_driving_student_appointment($appointment_id)
     WHERE uha.appointments_id_appointment = $appointment_id";
 
 
+    $stmt = get_db()->query($sql);
+    $res = $stmt->fetchAll();
+
+    return $res;
+}
+
+function get_active_classes()
+{
+    $sql = "SELECT * FROM class WHERE status ='aktiv'";
     $stmt = get_db()->query($sql);
     $res = $stmt->fetchAll();
 

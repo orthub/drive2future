@@ -16,7 +16,7 @@ require_once '../controllers/appointments.php';
     <h1>Termin bearbeiten</h1>
 
     <?php
-    $class_students = get_class_students(intval($_POST["class-id"]));
+    $class_students = get_active_class_students(intval($_POST["class-id"]));
     
     if (isset($_SESSION["edit_app_id"])) {
       // Aktuellen Fahrschüler aus der Datenbank holen
