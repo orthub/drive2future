@@ -15,6 +15,7 @@ $appointment_types = get_appointment_types();
 
 function get_valid_appointment_times($date, $duration,$user_ids, $exclude_start_time = ""){
     $bookings = get_appointments_for_users($date, $user_ids);
+    //falls Termin bereits existiert, wird die aktuell vergebene Startzeit nicht in $bookings gespeichert
     if ($exclude_start_time !=""){
         foreach ($bookings as $ix=>$booking) {
             if ($booking['begin_time'] == $exclude_start_time){

@@ -136,15 +136,18 @@ function calculate_valid_start_times($duration, $bookings)
     $result = [];
     //umrechnen der Zeiten zu Minuten ausgehend von Mitternacht
     $bookings = transform_appointments($bookings);
+    //Startzeitpunkt + Dauer muss kleiner gleich 1200 (Mitternacht bis 20 Uhr) sein
     for ($start = 420; $start + $duration <= 1200; $start += 30) {
         $end = $start + $duration;
         $overlap = false;
         foreach ($bookings as $booked) {
+            //Überschneidungen wenn Endezeitpunkt größer als Startzeit von vorhandenem Termin UND Endzeit von vorhandenem Termin größer Startzeitpunkt 
             if ($end > $booked['start'] && $booked['end'] > $start) {
                 $overlap = true;
                 break;
             }
         }
+        //Wenn nicht überschneidet -> Startzeitpunkt als time in $result[] schreiben
         if (!$overlap) {
             $result[] = transform_minutes_to_time($start);
         }
@@ -172,6 +175,8 @@ function get_appointments_for_users($date, $user_ids)
         // todo return ["message" => "Es ist ein Serverfehler aufgetreten. Bitte versuchen Sie es später erneut."];
     }
 }
+
+//Startzeiten und Endzeiten von Terminen in Integer umrechnen
 function transform_appointments($appointments)
 {
     $transformed = [];
@@ -184,12 +189,14 @@ function transform_appointments($appointments)
     return $transformed;
 }
 
+//Zeitpunkt in Integer (Minuten ausgehend von Mitternacht) umrechnen
 function transform_time_to_minutes($time)
 {
     $parts = explode(":", $time);
     return intval($parts[0]) * 60 + intval($parts[1]);
 }
 
+//Minuten (Integer, ausgehend von Mitternacht) in Zeitpunkt umrechnen
 function transform_minutes_to_time($value)
 {
     $minutes = $value % 60;

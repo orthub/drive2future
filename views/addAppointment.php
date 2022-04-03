@@ -34,8 +34,10 @@ require_once '../controllers/appointments.php';
         <label>Beginnzeit angeben:</label>
         <select name="begin-time" id="begin-time">
           <?php
+                    //verfügbare Startzeiten berechnen
                     $start_times = get_valid_appointment_times($_SESSION['date'], $_SESSION['duration'], $user_ids);
                     foreach ($start_times as $start_time) {
+                        //Startzeiten in Select ausgeben
                         $value = sprintf('%02d:%02d', ...explode(':', $start_time));
                         echo "<option value=\"{$start_time}\">{$value}</option>";
                     }
