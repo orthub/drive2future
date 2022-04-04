@@ -23,11 +23,19 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
     <?php
     $active_classes = get_active_classes();
+    $employees = get_all_employees();
+
+    if (isset($_POST["employee-id"])) {
+      $_SESSION["employee_id"] = intval($_POST["employee-id"]);
+    }
 
     if (isset($_POST["edit-app"])) {
       $edit_app_id = intval($_POST["edit-app"]);
       $_SESSION["edit_app_id"] = $edit_app_id;
     }
+
+    // Fahrlehrer des zu bearbeitenden Termines aus der Datenbank holen
+    $employee_appointment = get_employee_appointment($edit_app_id)[0];
 
     $edit_app = (get_appointment($edit_app_id))[0];
     $_SESSION["old_begin_time"] = $edit_app['begin_time'];
@@ -37,6 +45,27 @@ require_once __DIR__ . '/../controllers/appointments.php';
     ?>
 
     <form action="editAppStudent.php" method="post">
+      <!-- FahrlehrerIn ändern -->
+      <?php
+      // Admin kann eine/n anderen Fahrlehrer für Vortrag und Übung auswählen
+      if ($user_admin) { ?>
+        <div>
+          <label for="employee-id">FahrlehrerIn wählen:</label>
+          <select name="employee-id" id="employee-id">
+            <?php foreach ($employees as $employee) {
+              $employee_name = strval($employee["last_name"])
+                . " " . strval($employee["first_name"]);
+              $employee_id = intval($employee["id_user"]);
+              echo "<option value='$employee_id'";
+              if ($employee_id === intval($employee_appointment["users_id_user"])) {
+                echo "selected";
+              }
+              echo "> $employee_name </option>";
+            } ?>
+          </select>
+        </div>
+      <?php } ?>
+
       <!-- Termintyp wählen -->
       <?php
       // Admin kann Vorträge und Übungen hinzufügen
@@ -74,7 +103,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <!-- Datum ändern -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo $edit_app['date']; ?>" min="<?php echo date("Y-m-d"); ?>">
       </div>
 
       <!-- Dauer ändern -->

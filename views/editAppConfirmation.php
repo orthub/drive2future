@@ -21,6 +21,10 @@ require_once __DIR__ . '/../controllers/appointments.php';
       $edit_app_id = intval($_SESSION["edit_app_id"]);
     }
 
+    if (isset($_SESSION["employee_id"])) {
+      $employee_id = intval($_SESSION["employee_id"]);
+    }
+
     if (isset($_SESSION["app_type_id"])) {
       $app_type_id = intval($_SESSION["app_type_id"]);
     }
@@ -67,6 +71,13 @@ require_once __DIR__ . '/../controllers/appointments.php';
         intval($old_app["class_id_class"]) !== $class_id
       ) {
 
+        // Wenn Admin Termin bearbeitet und einen anderen Fahrlehrer löscht,
+        // wird der Termin des zuvor ausgewählten Fahrlehrers gelöscht
+        // und Termin für neuen Fahrlehrer hinzufügen
+        if ($user_admin && !empty($employee_id) && intval($old_app["users_id_user"]) !== $employee_id) {
+          delete_user_appointment($intval($old_app["users_id_user"]));
+          add_user_appointment($employee_id, $app_id);
+        }
         delete_class_appointment($old_app["class_id_class"], $edit_app_id);
 
         // Wurde ein Fahrschüler ausgewählt, wird der Termin für ihn hinzugefügt
@@ -103,6 +114,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
         unset($_SESSION["app_type_id"]);
         unset($_SESSION["room_id"]);
         unset($_SESSION["class_id"]);
+        unset($_SESSION["employee_id"]);
       }
 
       echo "<p>Ihr Termin wurde erfolgreich aktualisiert.</p><br>";
