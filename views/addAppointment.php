@@ -12,8 +12,14 @@ require_once '../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-
-    <h1>Termin hinzufügen</h1>
+    <?php
+    if ($user_employee) { ?>
+      <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
+      <h1>Fahrstunde hinzufügen</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin hinzufügen</h1>
+    <?php }
+    ?>
 
     <?php
     if (isset($_POST["student-id"])) {

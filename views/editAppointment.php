@@ -12,7 +12,6 @@ require_once __DIR__ . '/../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-
     <?php
     if ($user_employee) { ?>
       <h1>Fahrstunde bearbeiten</h1>

@@ -12,8 +12,13 @@ require_once '../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-
-    <h1>Termin bearbeiten</h1>
+    <?php
+    if ($user_employee) { ?>
+      <h1>Fahrstunde bearbeiten</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin bearbeiten</h1>
+    <?php }
+    ?>
 
     <?php
     if (isset($_POST["student-id"])) {
@@ -42,7 +47,7 @@ require_once '../controllers/appointments.php';
             //Wenn Startzeit der ursprünglichen Startzeit entspricht, Parameter selected zu option hinzufügen (vorausgewählt)
             if ($start_time ==  $_SESSION["old_begin_time"]) {
               echo "<option value=\"{$start_time}\" selected>{$value}</option>";
-            } 
+            }
             //Startzeit als option ausgeben
             else {
               echo "<option value=\"{$start_time}\">{$value}</option>";

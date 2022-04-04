@@ -10,15 +10,23 @@ require_once '../controllers/appointments.php';
 
 
 <body>
-  <?php require_once __DIR__ . '/partials/navbar.php' ?>
-  <div class="container">
-    <h1>Termin hinzufügen</h1>
+    <?php require_once __DIR__ . '/partials/navbar.php' ?>
+    <div class="container">
 
-    <?php
+        <?php
+        if ($user_employee) { ?>
+            <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
+            <h1>Fahrstunde hinzufügen</h1>
+        <?php } else if ($user_admin) {  ?>
+            <h1>Termin hinzufügen</h1>
+        <?php }
+        ?>
+
+        <?php
         if (isset($_SESSION["user_id"])) {
             $user_id = intval($_SESSION["user_id"]);
         }
-        
+
         if (isset($_SESSION["employee_id"])) {
             $employee_id = intval($_SESSION["employee_id"]);
         }
@@ -48,7 +56,7 @@ require_once '../controllers/appointments.php';
         if (isset($_POST["begin-time"])) {
             $begin_time = strval($_POST["begin-time"]);
         }
-        
+
         if (isset($_SESSION["student_id"])) {
             $student_id = intval($_SESSION["student_id"]);
         }
@@ -107,11 +115,11 @@ require_once '../controllers/appointments.php';
         }
         ?>
 
-    <div>
-      <p>Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a></p>
+        <div>
+            <p>Zurück zur <a href="appointmentManagement.php"> Terminverwaltung</a></p>
+        </div>
     </div>
-  </div>
-  <?php require_once __DIR__ . '/partials/footer.php' ?>
+    <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>
