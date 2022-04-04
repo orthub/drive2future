@@ -22,7 +22,7 @@ require_once __DIR__ . '/../controllers/classes.php';
 
     <div class="container">
 
-        <h1><a name="Anker1">Klassenübersicht Klasse: <?php echo $_SESSION['lable']?></h1>
+        <h1><a name="Anker1">Schüler zu Klasse hinzufügen </h1>
 
         <?php
         if (isset($_SESSION['errors']['class']) && !empty($_SESSION['errors']['class'])) {
@@ -31,7 +31,7 @@ require_once __DIR__ . '/../controllers/classes.php';
         }
         ?>
 
-        <h2>Schüler in Klasse</h2>
+        <h2>Schüler in Klasse <?php echo $_SESSION['lable']?></h2>
         <div class="app-item app-headlines">
             <div class="app-row">
         
@@ -61,7 +61,7 @@ require_once __DIR__ . '/../controllers/classes.php';
             </div>
         <?php endforeach ?>
 
-        <h2>alle Schüler</h2>
+        <h2>alle aktiven Schüler</h2>
         <div class="app-item app-headlines">
             <div class="app-row">
         
@@ -73,38 +73,43 @@ require_once __DIR__ . '/../controllers/classes.php';
         </div>
 
         <?php foreach ($students as $student) : ?>
-            <div class="app-item">
-                <div class="app-row">
-                    <div class="box-33"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
-                    <div class="box-33"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
-                    <div class="box-33"><span>hinzufügen: </span>
+            <?php if($student['status'] != "inaktiv") :?> 
+                <div class="app-item">
+                    <div class="app-row">
+                        <div class="box-33"><span>Nachname: </span><?php echo $student['first_name']; ?></div>
+                        <div class="box-33"><span>Vorname: </span><?php echo $student['last_name']; ?></div>
+                        <div class="box-33"><span>hinzufügen: </span>
 
-                        <?php $flag = true; ?>
+                            <?php $flag = true; ?>
 
-                        <?php foreach ($studentsFromClass as $student2) : ?>
+                            <?php foreach ($studentsFromClass as $student2) : ?>
 
-                        <?php if($student2['id_user'] ==  $student['id_user']) {
-                            $flag = false;
-                        } ?>
+                            <?php if($student2['id_user'] ==  $student['id_user']) {
+                                $flag = false;
+                            } ?>
 
-                        <?php endforeach ?>
-                        
-                        <?php if($flag) :?> 
-                            <form action='../controllers/classes.php' method='POST'>  
-                                <input type="submit" value="Schüler hinzufügen" class="toggle">
-                                <input type="hidden" name="addSchuler">
-                                <input type="hidden" value="<?php echo $_SESSION['classid'] ?>" name="classId">
-                                <input type="hidden" value="<?php echo $student['id_user'] ?>" name="userId">
-                            </form>
-                        <?php else :?> 
-
-                            bereits in Klasse
-
-                        <?php endif?> 
+                            <?php endforeach ?>
+                            
+                            <?php if($flag) :?> 
+                                <form action='../controllers/classes.php' method='POST'>  
+                                    <input type="submit" value="Schüler hinzufügen" class="toggle">
+                                    <input type="hidden" name="addSchuler">
+                                    <input type="hidden" value="<?php echo $_SESSION['classid'] ?>" name="classId">
+                                    <input type="hidden" value="<?php echo $student['id_user'] ?>" name="userId">
+                                </form>
+                            <?php else :?>  
+                                bereits in Klasse
+                            <?php endif?>  
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif ?>  
         <?php endforeach ?>
+
+        <form action='../views/classes.php' method='POST'>
+            <input type="submit" value="zurück" class="toggle">
+        </form>
+        
 
     </div>
 
