@@ -13,6 +13,8 @@ require_once __DIR__ . '/../lib/user_role.php';
     <h1>Klasse hinzufügen</h1>
 
     <?php
+        $now = time();
+        $addDays = time() + (7);
         if (isset($_SESSION['errors']['class']) && !empty($_SESSION['errors']['class'])) {
             echo "<p style='color:red'>" . $_SESSION['errors']['class'] . "</p>";
             unset($_SESSION['errors']['class']);
@@ -27,11 +29,11 @@ require_once __DIR__ . '/../lib/user_role.php';
       <br>
 
       <label>Beginn Datum:</label>
-      <input type="date" name="beginn_date">
+      <input type="date" name="beginn_date" required value="<?php echo date("Y-m-d");?>" min="<?php echo date("Y-m-d"); ?>">
       <br>
 
       <label>End Datum:</label>
-      <input type="date" name="end_date">
+      <input type="date" name="end_date" required value="<?php echo date("Y-m-d", strtotime("+1 day"));?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       <br>
 
       <input type="submit" value="Hinzufügen" class="smallbutton">
