@@ -18,10 +18,19 @@ require_once '../controllers/appointments.php';
     <?php
     $class_students = get_active_class_students(intval($_POST["class-id"]));
 
-    // Eingegebene Werte in Session speichern
-    if (isset($_POST["app-type-id"])) {
-      $app_type_id = intval($_POST["app-type-id"]);
+    if ($user_employee) {
+      $app_type_id = 3;
       $_SESSION["app_type_id"] = $app_type_id;
+    } else if ($user_admin) {
+      if (isset($_POST["app-type-id"])) {
+        $app_type_id = intval($_POST["app-type-id"]);
+        $_SESSION["app_type_id"] = $app_type_id;
+      }
+    }
+
+    // Eingegebene Werte in Session speichern
+    if (isset($_POST["employee-id"])) {
+      $_SESSION["employee_id"] = intval($_POST["employee-id"]);
     }
 
     if (isset($_POST["room-id"])) {
@@ -47,23 +56,23 @@ require_once '../controllers/appointments.php';
 
     <!-- Termintyp überprüfen -->
     <?php if ($app_type_id === 3) { ?>
-    <form action="addAppointment.php" method="post">
-      <!-- FahrschülerIn wählen -->
-      <div>
-        <label for="student-id">FahrschülerIn wählen:</label>
-        <select name="student-id" id="student-id">
-          <?php foreach ($class_students as $student) {
+      <form action="addAppointment.php" method="post">
+        <!-- FahrschülerIn wählen -->
+        <div>
+          <label for="student-id">FahrschülerIn wählen:</label>
+          <select name="student-id" id="student-id">
+            <?php foreach ($class_students as $student) {
               $student_name = strval($student["last_name"])
                 . " " . strval($student["first_name"]);
               $student_id = $student["id_user"];
               echo "<option value='$student_id'> $student_name </option>";
             } ?>
-        </select>
-      </div>
-      <input type="submit" value="Weiter"> <input type="reset">
-    </form>
+          </select>
+        </div>
+        <input type="submit" value="Weiter"> <input type="reset">
+      </form>
 
-    <!-- Weiterleitung bei Übung und Vortrag -->
+      <!-- Weiterleitung bei Übung und Vortrag -->
     <?php } else if ($app_type_id === 1 || $app_type_id === 2) {
       header("Location: addAppointment.php");
     } ?>

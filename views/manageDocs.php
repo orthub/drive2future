@@ -11,7 +11,7 @@ require_once __DIR__ . '/../lib/user_role.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-    <?php if ($user_employee || $user_admin) : ?>
+    <?php if ($user_admin) : ?>
     <h1>Unterlagen verwalten</h1>
     <form action='..\controllers\files.php' method='POST' enctype="multipart/form-data" class="upload">
       <label>Unterlagen hochladen</label>
@@ -35,7 +35,7 @@ require_once __DIR__ . '/../lib/user_role.php';
         <div class="doc-row">
           <div class="name">Name</div>
           <div class="download">herunterladen</div>
-          <?php if ($user_employee || $user_admin) : ?><div class="delete">löschen</div><?php endif ?>
+          <?php if ($user_admin) : ?><div class="delete">löschen</div><?php endif ?>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ require_once __DIR__ . '/../lib/user_role.php';
                   src="/drive2future/assets/img/download_icon.png" width="20" /></button>
             </form>
           </div>
-          <?php if ($user_employee || $user_admin) : ?><div class="delete">
+          <?php if ($user_admin) : ?><div class="delete">
             <form action='../controllers/files.php' method='POST'>
               <input type='hidden' name="delete" value="<?php echo $file['id_documents'] ?>">
               <button type="submit" value="entfernen" class="fs-18"><img src="/drive2future/assets/img/delete_icon.png"

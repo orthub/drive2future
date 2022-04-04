@@ -339,3 +339,13 @@ function get_active_classes()
 
     return $res;
 }
+
+function get_all_employees()
+{
+    $sql = "SELECT * FROM users WHERE roles_id_role = 3";
+    $stmt = get_db()->query($sql);
+    $res = $stmt->fetchAll();
+
+    return $res;
+}
+

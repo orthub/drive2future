@@ -23,12 +23,18 @@ require_once '../controllers/appointments.php';
       $driving_student_app = get_driving_student_appointment($_SESSION["edit_app_id"])[0];
     }
 
-    // Eingegebene Werte in Session speichern
-    if (isset($_POST["app-type-id"])) {
-      $app_type_id = intval($_POST["app-type-id"]);
+    // Termintyp je nach Benutzerrolle setzen
+    if ($user_employee) {
+      $app_type_id = 3;
       $_SESSION["app_type_id"] = $app_type_id;
+    } else if ($user_admin) {
+      if (isset($_POST["app-type-id"])) {
+        $app_type_id = intval($_POST["app-type-id"]);
+        $_SESSION["app_type_id"] = $app_type_id;
+      }
     }
 
+    // Eingegebene Werte in Session speichern
     if (isset($_POST["room-id"])) {
       $_SESSION["room_id"] = intval($_POST["room-id"]);
     }

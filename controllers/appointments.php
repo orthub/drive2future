@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/../lib/sessionHelper.php';
+require_once __DIR__ . '/../lib/user_role.php';
 require_once __DIR__ . '/../models/appointments.php';
 
-if (empty($_SESSION['user_session'])) {
-    header('Location: ' . '/drive2future/views/login.php');
-}
 
 $appointments = get_appointments();
 $appointments_for_user = get_appointments_for_user(str_replace('_loggedIn', '', $_SESSION['user_session']));

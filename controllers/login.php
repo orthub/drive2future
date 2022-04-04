@@ -1,22 +1,35 @@
 <?php
+// wenn keine session läuft, wird automatisch eine gestartet
 require_once __DIR__ . '/../lib/sessionHelper.php';
 
-
+// falls fehler session existiert, wird sie hier gelöscht
 if (isset($_SESSION['errors'])) {
   unset($_SESSION['errors']);
 }
 
+// umleitung auf login, falls manuell versucht wird auf den controller zuzugreifen
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   header('Location: ' . '/drive2future/views/login.php');
   exit();
 }
 
+// wenn vom formular übermittelt wird diese bedingung ausgeführt
+// wenn die eingaben fehler aufweisen, wird in das errors array eine 1 gesetzt für jeden
+// gefundenen fehler. 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  // setzen von benötigten variablen
   $errors = [];
   $emailExist = false;
   $matchPasswd = false;
+  // filtern der übertragenen daten
   $loginEmail = filter_input(INPUT_POST, 'login-mail', FILTER_SANITIZE_EMAIL);
   $loginPasswd = filter_input(INPUT_POST, 'login-passwd');
+
+  // validierung ob die email ein gültiges format hat
+  if (!filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['errors']['login-mail-not-valid'] = 'Bitte geben sie eine gültige email ein';
+    $errors[] = 1;
+  }
 
   if ((bool)$loginEmail === false) {
     $_SESSION['errors']['login-mail'] = 'Bitte Email eingeben';

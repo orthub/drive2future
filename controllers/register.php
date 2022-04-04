@@ -41,15 +41,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors[] = 1;
   }
 
+  if ((bool)$registerEmail === true) {
+    if ($registerEmail === true) {
+      
+    }
+  }
+  
   if ((bool)$registerFirstname) {
     $_SESSION['registerFirstname'] = $registerFirstname;
   }
+
   if ((bool)$registerLastname) {
     $_SESSION['registerLastname'] = $registerLastname;
   }
+  
   if ((bool)$registerEmail) {
+    if (!filter_var($registerEmail, FILTER_VALIDATE_EMAIL)) {
+      $_SESSION['errors']['register-email-not-valid'] = 'Bitte geben sie eine gültige email ein';
+      $errors[] = 1;
+    }
     $_SESSION['registerEmail'] = $registerEmail;
   }
+  
   if ((bool)$registerPassword) {
     $_SESSION['registerPassword'] = $registerPassword;
   }
