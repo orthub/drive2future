@@ -108,7 +108,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
       <!-- Dauer ändern -->
       <div>
         <label for="duration">Dauer angeben (in Min.): </label>
-        <input type="number" id="duration" name="duration" value="<?php echo $old_duration; ?>" step="30" min="30" max="780">
+        <input type="number" id="duration" name="duration" value="<?php echo $old_duration; ?>" step="30" min="30" max="900">
       </div>
 
       <!-- Klasse ändern -->

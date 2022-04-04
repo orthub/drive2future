@@ -79,7 +79,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
         // wird der Termin des zuvor ausgewählten Fahrlehrers gelöscht
         // und Termin für neuen Fahrlehrer hinzufügen
         if ($user_admin && !empty($employee_id) && intval($old_app["users_id_user"]) !== $employee_id) {
-          delete_user_appointment($intval($old_app["users_id_user"]));
+          delete_user_appointment($intval($old_app["id_appointment"]));
           add_user_appointment($employee_id, $app_id);
         }
         delete_class_appointment($old_app["class_id_class"], $edit_app_id);
