@@ -16,17 +16,17 @@ require_once '../controllers/appointments.php';
     <h1>Termin hinzufügen</h1>
 
     <?php
-        if (isset($_POST["student-id"])) {
-            $_SESSION["student_id"] = $_POST["student-id"];
-            $user_ids = [$_SESSION['student_id'], $_SESSION['user_id']];
-        } else {
-          $sql = "SELECT users_id_user FROM drive2future.class_has_users "
-              . "WHERE class_id_class = :class_id";
-          $stmt = get_db()->prepare($sql);
-          $stmt->execute([':class_id' => $_SESSION['class_id']]);
-          $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
-        }
-        ?>
+    if (isset($_POST["student-id"])) {
+      $_SESSION["student_id"] = $_POST["student-id"];
+      $user_ids = [$_SESSION['student_id'], $_SESSION['user_id']];
+    } else {
+      $sql = "SELECT users_id_user FROM drive2future.class_has_users "
+        . "WHERE class_id_class = :class_id";
+      $stmt = get_db()->prepare($sql);
+      $stmt->execute([':class_id' => $_SESSION['class_id']]);
+      $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+    ?>
 
     <!-- Start- und Endzeit festlegen -->
     <form action="addAppConfirmation.php" method="post">
@@ -34,14 +34,14 @@ require_once '../controllers/appointments.php';
         <label>Beginnzeit angeben:</label>
         <select name="begin-time" id="begin-time">
           <?php
-                    //verfügbare Startzeiten berechnen
-                    $start_times = get_valid_appointment_times($_SESSION['date'], $_SESSION['duration'], $user_ids);
-                    foreach ($start_times as $start_time) {
-                        //Startzeiten in Select ausgeben
-                        $value = sprintf('%02d:%02d', ...explode(':', $start_time));
-                        echo "<option value=\"{$start_time}\">{$value}</option>";
-                    }
-                    ?>
+          //verfügbare Startzeiten berechnen
+          $start_times = get_valid_appointment_times($_SESSION['date'], $_SESSION['duration'], $user_ids);
+          foreach ($start_times as $start_time) {
+            //Startzeiten in Select ausgeben
+            $value = sprintf('%02d:%02d', ...explode(':', $start_time));
+            echo "<option value=\"{$start_time}\">{$value}</option>";
+          }
+          ?>
         </select>
       </div>
       <input type="submit" value="Termin hinzufügen"> <input type="reset">
