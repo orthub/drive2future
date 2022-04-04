@@ -13,7 +13,13 @@ require_once __DIR__ . '/../controllers/appointments.php';
   <div class="container">
 
 
-    <h1>Termin bearbeiten</h1>
+    <?php
+    if ($user_employee) { ?>
+      <h1>Fahrstunde bearbeiten</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin bearbeiten</h1>
+    <?php }
+    ?>
 
     <?php
     $active_classes = get_active_classes();
@@ -31,21 +37,23 @@ require_once __DIR__ . '/../controllers/appointments.php';
     ?>
 
     <form action="editAppStudent.php" method="post">
-      <!-- Termintyp ändern -->
-      <div>
-        <label for="app-type-id">Termintyp wählen:</label>
-        <select name="app-type-id" id="app-type-id">
-          <?php foreach ($appointment_types as $app_t) {
-            $type = strval($app_t["description"]);
-            $type_id = intval($app_t["id_a_type"]);
-            echo "<option value='$type_id'";
-            if (intval($edit_app["appointment_types_id_a_type"]) === intval($type_id)) {
-              echo "selected";
-            }
-            echo "> $type </option>";
-          } ?>
-        </select>
-      </div>
+      <!-- Termintyp wählen -->
+      <?php
+      // Admin kann Vorträge und Übungen hinzufügen
+      if ($user_admin) { ?>
+        <div>
+          <label for="app-type-id">Termintyp wählen:</label>
+          <select name="app-type-id" id="app-type-id">
+            <?php foreach ($appointment_types as $app_t) {
+              $type = strval($app_t["description"]);
+              $type_id = intval($app_t["id_a_type"]);
+              if ($type_id !== 3) {
+                echo "<option value='$type_id'> $type </option>";
+              }
+            } ?>
+          </select>
+        </div>
+      <?php } ?>
 
       <!-- Raum ändern -->
       <div>
@@ -77,7 +85,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
 
       <!-- Klasse ändern -->
       <div>
-        <label for="class-id">Klasse wählen:</label>
+        <label for="class-id">Führerscheinklasse wählen:</label>
         <select name="class-id" id="class-id">
           <?php foreach ($active_classes as $class) {
             $class_name = strval($class["class_label"]);
