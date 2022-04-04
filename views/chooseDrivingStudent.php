@@ -29,6 +29,9 @@ require_once '../controllers/appointments.php';
     }
 
     // Eingegebene Werte in Session speichern
+    if (isset($_POST["employee-id"])) {
+      $_SESSION["employee_id"] = intval($_POST["employee-id"]);
+    }
 
     if (isset($_POST["room-id"])) {
       $_SESSION["room_id"] = intval($_POST["room-id"]);

@@ -18,6 +18,10 @@ require_once '../controllers/appointments.php';
         if (isset($_SESSION["user_id"])) {
             $user_id = intval($_SESSION["user_id"]);
         }
+        
+        if (isset($_SESSION["employee_id"])) {
+            $employee_id = intval($_SESSION["employee_id"]);
+        }
 
         if (isset($_SESSION["app_type_id"])) {
             $app_type_id = intval($_SESSION["app_type_id"]);
@@ -69,10 +73,14 @@ require_once '../controllers/appointments.php';
             $app_id = get_db()->lastInsertId();
 
             // Termin für Lehrer speichern
-            add_user_appointment($user_id, $app_id);
+            if ($user_employee) {
+                add_user_appointment($user_id, $app_id);
+            } else if ($user_admin) {
+                add_user_appointment($employee_id, $app_id);
+            }
 
             // Wurde ein Fahrschüler ausgewählt, wird der Datensatz erstellt
-            if ($app_type_id === 3) {
+            if ($app_type_id === 3 && $user_employee) {
                 // Eintrag in user_has_appointments speichern
                 add_user_appointment($student_id, $app_id);
             } else {
@@ -89,6 +97,7 @@ require_once '../controllers/appointments.php';
                 unset($_SESSION["app_type_id"]);
                 unset($_SESSION["room_id"]);
                 unset($_SESSION["class_id"]);
+                unset($_SESSION["employee_id"]);
             }
 
             echo "<p>Ihr Termin wurde erfolgreich gespeichert.</p><br>";

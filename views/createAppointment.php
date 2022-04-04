@@ -13,6 +13,7 @@ require_once '../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php';
 
   $active_classes = get_active_classes();
+  $employees = get_all_employees();
   ?>
   <div class="container">
 
@@ -27,6 +28,24 @@ require_once '../controllers/appointments.php';
     ?>
 
     <form action="chooseDrivingStudent.php" method="post">
+      <!-- FahrlehrerIn wählen -->
+      <?php
+      // Admin kann eine/n Fahrlehrer für Vortrag und Übung auswählen
+      if ($user_admin) { ?>
+      <div>
+        <label for="employee-id">FahrlehrerIn wählen:</label>
+        <select name="employee-id" id="employee-id">
+          <?php foreach ($employees as $employee) {
+            $employee_name = strval($employee["last_name"])
+            . " " . strval($employee["first_name"]);
+            $employee_id = intval($employee["id_user"]);
+            echo "<option value='$employee_id'> $employee_name </option>";
+          } ?>
+        </select>
+      </div>
+      <?php } ?>
+
+
       <!-- Termintyp wählen -->
       <?php
       // Admin kann Vorträge und Übungen hinzufügen
@@ -60,7 +79,7 @@ require_once '../controllers/appointments.php';
       <!-- Datum wählen -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" required value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo date("Y-m-d"); ?>" min="<?php echo date("Y-m-d"); ?>">
       </div>
 
       <!-- Dauer wählen -->
