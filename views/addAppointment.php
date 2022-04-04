@@ -16,16 +16,30 @@ require_once '../controllers/appointments.php';
     <h1>Termin hinzufügen</h1>
 
     <?php
-    if (isset($_POST["student-id"])) {
-      $_SESSION["student_id"] = $_POST["student-id"];
-      $user_ids = [$_SESSION['student_id'], $_SESSION['user_id']];
-    } else {
+
+
+
+    if ($user_admin) {
       $sql = "SELECT users_id_user FROM drive2future.class_has_users "
         . "WHERE class_id_class = :class_id";
       $stmt = get_db()->prepare($sql);
       $stmt->execute([':class_id' => $_SESSION['class_id']]);
       $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+      $user_ids[] = $_SESSION["employee_id"];
+    } else {
+      if (isset($_POST["student-id"])) {
+        $_SESSION["student_id"] = $_POST["student-id"];
+        $user_ids = [$_SESSION['student_id'], $_SESSION['user_id']];
+      } else {
+        $sql = "SELECT users_id_user FROM drive2future.class_has_users "
+          . "WHERE class_id_class = :class_id";
+        $stmt = get_db()->prepare($sql);
+        $stmt->execute([':class_id' => $_SESSION['class_id']]);
+        $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
+      }
     }
+
+    print_r($user_ids);
     ?>
 
     <!-- Start- und Endzeit festlegen -->
