@@ -29,7 +29,7 @@ if(!empty($_FILES['userfile']['name']) && $_FILES['userfile']['tmp_name'] != nul
 }
 if(isset($_POST['delete'])){
     $filename = get_filename_to_id($_POST['delete']);
-    $filepath = __DIR__.'\\..\\Documents\\'.$filename;
+    $filepath = __DIR__.'/../Documents/'.$filename;
     if(file_exists($filepath)){
         if(!unlink($filepath)){
             $_SESSION['errors']['File'] = 'Fehler beim löschen des Files';
