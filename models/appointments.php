@@ -24,30 +24,27 @@ function get_appointments_for_user($userid)
     return $getUserAppointment->fetchAll();
 }
 
-//get all appointments from DB
-function get_all_appointments()
+//get all appointments from DB for admin view
+function get_appointments_overview()
 {
-    $sql = "SELECT a.id_appointment, a.date, a.begin_time, a.end_time, a.description, a.class_id_class, a.appointment_types_id_a_type, u.id_user, u.first_name, u.last_name
+    $sql = "SELECT a.id_appointment, a.date, a.begin_time, a.end_time, a.description, a.appointment_types_id_a_type, 
+	u.first_name as teacher_first_name, u.last_name as teacher_last_name, r.r_type, c.class_label, student.first_name as student_first_name, student.last_name as student_last_name
 	FROM appointments a 
 	INNER JOIN users_has_appointments uha ON a.id_appointment = uha.appointments_id_appointment
-    INNER JOIN users u ON uha.users_id_user = u.id_user;";
+    INNER JOIN users u ON uha.users_id_user = u.id_user
+	INNER JOIN roles r ON u.roles_id_role = r.id_role
+	INNER JOIN class c ON a.class_id_class = c.id_class
+    LEFT OUTER JOIN (
+		SELECT ap.id_appointment,us.first_name, us.last_name  FROM appointments ap
+        INNER JOIN users_has_appointments uhap ON ap.id_appointment = uhap.appointments_id_appointment
+		INNER JOIN users us ON uhap.users_id_user = us.id_user
+        WHERE us.roles_id_role=2 AND ap.appointment_types_id_a_type=3
+        ) as student ON student.id_appointment=a.id_appointment
+
+    WHERE u.roles_id_role=3
+    ORDER BY a.id_appointment;";
     $getAppointments = get_db()->query($sql);
-    $getAppointments = $getAppointments->fetchAll();
-
-    $appointments = [];
-    
-    foreach ($getAppointments as $row){
-        if (empty($appointments[$row['id_appointment']])){
-            $appointments[$row['id_appointment']] = $row;
-            unset($appointments[$row['id_appointment']]['id_user']);
-            $appointments[$row['id_appointment']]['user_ids'] = [$row['id_user']];
-        } else{
-            $appointments[$row['id_appointment']]['user_ids'][] = [$row['id_user']];
-        }
-    }
-
-    return $appointments;
-
+    return $getAppointments->fetchAll();
 }
 
 function get_appointment_types()

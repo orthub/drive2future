@@ -38,8 +38,6 @@ require_once '../controllers/appointments.php';
         $user_ids = $stmt->fetchAll(PDO::FETCH_COLUMN);
       }
     }
-
-    print_r($user_ids);
     ?>
 
     <!-- Start- und Endzeit festlegen -->

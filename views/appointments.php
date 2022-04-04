@@ -41,12 +41,9 @@ require_once __DIR__ . '/../controllers/appointments.php';
     </div>
     <?php endif ?>
 
-    <?php
-    //print_r($allAppointments);
-    ?>
     <?php if ($user_admin) : ?>
       
-      <!--<div class="app-overview">hello
+      <div class="app-overview">
         <div class="app-item app-headlines">
           <div class="app-row">
             <div class="box-1">Datum</div>
@@ -58,19 +55,25 @@ require_once __DIR__ . '/../controllers/appointments.php';
           </div>
         </div>
 
-        <?php foreach ($allAppointments as $app) : ?>
+        <?php foreach (fetch_appointments_overview() as $app) : ?>
           <div class="app-item">
             <div class="app-row">
               <div class="box-1"><span>Datum: </span><?php echo date('d.m.Y', strtotime($app['date'])) ?></div>
               <div class="box-2"><span>Beginn: </span><?php echo date('H:i', strtotime($app['begin_time'])) ?></div>
               <div class="box-3"><span>Ende: </span><?php echo date('H:i', strtotime($app['end_time'])) ?></div>
               <div class="box-4"><span>Termin: </span><?php echo $app['description']; ?></div>
-              <div class="box-5"><span>Termin: </span><?php echo $app['description']; ?></div>
-              <div class="box-6"><span>Termin: </span><?php echo $app['description']; ?></div>
+              <div class="box-5"><span>Lehrer: </span><?php echo "${app['teacher_first_name']} ${app['teacher_last_name']}"; ?></div>
+              <div class="box-6"><span>Schüler/Klasse: </span><?php 
+                if($app['appointment_types_id_a_type'] == 3 ){
+                  echo "${app['student_first_name']} ${app['student_last_name']}";
+                } else{
+                  echo $app['class_label'];
+                }
+              ?></div>
             </div>
           </div>
         <?php endforeach ?>
-      </div>-->
+      </div>
 
     <?php endif ?>
 
