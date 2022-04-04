@@ -11,26 +11,40 @@ require_once '../controllers/appointments.php';
 
 <body>
   <?php require_once __DIR__ . '/partials/navbar.php';
-  
+
   $active_classes = get_active_classes();
   ?>
   <div class="container">
 
 
-    <h1>Termin hinzufügen</h1>
+    <?php
+    if ($user_employee) { ?>
+      <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
+      <h1>Fahrstunde hinzufügen</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin hinzufügen</h1>
+    <?php }
+    ?>
 
-    <form action="chooseAppTime.php" method="post">
+    <form action="chooseDrivingStudent.php" method="post">
       <!-- Termintyp wählen -->
-      <div>
-        <label for="app-type-id">Termintyp wählen:</label>
-        <select name="app-type-id" id="app-type-id">
-          <?php foreach ($appointment_types as $app_t) {
-            $type = strval($app_t["description"]);
-            $type_id = intval($app_t["id_a_type"]);
-            echo "<option value='$type_id'> $type </option>";
-          } ?>
-        </select>
-      </div>
+      <?php
+      // Admin kann Vorträge und Übungen hinzufügen
+      if ($user_admin) { ?>
+        <div>
+          <label for="app-type-id">Termintyp wählen:</label>
+          <select name="app-type-id" id="app-type-id">
+            <?php foreach ($appointment_types as $app_t) {
+              $type = strval($app_t["description"]);
+              $type_id = intval($app_t["id_a_type"]);
+              if ($type_id !== 3) {
+                echo "<option value='$type_id'> $type </option>";
+              }
+            } ?>
+          </select>
+        </div>
+      <?php } ?>
+
       <!-- Raum wählen -->
       <div>
         <label for="room-id">Raum wählen:</label>
@@ -46,8 +60,7 @@ require_once '../controllers/appointments.php';
       <!-- Datum wählen -->
       <div>
         <label for="date">Datum wählen: </label>
-        <input type="date" id="date" name="date" required value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>"
-          min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
+        <input type="date" id="date" name="date" required value="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>">
       </div>
 
       <!-- Dauer wählen -->
