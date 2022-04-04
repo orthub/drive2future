@@ -33,7 +33,7 @@ require_once '../controllers/appointments.php';
         $_SESSION["app_type_id"] = $app_type_id;
       }
     }
-
+    
     // Eingegebene Werte in Session speichern
     if (isset($_POST["room-id"])) {
       $_SESSION["room_id"] = intval($_POST["room-id"]);

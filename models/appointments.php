@@ -92,10 +92,10 @@ function add_appointment(
 }
 
 // Termin für einzelnen Benutzer speichern (bei Fahrstunde)
-function add_user_appointment($student, $app_id)
+function add_user_appointment($user_id, $app_id)
 {
     $sql = "INSERT INTO drive2future.users_has_appointments (users_id_user, "
-        . "appointments_id_appointment) VALUES ('$student', '$app_id')";
+        . "appointments_id_appointment) VALUES ('$user_id', '$app_id')";
     $stmt = get_db()->query($sql);
 
     return $stmt;
@@ -323,3 +323,13 @@ function get_all_employees()
     return $res;
 }
 
+function get_employee_appointment($app_id)
+{
+    $sql = "SELECT * FROM users_has_appointments uha
+    INNER JOIN users u ON uha.users_id_user = u.id_user AND roles_id_role = 3
+    WHERE uha.appointments_id_appointment = $app_id";
+    $stmt = get_db()->query($sql);
+    $res = $stmt->fetchAll();
+
+    return $res;
+}
