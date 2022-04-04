@@ -18,6 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $loginEmail = filter_input(INPUT_POST, 'login-mail', FILTER_SANITIZE_EMAIL);
   $loginPasswd = filter_input(INPUT_POST, 'login-passwd');
 
+  if (!filter_var($loginEmail, FILTER_VALIDATE_EMAIL)) {
+    $_SESSION['errors']['login-mail-not-valid'] = 'Bitte geben sie eine gültige email ein';
+    $errors[] = 1;
+  }
+
   if ((bool)$loginEmail === false) {
     $_SESSION['errors']['login-mail'] = 'Bitte Email eingeben';
     $errors[] = 1;
