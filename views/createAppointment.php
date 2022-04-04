@@ -84,7 +84,7 @@ require_once '../controllers/appointments.php';
       <!-- Dauer wählen -->
       <div>
         <label for="duration">Dauer angeben (in Min.): </label>
-        <input type="number" id="duration" name="duration" value="30" step="30" min="30" max="780">
+        <input type="number" id="duration" name="duration" value="30" step="30" min="30" max="900">
       </div>
 
       <!-- Klasse wählen -->

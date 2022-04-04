@@ -162,8 +162,8 @@ function calculate_valid_start_times($duration, $bookings)
     $result = [];
     //umrechnen der Zeiten zu Minuten ausgehend von Mitternacht
     $bookings = transform_appointments($bookings);
-    //Startzeitpunkt + Dauer muss kleiner gleich 1200 (Mitternacht bis 20 Uhr) sein
-    for ($start = 420; $start + $duration <= 1200; $start += 30) {
+    //Startzeitpunkt + Dauer muss kleiner gleich 1320 (Mitternacht bis 22 Uhr) sein
+    for ($start = 420; $start + $duration <= 1320; $start += 30) {
         $end = $start + $duration;
         $overlap = false;
         foreach ($bookings as $booked) {
