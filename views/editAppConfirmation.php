@@ -12,11 +12,15 @@ require_once __DIR__ . '/../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-
-    <h1>Termin bearbeiten</h1>
+    <?php
+    if ($user_employee) { ?>
+      <h1>Fahrstunde bearbeiten</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin bearbeiten</h1>
+    <?php }
+    ?>
 
     <?php
-
     if (isset($_SESSION["edit_app_id"])) {
       $edit_app_id = intval($_SESSION["edit_app_id"]);
     }
@@ -55,8 +59,8 @@ require_once __DIR__ . '/../controllers/appointments.php';
       $student_id = intval($_SESSION["student_id"]);
     }
 
-     //Endzeit berechnen
-     $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']);
+    //Endzeit berechnen
+    $end_time = transform_minutes_to_time(transform_time_to_minutes($begin_time) + $_SESSION['duration']);
 
     try {
       get_db()->beginTransaction();
@@ -118,7 +122,6 @@ require_once __DIR__ . '/../controllers/appointments.php';
       }
 
       echo "<p>Ihr Termin wurde erfolgreich aktualisiert.</p><br>";
-
     } catch (PDOException $e) {
       get_db()->rollBack();
       echo "<p>Ihr Termin konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut.</p><br>";

@@ -12,12 +12,17 @@ require_once '../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
   <div class="container">
 
-
-    <h1>Termin bearbeiten</h1>
+    <?php
+    if ($user_employee) { ?>
+      <h1>Fahrstunde bearbeiten</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin bearbeiten</h1>
+    <?php }
+    ?>
 
     <?php
     $class_students = get_active_class_students(intval($_POST["class-id"]));
-    
+
     if (isset($_SESSION["edit_app_id"])) {
       // Aktuellen Fahrschüler aus der Datenbank holen
       $driving_student_app = get_driving_student_appointment($_SESSION["edit_app_id"])[0];
@@ -33,7 +38,7 @@ require_once '../controllers/appointments.php';
         $_SESSION["app_type_id"] = $app_type_id;
       }
     }
-    
+
     // Eingegebene Werte in Session speichern
     if (isset($_POST["room-id"])) {
       $_SESSION["room_id"] = intval($_POST["room-id"]);

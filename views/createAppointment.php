@@ -17,7 +17,6 @@ require_once '../controllers/appointments.php';
   ?>
   <div class="container">
 
-
     <?php
     if ($user_employee) { ?>
       <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
@@ -90,7 +89,7 @@ require_once '../controllers/appointments.php';
 
       <!-- Klasse wählen -->
       <div>
-        <label for="class-id">Klasse wählen:</label>
+        <label for="class-id">Führerscheinklasse wählen:</label>
         <select name="class-id" id="class-id">
           <?php foreach ($active_classes as $class) {
             $class_name = strval($class["class_label"]);
