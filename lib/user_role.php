@@ -1,11 +1,11 @@
 <?php
-if (empty($_SESSION['user_session'])) {
+if (!isset($_SESSION['user_session']) || !isset($_SESSION['user_id'])) {
   header('Location: ' . '/drive2future/views/login.php');
 }
 
 require_once __DIR__ . '/../models/login.php';
 
-if (isset($_SESSION['user_session'])) {
+if (isset($_SESSION['user_session']) || isset($_SESSION['userId'])) {
   $userId = $_SESSION['user_session'];
   $userId = str_replace('_loggedIn', '', $userId);
   $user_role = check_user_role($userId);
