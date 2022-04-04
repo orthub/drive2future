@@ -24,6 +24,32 @@ function get_appointments_for_user($userid)
     return $getUserAppointment->fetchAll();
 }
 
+//get all appointments from DB
+function get_all_appointments()
+{
+    $sql = "SELECT a.id_appointment, a.date, a.begin_time, a.end_time, a.description, a.class_id_class, a.appointment_types_id_a_type, u.id_user, u.first_name, u.last_name
+	FROM appointments a 
+	INNER JOIN users_has_appointments uha ON a.id_appointment = uha.appointments_id_appointment
+    INNER JOIN users u ON uha.users_id_user = u.id_user;";
+    $getAppointments = get_db()->query($sql);
+    $getAppointments = $getAppointments->fetchAll();
+
+    $appointments = [];
+    
+    foreach ($getAppointments as $row){
+        if (empty($appointments[$row['id_appointment']])){
+            $appointments[$row['id_appointment']] = $row;
+            unset($appointments[$row['id_appointment']]['id_user']);
+            $appointments[$row['id_appointment']]['user_ids'] = [$row['id_user']];
+        } else{
+            $appointments[$row['id_appointment']]['user_ids'][] = [$row['id_user']];
+        }
+    }
+
+    return $appointments;
+
+}
+
 function get_appointment_types()
 {
     $sql = "SELECT * FROM appointment_types";
