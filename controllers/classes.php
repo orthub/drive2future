@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../lib/sessionHelper.php';
 if (empty($_SESSION['user_session'])) {
     header('Location: ' . '/drive2future/views/login.php');
 }
@@ -13,7 +14,9 @@ if(isset($_SESSION['classid'])){
 }
 
 if(isset($_POST['isNewClass'])){
-    if(empty($_POST['bezeichnung']) || empty($_POST['beginn_date']) || empty($_POST['end_date'])){
+    $bezeichnung = filter_input(INPUT_POST, 'bezeichnung', FILTER_SANITIZE_SPECIAL_CHARS);
+    // if(empty($_POST['bezeichnung']) || empty($_POST['beginn_date']) || empty($_POST['end_date'])){
+    if(empty($bezeichnung) || mb_strlen($bezeichnung) >= 45 || empty($_POST['beginn_date']) || empty($_POST['end_date'])){
         $_SESSION['errors']['class'] = 'Daten nicht vollständig';
         header('Location: ' . '/drive2future/views/classAdd.php');
     }
