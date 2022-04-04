@@ -10,7 +10,10 @@ require_once '../controllers/appointments.php';
 
 
 <body>
-  <?php require_once __DIR__ . '/partials/navbar.php' ?>
+  <?php require_once __DIR__ . '/partials/navbar.php';
+  
+  $active_classes = get_active_classes();
+  ?>
   <div class="container">
 
 
@@ -57,7 +60,7 @@ require_once '../controllers/appointments.php';
       <div>
         <label for="class-id">Klasse wählen:</label>
         <select name="class-id" id="class-id">
-          <?php foreach ($classes as $class) {
+          <?php foreach ($active_classes as $class) {
             $class_name = strval($class["class_label"]);
             $class_id = $class["id_class"];
             echo "<option value='$class_id'> $class_name </option>";
