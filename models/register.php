@@ -1,15 +1,22 @@
 <?php
-
+// verbindung zur datenbank aufbauen
 require_once __DIR__ . '/db_connection.php';
 
-function search_if_email_exists_already()
+// diese funktion sucht nach allen emails die in der datenbank vorhanden sind
+// und gibt die gefundenen als assoziatives array zurück
+function get_all_emails()
 {
-  $sql_search_if_existing_email = 'SELECT `email` FROM `users`';
-  $stmt_search_if_existing_email = get_db()->query($sql_search_if_existing_email);
-  $res_search_if_existing_email = $stmt_search_if_existing_email->fetchAll(PDO::FETCH_ASSOC);
-  return $res_search_if_existing_email;
+  $sql_get_all_emails = 'SELECT `email` FROM `users`';
+  $statement_get_all_emails = get_db()->query($sql_get_all_emails);
+  $result_get_all_emails = $statement_get_all_emails->fetchAll(PDO::FETCH_ASSOC);
+  
+  return $result_get_all_emails;
 }
 
+// diese funktion erstellt einen neuen benutzer, als parameter werden vor-, nachname, email und das
+// passwort als string übergeben. das passwort wird anschließend in der funktion gehasht
+// dieser benutzer wird standardmäßig mit den rechten eines schülers angelegt
+// rückgabewert ist ein boolean je nach status (erfolgreich -> true, nicht erfolgreich -> false)
 function create_new_user(string $first_name, string $last_name, string $email, string $passwd)
 {
   $status = 'aktiv';
@@ -21,17 +28,22 @@ function create_new_user(string $first_name, string $last_name, string $email, s
                               `password` = :passwd,
                               `status` = :userStatus,
                               `roles_id_role` = 2';
-  $stmt_create_new_user = get_db()->prepare($sql_create_new_user);
-  $stmt_create_new_user->execute([
+  $statement_create_new_user = get_db()->prepare($sql_create_new_user);
+  $statement_create_new_user->execute([
     ':firstName' => $first_name,
     ':lastName' => $last_name,
     ':email' => $email,
     ':passwd' => $passwd,
     ':userStatus' => $status
   ]);
-  return $stmt_create_new_user;
+  return $statement_create_new_user;
 }
 
+
+// diese funktion erstellt einen neuen benutzer, als parameter werden vor-, nachname, email und das
+// passwort als string übergeben. das passwort wird anschließend in der funktion gehasht
+// dieser benutzer wird standardmäßig mit den rechten eines trainers/lehrers angelegt
+// rückgabewert ist ein boolean je nach status (erfolgreich -> true, nicht erfolgreich -> false)
 function create_new_employee(string $first_name, string $last_name, string $email, string $passwd)
 {
   $status = 'aktiv';
@@ -43,13 +55,13 @@ function create_new_employee(string $first_name, string $last_name, string $emai
                               `password` = :passwd,
                               `status` = :userStatus,
                               `roles_id_role` = 3';
-  $stmt_create_new_employee = get_db()->prepare($sql_create_new_employee);
-  $stmt_create_new_employee->execute([
+  $statement_create_new_employee = get_db()->prepare($sql_create_new_employee);
+  $statement_create_new_employee->execute([
     ':firstName' => $first_name,
     ':lastName' => $last_name,
     ':email' => $email,
     ':passwd' => $passwd,
     ':userStatus' => $status
   ]);
-  return $stmt_create_new_employee;
+  return $statement_create_new_employee;
 }
