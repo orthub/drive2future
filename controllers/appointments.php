@@ -12,6 +12,7 @@ $rooms = get_rooms();
 $classes = get_classes();
 $students = get_students();
 $appointment_types = get_appointment_types();
+$allAppointments = get_all_appointments();
 
 function get_valid_appointment_times($date, $duration,$user_ids, $exclude_start_time = ""){
     $bookings = get_appointments_for_users($date, $user_ids);
