@@ -17,7 +17,7 @@ require_once __DIR__ . '/../controllers/appointments.php';
     if ($user_employee) { ?>
       <h2><a href="createAppointment.php">Fahrstunde hinzufügen +</a></h2>
     <?php } else if ($user_admin) {  ?>
-      <h2><a href="createAppointment.php">Termin hinzufügen +</a></h2>
+      <h2><a href="createAppointment.php#AnkerTermin" >Termin hinzufügen +</a></h2>
     <?php }
     ?>
     <?php if ($user_employee) : ?>

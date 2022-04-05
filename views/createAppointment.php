@@ -22,7 +22,7 @@ require_once '../controllers/appointments.php';
       <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
       <h1>Fahrstunde hinzufügen</h1>
     <?php } else if ($user_admin) {  ?>
-      <h1>Termin hinzufügen</h1>
+      <h1 id="AnkerTermin">Termin hinzufügen</h1>
     <?php }
     ?>
 
