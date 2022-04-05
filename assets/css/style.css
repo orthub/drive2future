@@ -332,7 +332,7 @@ body .container .app-overview .box-3 {
     display: none;
   }
 }
-@media (max-width: 1518px) {
+@media (max-width: 1519px) {
   body .container .admin-overview .app-item {
     display: block;
     margin-bottom: 50px;
@@ -368,7 +368,7 @@ body .container .admin-overview .app-item .box-8 form {
     margin-right: 30px;
   }
 }
-@media (max-width: 1518px) {
+@media (max-width: 1519px) {
   body .container .admin-overview .app-item.app-headlines {
     display: none;
   }
