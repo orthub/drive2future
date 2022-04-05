@@ -16,7 +16,16 @@ require_once '../controllers/appointments.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
 
   <div class="container">
-    <h1>Termin löschen</h1>
+
+    <?php
+    if ($user_employee) { ?>
+      <!-- Fahrlehrer kann nur Fahrstunden hinzufügen -->
+      <h1>Fahrstunde löschen</h1>
+    <?php } else if ($user_admin) {  ?>
+      <h1>Termin löschen</h1>
+    <?php }
+    ?>
+
     <?php if (isset($_POST["delete-app"]) && !empty($_POST["delete-app"])) {
       $_SESSION["delete_app_id"] = intval($_POST["delete-app"]);
     } ?>

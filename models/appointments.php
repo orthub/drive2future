@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/db_connection.php';
 
+//Funktion zum abholen aller Termine
 function get_appointments()
 {
     $sql = "Select `id_appointment`, `date`,`begin_time`,`end_time`,`description` from appointments";
@@ -10,6 +11,7 @@ function get_appointments()
     return $res;
 }
 
+//Funktion zum abholen der Termine für einen bestimmten user
 function get_appointments_for_user($userid)
 {
     $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment` 
@@ -48,6 +50,7 @@ function get_appointments_overview()
     return $getAppointments->fetchAll();
 }
 
+//Funktion zum abholen aller TerminTypen
 function get_appointment_types()
 {
     $sql = "SELECT * FROM appointment_types";
@@ -57,6 +60,7 @@ function get_appointment_types()
     return $res;
 }
 
+//Funktion zum abholen der Räume
 function get_rooms()
 {
     $sql = "SELECT * FROM rooms";
@@ -66,6 +70,7 @@ function get_rooms()
     return $res;
 }
 
+//Funktion zum abholen der Klassen
 function get_classes()
 {
     $sql = "SELECT * FROM class";
@@ -75,6 +80,7 @@ function get_classes()
     return $res;
 }
 
+//Funktion zum abholen der Schüler 
 function get_students()
 {
     $sql = "SELECT * FROM drive2future.class_has_users JOIN users "
@@ -329,6 +335,7 @@ function get_driving_student_appointment($appointment_id)
     return $res;
 }
 
+//Funktion zum abholen der aktiven Klassen
 function get_active_classes()
 {
     $sql = "SELECT * FROM class WHERE status ='aktiv'";
@@ -338,6 +345,7 @@ function get_active_classes()
     return $res;
 }
 
+//Funktion zum abholen aller Mitarbeiter
 function get_all_employees()
 {
     $sql = "SELECT * FROM users WHERE roles_id_role = 3";
@@ -347,6 +355,7 @@ function get_all_employees()
     return $res;
 }
 
+//Abholen der Termine eines Mitarbeiters
 function get_employee_appointment($app_id)
 {
     $sql = "SELECT * FROM users_has_appointments uha

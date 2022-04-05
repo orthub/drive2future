@@ -10,7 +10,7 @@ require_once __DIR__ . '/../lib/user_role.php';
   <?php require_once __DIR__ . '/partials/navbar.php' ?>
 
   <div class="container">
-    <h1>Klasse hinzufügen</h1>
+    <h1>Führerscheinklasse hinzufügen</h1>
 
     <?php
         $now = time();

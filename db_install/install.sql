@@ -30,29 +30,7 @@ SET
 --
   -- Daten für Tabelle `appointments`
   --
-INSERT INTO
-  `appointments` (
-    `id_appointment`,
-    `date`,
-    `begin_time`,
-    `end_time`,
-    `description`,
-    `appointment_types_id_a_type`,
-    `rooms_id_room`,
-    `class_id_class`
-  )
-VALUES
-  (
-    1,
-    '2022-05-12',
-    '08:00:00',
-    '12:00:00',
-    'Vortrag Einführung in die STVO',
-    1,
-    1,
-    1
-  );
--- --------------------------------------------------------
+  -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `appointment_types`
   --
@@ -92,7 +70,77 @@ INSERT INTO
     `end_date`
   )
 VALUES
-  (1, 'Spring_22', '', '2022-03-30', '2022-04-28');
+  (
+    1,
+    'A - Sommer_22',
+    'aktiv',
+    '2022-06-30',
+    '2022-07-28'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    2,
+    'B - Sommer_22',
+    'aktiv',
+    '2022-08-01',
+    '2022-08-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    3,
+    'A - Herbst_22',
+    'aktiv',
+    '2022-09-01',
+    '2022-09-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    4,
+    'F - Herbst_22',
+    'aktiv',
+    '2022-10-01',
+    '2022-10-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    5,
+    'B - Herbst_22',
+    'aktiv',
+    '2022-11-01',
+    '2022-11-30'
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `class_has_users`
@@ -107,7 +155,43 @@ VALUES
 INSERT INTO
   `class_has_users` (`class_id_class`, `users_id_user`)
 VALUES
-  (1, 2);
+  (1, 4),
+  (1, 5),
+  (1, 6),
+  (1, 8),
+  (1, 9),
+  (1, 10),
+  (1, 11),
+  (2, 15),
+  (2, 1),
+  (2, 3),
+  (2, 5),
+  (2, 6),
+  (2, 7),
+  (2, 8),
+  (2, 10),
+  (2, 11),
+  (3, 1),
+  (3, 2),
+  (3, 3),
+  (3, 7),
+  (3, 12),
+  (3, 13),
+  (3, 14),
+  (4, 5),
+  (4, 7),
+  (4, 9),
+  (4, 13),
+  (4, 14),
+  (4, 15),
+  (4, 16),
+  (5, 4),
+  (5, 9),
+  (5, 12),
+  (5, 13),
+  (5, 14),
+  (5, 15),
+  (5, 16);
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `documents`
@@ -168,6 +252,120 @@ VALUES
   (1, 'Warteraum'),
   (2, 'Schulungsraum'),
   (3, 'Übungsraum');
+-- ------------------------------------------------------
+  -- Daten für Tabelle `appointments`
+INSERT INTO
+  `appointments` (
+    `id_appointment`,
+    `date`,
+    `begin_time`,
+    `end_time`,
+    `description`,
+    `appointment_types_id_a_type`,
+    `rooms_id_room`,
+    `class_id_class`
+  )
+VALUES
+  (
+    1,
+    '2022-05-12',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Einführung in die STVO',
+    1,
+    2,
+    1
+  ),
+  (
+    2,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    3,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    2
+  ),
+  (
+    4,
+    '2022-05-12',
+    '13:00:00',
+    '14:00:00',
+    'Fahrstunde',
+    3,
+    1,
+    2
+  ),
+  (
+    5,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    3
+  ),
+  (
+    6,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    4
+  ),
+  (
+    7,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    5
+  ),
+  (
+    8,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    9,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    10,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `users`
@@ -212,6 +410,132 @@ VALUES
     '$2y$10$PrnMtBS.x3y9Ev1iuIoqjeInXFAYybeGcv4P1HUF7kE4bB0SHRVE2',
     'aktiv',
     3
+  ),
+  (
+    3,
+    'Sabine',
+    'Müller',
+    's.mueller@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    4,
+    'Markus',
+    'Sauber',
+    'm.sauber@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    5,
+    'Maria',
+    'Oberhauser',
+    'm.oberhauser@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    6,
+    'Raffaela',
+    'Hochreiter',
+    'r.hochreiter@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    7,
+    'Johannes',
+    'Hauser',
+    'j.hauser@email.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    8,
+    'Kurt',
+    'Wesser',
+    'k.wesser@agmail.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    9,
+    'Lara',
+    'Hofmaier',
+    'l.hofmaier@vhotmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    10,
+    'Richard',
+    'Schwarzstein',
+    'r.schwarzstein@bmail.de',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    11,
+    'Tobias',
+    'Kastner',
+    't.kastner@ilive.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    12,
+    'Nicole',
+    'Neumann',
+    'n.neumann@atmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    13,
+    'Thomas',
+    'Bergmann',
+    't.bergmann@bgmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    14,
+    'Tanja',
+    'Schreiner',
+    't.schreiner@ilive.de',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    15,
+    'Christian',
+    'Engel',
+    'c.engel@atmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    16,
+    'Franziska',
+    'Abend',
+    'f.abend@omail.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
   );
 -- --------------------------------------------------------
   --
@@ -221,6 +545,77 @@ VALUES
     `users_id_user` int(11) NOT NULL,
     `appointments_id_appointment` int(11) NOT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+-- --------------------------------------------------------
+  --
+  -- Daten für Tabelle `users_has_appointments`
+  --
+INSERT INTO
+  `users_has_appointments` (
+    `users_id_user`,
+    `appointments_id_appointment`
+  )
+VALUES
+  (2, 3),
+  (7, 1),
+  (8, 1),
+  (9, 1),
+  (10, 1),
+  (11, 1),
+  (12, 1),
+  (13, 1),
+  (14, 1),
+  (15, 1),
+  (16, 1),
+  (7, 2),
+  (8, 2),
+  (9, 2),
+  (10, 2),
+  (11, 2),
+  (12, 2),
+  (13, 2),
+  (14, 2),
+  (15, 2),
+  (16, 2),
+  (7, 3),
+  (8, 4),
+  (9, 4),
+  (10, 4),
+  (11, 4),
+  (12, 4),
+  (13, 4),
+  (14, 4),
+  (15, 4),
+  (16, 4),
+  (7, 5),
+  (8, 5),
+  (9, 5),
+  (10, 5),
+  (11, 5),
+  (12, 5),
+  (13, 5),
+  (14, 5),
+  (15, 5),
+  (16, 5),
+  (7, 6),
+  (8, 6),
+  (9, 6),
+  (10, 6),
+  (11, 6),
+  (12, 6),
+  (13, 6),
+  (14, 6),
+  (15, 6),
+  (16, 6),
+  (7, 7),
+  (8, 7),
+  (9, 7),
+  (10, 8),
+  (11, 8),
+  (12, 8),
+  (13, 9),
+  (14, 9),
+  (15, 10),
+  (16, 10);
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `users_has_license_type`

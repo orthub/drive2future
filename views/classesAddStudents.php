@@ -22,7 +22,7 @@ require_once __DIR__ . '/../controllers/classes.php';
 
   <div class="container">
 
-        <h1><a name="Anker1">Schüler zu Klasse hinzufügen </h1>
+        <h1><a name="Anker1">Schüler zu Führerscheinklasse hinzufügen </h1>
 
     <?php
         if (isset($_SESSION['errors']['class']) && !empty($_SESSION['errors']['class'])) {
@@ -31,13 +31,13 @@ require_once __DIR__ . '/../controllers/classes.php';
         }
         ?>
 
-    <h2>Schüler in Klasse</h2>
+    <h2>Führerscheinklasse: <?php echo $_SESSION['lable']?></h2>
     <div class="app-item app-headlines">
       <div class="app-row">
 
         <div class="box-33"><b>Nachname</b></div>
         <div class="box-33"><b>Vorname</b></div>
-        <div class="box-33"><b>Entfernen</b></div>
+        <div class="box-33"><b>entfernen</b></div>
 
       </div>
     </div>

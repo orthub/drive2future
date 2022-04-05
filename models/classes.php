@@ -2,6 +2,7 @@
 require_once __DIR__. '/../lib/sessionHelper.php';
 require_once __DIR__.'/db_connection.php';
 
+//Funktion zum abholen aller Klassen
 function get_classes(){
     $sql = 'select `id_class`,`class_label`,`status`,`begin_date`,`end_date` from class;';
 
@@ -11,6 +12,7 @@ function get_classes(){
     return $res;
 }
 
+//Funktion zum hinzufügen einer neuen Klasse
 function add_new_class($bezeichnung,$beginn_date,$end_date){
     $sql = "INSERT INTO `drive2future`.`class` (`class_label`,`status` , `begin_date`, `end_date`) 
     VALUES (:bz,:status, :bdate, :edate);";
@@ -21,6 +23,7 @@ function add_new_class($bezeichnung,$beginn_date,$end_date){
     return $addclass->execute($params);
 }
 
+//Funktion zum ändern des Status
 function change_Status($status,$id){
     $sql = "UPDATE `drive2future`.`class` SET `status` = :gstatus WHERE (`id_class` = :id)";
 
@@ -29,6 +32,7 @@ function change_Status($status,$id){
     return $stmt;
 }
 
+//Funktion zum abholen aller Schüler
 function get_students(){
     $sql = 'SELECT `id_user`,`first_name`,`last_name`, `email`, `status`
     FROM `users`
@@ -39,6 +43,7 @@ function get_students(){
     return $stmt->fetchAll();
 }
 
+//Funktion zum hinzufügen eines Schülers zu einer Führerscheinklasse
 function add_student_to_class($classId,$userId){
     $sql = 'INSERT INTO `drive2future`.`class_has_users` (`class_id_class`, `users_id_user`) 
             VALUES (:classid, :userid);';
@@ -49,6 +54,7 @@ function add_student_to_class($classId,$userId){
     return $stmt;
 }
 
+//Funktion zum abholen aller Schüler einer Klasse
 function get_users_from_class($classId){
     $sql = 'SELECT `id_user`,`first_name`,`last_name`
     FROM `users` u 
@@ -60,6 +66,7 @@ function get_users_from_class($classId){
     return $stmt->fetchAll();
 }
 
+//Funktion zum entfernen eines Schülers aus einer Klasse
 function delete_user_from_class($classId,$userId){
     $sql = 'DELETE from class_has_users 
     where class_id_class = :classid 
