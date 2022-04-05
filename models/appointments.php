@@ -17,7 +17,7 @@ function get_appointments()
 function get_appointments_for_user($userid)
 {
     $currentDate = date('Y-m-d');
-    $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment` 
+    $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment`, `appointment_types_id_a_type`
     FROM drive2future.users_has_appointments uha
     join appointments a on uha.appointments_id_appointment = a.id_appointment 
     where users_id_user = :userid AND `date` >= '$currentDate'
