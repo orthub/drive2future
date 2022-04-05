@@ -4,7 +4,7 @@
       <?php echo (isset($_SESSION['user_session'])) ? '<a href="/drive2future/views/appointments.php">' : '<a href="/drive2future">' ?>
 
 
-      <img src="/drive2future/assets/img/softec_logo.svg" width="150" />
+      <img src="/drive2future/assets/img/Logo.PNG" width="125" />
       </a>
     </div>
 

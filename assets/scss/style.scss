@@ -35,8 +35,12 @@ body {
     }
 
     .fs-18 {
-        font-size: 18px;
+        font-size: 18px !important;
     }
+    .mb-20 {
+        margin-bottom: 20px !important;
+    }
+    
 
     button {
         cursor: pointer;

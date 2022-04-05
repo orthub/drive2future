@@ -15,7 +15,7 @@ if($user_student || $user_employee){
 
 
   <div class="container">
-    <h1>Löschen Bestätigen</h1>
+    <h1>Löschen bestätigen</h1>
     <?php
         if (isset($_SESSION['errors']['student']) && !empty($_SESSION['errors']['student'])) {
             echo "<p style='color:red'>" . $_SESSION['errors']['student'] . "</p>";
@@ -24,7 +24,7 @@ if($user_student || $user_employee){
     ?>
     <div class="app-item app-headlines">
       <div class="app-row">
-        <div class="box-25"><b>Wollen Sie <?php echo $_SESSION['first-name'] ?> wirklich löschen?</b></div>
+        <div class="box-25">Wollen Sie <?php echo $_SESSION['first-name'] ?> wirklich löschen?</div>
 
       </div>
     </div>
@@ -33,11 +33,9 @@ if($user_student || $user_employee){
         <div class="box-25">
           <form action='../controllers/confirmDeleteStudent.php' method='POST'>
             <input type="hidden" value="<?php echo $_SESSION['delete-id']; ?>" name="userId">
-            <input class="toggle" type="submit" value="Endgültig löschen">
+            <input class="toggle mb-20" type="submit" value="Endgültig löschen">
           </form>
-          <form action="/drive2future/views/students.php" method="POST">
-            <input type="submit" value="Abbrechen">
-          </form>
+          <p><a href="students.php">Zurück zur Schülerverwaltung</a></p>
         </div>
       </div>
     </div>
