@@ -48,7 +48,7 @@ function get_appointments_overview()
         WHERE us.roles_id_role=2 AND ap.appointment_types_id_a_type=3
         ) as student ON student.id_appointment=a.id_appointment
 
-    WHERE u.roles_id_role=3 AND a.date > '$currentDate'
+    WHERE u.roles_id_role=3 AND a.date >= '$currentDate'
     ORDER BY a.date;";
     // var_dump($sql);
     // exit();

@@ -97,19 +97,17 @@ require_once __DIR__ . '/../controllers/appointments.php';
               ?></p></div>
               <div class="box-7">
               <form action="editAppointment.php" method="post">
-                <button <?php echo "name='edit-app' value='$app[id_appointment]'" ?>>
-                  <a href="/drive2future">
+                <button type="submit" <?php echo "name='edit-app' value='$app[id_appointment]'" ?>>
                     <img src="/drive2future/assets/img/edit_icon.png" width="20" />
-                  </a>
                 </button>
               </form>
             </div>
             <div class="box-8">
               <form action="deleteAppConfirmation.php" method="post">
-                <button <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
-                  <a href="/drive2future">
+                <button type="submit" <?php echo "name='delete-app' value='$app[id_appointment]'" ?>>
+                  
                     <img src="/drive2future/assets/img/delete_icon.png" width="20" />
-                  </a>
+                  
                 </button>
               </form>
             </div>
