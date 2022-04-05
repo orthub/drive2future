@@ -48,13 +48,11 @@ if($user_student || $user_employee){
           </form>
           <p><a href="students.php">Zurück zur Schülerverwaltung</a></p>
         </div>
+        <?php endif ?>
       </div>
-      <?php endif ?>
-
     </div>
-
-
-    <?php require_once __DIR__ . '/partials/footer.php' ?>
+  </div>
+  <?php require_once __DIR__ . '/partials/footer.php' ?>
 </body>
 
 </html>
