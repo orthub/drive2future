@@ -164,13 +164,17 @@ body {
         .upload {
             margin-bottom: 60px;
         }
-        .file{
+        .file {
             width: -webkit-fill-available;
         }
         .app-item {
             display: flex;
             flex-direction: column;
             font-size: 1.8em;
+            p {
+                font-size: unset;
+                margin-right: 15px;
+            }
 
             @media (max-width: 1150px) {
                 display: block;
@@ -226,27 +230,28 @@ body {
                     .box-4 {
                         width: 41%;
                     }
-                    .box-33{
+                    .box-33 {
                         width: 33%;
                     }
-                    .box-25{
+                    .box-25 {
                         width: 25%;
                     }
                     span {
                         display: none;
                     }
                 }
-                .toggle{
+                .toggle {
                     min-width: 100px;
                     font-size: 18px;
                     padding: 5px 15px;
                     display: inline;
                     margin-bottom: 0;
                 }
-                
-                .box-33, .box-25 {
-                    form{
-                        display:inline;
+
+                .box-33,
+                .box-25 {
+                    form {
+                        display: inline;
                     }
                 }
 
@@ -285,6 +290,86 @@ body {
                 }
             }
         }
+        .admin-overview {
+            @media (min-width: 1519px) {
+                .box-1 {
+                    width: 11% !important;
+                }
+                .box-2 {
+                    width: 7% !important;
+                }
+                .box-3 {
+                    width: 7% !important;
+                }
+                .box-4 {
+                    width: 28% !important;
+                }
+                .box-5 {
+                    width: 15% !important;
+                }
+                .box-6 {
+                    width: 15% !important;
+                }
+                .box-7 {
+                    width: 10% !important;
+                }
+                .box-8 {
+                    width: 7% !important;
+                }
+                span {
+                    display: none;
+                }
+            }
+            .app-item {
+                @media (max-width: 1518px) {
+                    display: block;
+                    margin-bottom: 50px;
+                    p {
+                        display: inline;
+                    }
+                    div[class^="box-"]{
+                        width: 100%;
+                    }
+
+                    .app-row {
+                        display: block;
+                        .box-5,
+                        .box-6 {
+                            display: block;
+                        }
+
+                        div {
+                            margin-bottom: 15px;
+                        }
+                        span {
+                            font-weight: bold;
+                            width: 145px;
+                            display: inline-block;
+                        }
+                    }
+                    .box-7,
+                    .box-8 {
+                        display: inline;
+                        form {
+                            display: inline;
+                            margin-right: 30px;
+                        }
+                    }
+                }
+                &.app-headlines {
+                    @media (max-width: 1518px) {
+                        display: none;
+                    }
+                }
+                .box-7,
+                .box-8 {
+                    button {
+                        border: none;
+                        background: none;
+                    }
+                }
+            }
+        }
 
         .doc-item {
             display: flex;
@@ -293,7 +378,8 @@ body {
             &.doc-headlines {
                 font-weight: bold;
                 @media (max-width: 700px) {
-                    .download, .delete{
+                    .download,
+                    .delete {
                         display: none;
                     }
                 }
@@ -312,14 +398,14 @@ body {
                 }
                 .name {
                     width: 55%;
-                    span{
+                    span {
                         display: block;
                         padding-right: 15px;
                         word-break: break-all;
                     }
                 }
 
-                .download{
+                .download {
                     width: 30%;
                 }
                 .delete {
@@ -377,9 +463,9 @@ body {
                     .box-1 {
                         width: 25%;
                     }
-                    .box-2{
+                    .box-2 {
                         width: 25%;
-                        form{
+                        form {
                             display: inline;
                         }
                     }
@@ -389,40 +475,39 @@ body {
                     .box-4 {
                         width: 15%;
                     }
-                    .box-5{
+                    .box-5 {
                         width: 20%;
                     }
                     span {
                         display: none;
                     }
-                    
                 }
-                .box-2{
-                    form{
+                .box-2 {
+                    form {
                         display: inline;
                     }
                 }
-                .box-5{
-                    form{
+                .box-5 {
+                    form {
                         display: inline;
                     }
                     button {
                         background: none;
                         border: none;
                         padding: 0;
-                        img{
+                        img {
                             vertical-align: bottom;
                         }
                     }
                 }
-                .toggle{
+                .toggle {
                     min-width: 100px;
                     font-size: 18px;
                     padding: 5px 15px;
                     display: inline;
                     margin-bottom: 0;
                 }
-                .status{
+                .status {
                     display: inline;
                     margin-right: 5px;
                 }
