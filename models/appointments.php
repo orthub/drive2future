@@ -4,7 +4,9 @@ require_once __DIR__ . '/db_connection.php';
 //Funktion zum abholen aller Termine
 function get_appointments()
 {
-    $sql = "Select `id_appointment`, `date`,`begin_time`,`end_time`,`description` from appointments";
+    $currentDate = date('Y-m-d');
+    $sql = "SELECT `id_appointment`, `date`,`begin_time`,`end_time`,`description` FROM appointments
+    WHERE `date` > '$currentDate'";
     $stmt = get_db()->query($sql);
     $res = $stmt->fetchAll();
 
@@ -14,10 +16,11 @@ function get_appointments()
 //Funktion zum abholen der Termine für einen bestimmten user
 function get_appointments_for_user($userid)
 {
+    $currentDate = date('Y-m-d');
     $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment` 
     FROM drive2future.users_has_appointments uha
     join appointments a on uha.appointments_id_appointment = a.id_appointment 
-    where users_id_user = :userid
+    where users_id_user = :userid AND `date` > '$currentDate'
     order by date;";
 
     $getUserAppointment = get_db()->prepare($sql);
@@ -30,6 +33,7 @@ function get_appointments_for_user($userid)
 //get all appointments from DB for admin view
 function get_appointments_overview()
 {
+    $currentDate = date('Y-m-d');
     $sql = "SELECT a.id_appointment, a.date, a.begin_time, a.end_time, a.description, a.appointment_types_id_a_type, 
 	u.first_name as teacher_first_name, u.last_name as teacher_last_name, r.r_type, c.class_label, student.first_name as student_first_name, student.last_name as student_last_name
 	FROM appointments a 
@@ -44,8 +48,10 @@ function get_appointments_overview()
         WHERE us.roles_id_role=2 AND ap.appointment_types_id_a_type=3
         ) as student ON student.id_appointment=a.id_appointment
 
-    WHERE u.roles_id_role=3
+    WHERE u.roles_id_role=3 AND a.date > '$currentDate'
     ORDER BY a.date;";
+    // var_dump($sql);
+    // exit();
     $getAppointments = get_db()->query($sql);
     return $getAppointments->fetchAll();
 }
