@@ -24,7 +24,7 @@ if($user_student || $user_employee){
     ?>
     <div class="app-item app-headlines">
       <div class="app-row">
-        <div class="box-25"><b>Wollen Sie <?php echo $_SESSION['first-name'] ?> wirklich löschen?</b></div>
+        <div class="box-25">Wollen Sie <?php echo $_SESSION['first-name'] ?> wirklich löschen?</div>
 
       </div>
     </div>
@@ -35,9 +35,7 @@ if($user_student || $user_employee){
             <input type="hidden" value="<?php echo $_SESSION['delete-id']; ?>" name="userId">
             <input class="toggle mb-20" type="submit" value="Endgültig löschen">
           </form>
-          <form action="/drive2future/views/students.php" method="POST">
-            <input type="submit" class="toggle fs-18" value="Abbrechen">
-          </form>
+          <p><a href="students.php">Zurück zur Schülerverwaltung</a></p>
         </div>
       </div>
     </div>
