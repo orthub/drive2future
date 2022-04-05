@@ -35,6 +35,9 @@ if($user_student || $user_employee){
             <input type="hidden" value="<?php echo $_SESSION['delete-id']; ?>" name="userId">
             <input class="toggle" type="submit" value="Endgültig löschen">
           </form>
+          <form action="/drive2future/views/students.php" method="POST">
+            <input type="submit" value="Abbrechen">
+          </form>
         </div>
       </div>
     </div>
