@@ -15,7 +15,8 @@ function get_appointments_for_user($userid)
     $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment` 
     FROM drive2future.users_has_appointments uha
     join appointments a on uha.appointments_id_appointment = a.id_appointment 
-    where users_id_user = :userid;";
+    where users_id_user = :userid
+    order by date;";
 
     $getUserAppointment = get_db()->prepare($sql);
     $params = [":userid" => $userid];
@@ -42,7 +43,7 @@ function get_appointments_overview()
         ) as student ON student.id_appointment=a.id_appointment
 
     WHERE u.roles_id_role=3
-    ORDER BY a.id_appointment;";
+    ORDER BY a.date;";
     $getAppointments = get_db()->query($sql);
     return $getAppointments->fetchAll();
 }
