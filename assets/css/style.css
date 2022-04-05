@@ -194,6 +194,10 @@ body .container .app-item {
   flex-direction: column;
   font-size: 1.8em;
 }
+body .container .app-item p {
+  font-size: unset;
+  margin-right: 15px;
+}
 @media (max-width: 1150px) {
   body .container .app-item {
     display: block;
@@ -268,7 +272,8 @@ body .container .app-item .app-row .toggle {
   display: inline;
   margin-bottom: 0;
 }
-body .container .app-item .app-row .box-33 form, body .container .app-item .app-row .box-25 form {
+body .container .app-item .app-row .box-33 form,
+body .container .app-item .app-row .box-25 form {
   display: inline;
 }
 body .container .app-item .app-row .name {
@@ -298,6 +303,81 @@ body .container .app-overview .box-3 {
     display: none;
   }
 }
+@media (min-width: 1519px) {
+  body .container .admin-overview .box-1 {
+    width: 11% !important;
+  }
+  body .container .admin-overview .box-2 {
+    width: 7% !important;
+  }
+  body .container .admin-overview .box-3 {
+    width: 7% !important;
+  }
+  body .container .admin-overview .box-4 {
+    width: 28% !important;
+  }
+  body .container .admin-overview .box-5 {
+    width: 15% !important;
+  }
+  body .container .admin-overview .box-6 {
+    width: 15% !important;
+  }
+  body .container .admin-overview .box-7 {
+    width: 10% !important;
+  }
+  body .container .admin-overview .box-8 {
+    width: 7% !important;
+  }
+  body .container .admin-overview span {
+    display: none;
+  }
+}
+@media (max-width: 1519px) {
+  body .container .admin-overview .app-item {
+    display: block;
+    margin-bottom: 50px;
+  }
+  body .container .admin-overview .app-item p {
+    display: inline;
+  }
+  body .container .admin-overview .app-item div[class^=box-] {
+    width: 100%;
+  }
+  body .container .admin-overview .app-item .app-row {
+    display: block;
+  }
+  body .container .admin-overview .app-item .app-row .box-5,
+body .container .admin-overview .app-item .app-row .box-6 {
+    display: block;
+  }
+  body .container .admin-overview .app-item .app-row div {
+    margin-bottom: 15px;
+  }
+  body .container .admin-overview .app-item .app-row span {
+    font-weight: bold;
+    width: 145px;
+    display: inline-block;
+  }
+  body .container .admin-overview .app-item .box-7,
+body .container .admin-overview .app-item .box-8 {
+    display: inline;
+  }
+  body .container .admin-overview .app-item .box-7 form,
+body .container .admin-overview .app-item .box-8 form {
+    display: inline;
+    margin-right: 30px;
+  }
+}
+@media (max-width: 1519px) {
+  body .container .admin-overview .app-item.app-headlines {
+    display: none;
+  }
+}
+body .container .admin-overview .app-item .box-7 button,
+body .container .admin-overview .app-item .box-8 button {
+  border: none;
+  background: none;
+}
 body .container .doc-item {
   display: flex;
   flex-direction: column;
@@ -307,7 +387,8 @@ body .container .doc-item.doc-headlines {
   font-weight: bold;
 }
 @media (max-width: 700px) {
-  body .container .doc-item.doc-headlines .download, body .container .doc-item.doc-headlines .delete {
+  body .container .doc-item.doc-headlines .download,
+body .container .doc-item.doc-headlines .delete {
     display: none;
   }
 }
