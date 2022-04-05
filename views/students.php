@@ -17,7 +17,7 @@ if($user_student){
 
 
   <div class="container">
-    <h1><a name="Anker1">Schüler verwalten </a></h1>
+    <h1><a name="Anker1">Schülerverwaltung</a></h1>
 
     <?php
         if (isset($_SESSION['errors']['student']) && !empty($_SESSION['errors']['student'])) {
