@@ -13,7 +13,7 @@ require_once __DIR__ . '/../controllers/classes.php';
 
   <div class="container">
 
-    <h1><a name="Anker1">Klassenübersicht</h1>
+    <h1><a name="Anker1">Führerscheinklassen-Übersicht</h1>
 
     <?php
     if (isset($_SESSION['errors']['class']) && !empty($_SESSION['errors']['class'])) {
@@ -21,7 +21,7 @@ require_once __DIR__ . '/../controllers/classes.php';
       unset($_SESSION['errors']['class']);
     }
     ?>
-    <h2><a href="classAdd.php">Klasse hinzufügen +</a></h2>
+    <h2><a href="classAdd.php">Führerscheinklasse hinzufügen +</a></h2>
 
     <div class="cl-item cl-headlines">
       <div class="cl-row">

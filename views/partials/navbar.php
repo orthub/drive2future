@@ -25,7 +25,7 @@
 
         <li><a class="nav-link" href="/drive2future/views/appointmentManagement.php">Terminverwaltung</a></li>
 
-        <li><a class="nav-link" href="/drive2future/views/classes.php">Klassenverwaltung</a></li>
+        <li><a class="nav-link" href="/drive2future/views/classes.php">Führerscheinklassen</a></li>
 
         <li><a class="nav-link" href="/drive2future/views/students.php">Schülerverwaltung</a></li>
 
