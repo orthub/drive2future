@@ -25,7 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // vornamen anhand der id ermitteln und in eine session schreiben
     $firstName = get_first_name_by_id($_SESSION['delete-id']);
+    $userStatus = get_student_status($filtered_id);
     $_SESSION['first-name'] = $firstName['first_name'];
+    $_SESSION['user-status'] = $userStatus;
     
     // umleitung zur bestätigung des löschvorgangs
     header('Location: ' . '/drive2future/views/deleteStudent.php');

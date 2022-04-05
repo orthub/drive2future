@@ -14,6 +14,19 @@ function change_student_status(string $userId, string $status)
   return $stmt;
 }
 
+//
+function get_student_status(string $userId)
+{
+  $sql_get_student_status = 'SELECT `status`
+                              FROM `users`
+                              WHERE `id_user` = :userId';
+  $statement_get_student_status = get_db()->prepare($sql_get_student_status);
+  $statement_get_student_status->execute([':userId' => $userId]);
+  $result_get_studetn_status = $statement_get_student_status->fetchColumn();
+
+  return $result_get_studetn_status;
+}
+
 // dieser funktion wird die benutzer id als string übergeben, welche gelöscht werden soll
 // rückgabewert ist ein boolean, je nach erfolg
 function delete_user_by_id(string $userId)
