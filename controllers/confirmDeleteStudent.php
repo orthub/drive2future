@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // prüfen ob die verbindung mit post aufgerufen wird
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $errors = [];
   
   // prüfung ob die benutzer id gesetzt wurde
   if (isset($_POST['userId'])) {
