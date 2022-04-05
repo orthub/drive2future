@@ -6,7 +6,7 @@ function get_appointments()
 {
     $currentDate = date('Y-m-d');
     $sql = "SELECT `id_appointment`, `date`,`begin_time`,`end_time`,`description` FROM appointments
-    WHERE `date` > '$currentDate'";
+    WHERE `date` >= '$currentDate'";
     $stmt = get_db()->query($sql);
     $res = $stmt->fetchAll();
 
@@ -20,7 +20,7 @@ function get_appointments_for_user($userid)
     $sql = "SELECT `date`,`begin_time`,`end_time`,`description`, `id_appointment` 
     FROM drive2future.users_has_appointments uha
     join appointments a on uha.appointments_id_appointment = a.id_appointment 
-    where users_id_user = :userid AND `date` > '$currentDate'
+    where users_id_user = :userid AND `date` >= '$currentDate'
     order by date;";
 
     $getUserAppointment = get_db()->prepare($sql);
@@ -48,7 +48,7 @@ function get_appointments_overview()
         WHERE us.roles_id_role=2 AND ap.appointment_types_id_a_type=3
         ) as student ON student.id_appointment=a.id_appointment
 
-    WHERE u.roles_id_role=3 AND a.date > '$currentDate'
+    WHERE u.roles_id_role=3 AND a.date >= '$currentDate'
     ORDER BY a.date;";
     // var_dump($sql);
     // exit();
