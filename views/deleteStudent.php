@@ -22,23 +22,16 @@ if($user_student || $user_employee){
             unset($_SESSION['errors']['student']);
         }
     ?>
-    <div class="app-item app-headlines">
-      <div class="app-row">
-        <div class="box-25">Wollen Sie <?php echo $_SESSION['first-name'] ?> wirklich löschen?</div>
+        <div class=""><p>Wollen Sie <?php echo $_SESSION['first-name'] . " " . $_SESSION['last-name'] ?> wirklich löschen?</p></div>
 
-      </div>
-    </div>
-    <div class="app-item">
-      <div class="app-row">
-        <div class="box-25">
+        <div class="">
           <form action='../controllers/confirmDeleteStudent.php' method='POST'>
             <input type="hidden" value="<?php echo $_SESSION['delete-id']; ?>" name="userId">
             <input class="toggle mb-20" type="submit" value="Endgültig löschen">
           </form>
           <p><a href="students.php">Zurück zur Schülerverwaltung</a></p>
         </div>
-      </div>
-    </div>
+      
 
   </div>
 

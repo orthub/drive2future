@@ -75,6 +75,7 @@ if($user_student){
       </div>
     </div>
     <?php endforeach ?>
+    <?php $_SESSION['last-name'] = $student['last_name']; ?>
 
   </div>
 
