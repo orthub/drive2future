@@ -29,6 +29,10 @@ require_once __DIR__ . '/../controllers/appointments.php';
       $employee_id = intval($_SESSION["employee_id"]);
     }
 
+    if (isset($_SESSION["user_id"])) {
+      $user_id = intval($_SESSION["user_id"]);
+    }
+
     if (isset($_SESSION["app_type_id"])) {
       $app_type_id = intval($_SESSION["app_type_id"]);
     }
@@ -67,31 +71,28 @@ require_once __DIR__ . '/../controllers/appointments.php';
       // Noch aktuelle Daten des Termines aus Datenbank holen
       $old_app = (get_appointment($edit_app_id))[0];
 
+      if ($user_employee) {
+        $employee_id = $user_id;
+      }
+
+      // Alter Fahrlehrer wird gelöscht, neu ausgewählter hinzugefügt
+      delete_user_appointment(intval($old_app["id_appointment"]));
+      add_user_appointment($employee_id, $edit_app_id);
+
       // Bleibt der Termintyp bei "Fahrstunde" kann trotzdem ein anderer Schüler ausgewählt werden
       // Falls anderer Termintyp oder andere Klasse gewählt wurde, Datensätze aus anderen Tabellen auch aktualisieren
       if (
-        intval($app_type_id === 3) ||
-        intval($old_app["appointment_types_id_a_type"]) !== $app_type_id ||
-        intval($old_app["class_id_class"]) !== $class_id
+        intval($app_type_id === 3)
       ) {
 
-        // Wenn Admin Termin bearbeitet und einen anderen Fahrlehrer löscht,
-        // wird der Termin des zuvor ausgewählten Fahrlehrers gelöscht
-        // und Termin für neuen Fahrlehrer hinzufügen
-        if ($user_admin && !empty($employee_id) && intval($old_app["users_id_user"]) !== $employee_id) {
-          delete_user_appointment($intval($old_app["id_appointment"]));
-          add_user_appointment($employee_id, $app_id);
-        }
+        // Eintrag in user_has_appointments speichern
+        add_user_appointment($student_id, $edit_app_id);
+      } else if (intval($app_type_id) === 1 || intval($app_type_id) === 2) {
+        // Termin für alle Schüler einer Klasse löschen
         delete_class_appointment($old_app["class_id_class"], $edit_app_id);
-
-        // Wurde ein Fahrschüler ausgewählt, wird der Termin für ihn hinzugefügt
-        if ($app_type_id === 3) {
-          // Eintrag in user_has_appointments speichern
-          add_user_appointment($student_id, $edit_app_id);
-        } else {
-          // Termin für alle Schüler einer Klasse aktualisieren
-          update_class_appointment($class_id, $edit_app_id);
-        }
+       
+        // Termin für alle Schüler einer Klasse aktualisieren
+        update_class_appointment($class_id, $edit_app_id);
       }
 
       // Geänderte Termininfos in Tabelle appointments speichern
