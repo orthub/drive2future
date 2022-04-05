@@ -30,29 +30,7 @@ SET
 --
   -- Daten für Tabelle `appointments`
   --
-INSERT INTO
-  `appointments` (
-    `id_appointment`,
-    `date`,
-    `begin_time`,
-    `end_time`,
-    `description`,
-    `appointment_types_id_a_type`,
-    `rooms_id_room`,
-    `class_id_class`
-  )
-VALUES
-  (
-    1,
-    '2022-05-12',
-    '08:00:00',
-    '12:00:00',
-    'Vortrag Einführung in die STVO',
-    1,
-    1,
-    1
-  );
--- --------------------------------------------------------
+  -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `appointment_types`
   --
@@ -92,7 +70,93 @@ INSERT INTO
     `end_date`
   )
 VALUES
-  (1, 'Spring_22', '', '2022-03-30', '2022-04-28');
+  (
+    1,
+    'A - Sommer_22',
+    'aktiv',
+    '2022-06-30',
+    '2022-07-28'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    2,
+    'B - Sommer_22',
+    'aktiv',
+    '2022-08-01',
+    '2022-08-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    3,
+    'A - Herbst_22',
+    'aktiv',
+    '2022-09-01',
+    '2022-09-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    4,
+    'F - Herbst_22',
+    'aktiv',
+    '2022-10-01',
+    '2022-10-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    5,
+    'B - Herbst_22',
+    'aktiv',
+    '2022-11-01',
+    '2022-11-30'
+  );
+INSERT INTO
+  `class` (
+    `id_class`,
+    `class_label`,
+    `status`,
+    `begin_date`,
+    `end_date`
+  )
+VALUES
+  (
+    6,
+    'B - Winter_23',
+    'aktiv',
+    '2023-01-08',
+    '2023-02-10'
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `class_has_users`
@@ -168,6 +232,120 @@ VALUES
   (1, 'Warteraum'),
   (2, 'Schulungsraum'),
   (3, 'Übungsraum');
+-- ------------------------------------------------------
+  -- Daten für Tabelle `appointments`
+INSERT INTO
+  `appointments` (
+    `id_appointment`,
+    `date`,
+    `begin_time`,
+    `end_time`,
+    `description`,
+    `appointment_types_id_a_type`,
+    `rooms_id_room`,
+    `class_id_class`
+  )
+VALUES
+  (
+    1,
+    '2022-05-12',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Einführung in die STVO',
+    1,
+    2,
+    1
+  ),
+  (
+    2,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    3,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Übung ',
+    2,
+    1,
+    1
+  ),
+  (
+    4,
+    '2022-05-12',
+    '13:00:00',
+    '14:00:00',
+    'Fahrstunde',
+    3,
+    1,
+    1
+  ),
+  (
+    5,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    6,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    7,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    8,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    9,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  ),
+  (
+    10,
+    '2022-06-18',
+    '08:00:00',
+    '12:00:00',
+    'Vortrag Gefahren im Verkehr',
+    1,
+    2,
+    1
+  );
 -- --------------------------------------------------------
   --
   -- Tabellenstruktur für Tabelle `users`
@@ -212,6 +390,132 @@ VALUES
     '$2y$10$PrnMtBS.x3y9Ev1iuIoqjeInXFAYybeGcv4P1HUF7kE4bB0SHRVE2',
     'aktiv',
     3
+  ),
+  (
+    3,
+    'Sabine',
+    'Müller',
+    's.mueller@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    4,
+    'Markus',
+    'Sauber',
+    'm.sauber@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    5,
+    'Maria',
+    'Oberhauser',
+    'm.oberhauser@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    6,
+    'Raffaela',
+    'Hochreiter',
+    'r.hochreiter@drive2future.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    3
+  ),
+  (
+    7,
+    'Johannes',
+    'Hauser',
+    'j.hauser@email.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    8,
+    'Kurt',
+    'Wesser',
+    'k.wesser@agmail.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    9,
+    'Lara',
+    'Hofmaier',
+    'l.hofmaier@vhotmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    10,
+    'Richard',
+    'Schwarzstein',
+    'r.schwarzstein@bmail.de',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    11,
+    'Tobias',
+    'Kastner',
+    't.kastner@ilive.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    12,
+    'Nicole',
+    'Neumann',
+    'n.neumann@atmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    13,
+    'Thomas',
+    'Bergmann',
+    't.bergmann@bgmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    14,
+    'Tanja',
+    'Schreiner',
+    't.schreiner@ilive.de',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    15,
+    'Christian',
+    'Engel',
+    'c.engel@atmail.at',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
+  ),
+  (
+    16,
+    'Franziska',
+    'Abend',
+    'f.abend@omail.com',
+    '$2y$10$p08dDvVzTDb15jlV1VxseOocDZjiVHlBys3bHUDFnbcfioK3/a.6m',
+    'aktiv',
+    2
   );
 -- --------------------------------------------------------
   --
