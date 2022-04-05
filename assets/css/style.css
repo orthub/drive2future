@@ -33,7 +33,10 @@ body p {
   margin-top: 0;
 }
 body .fs-18 {
-  font-size: 18px;
+  font-size: 18px !important;
+}
+body .mb-20 {
+  margin-bottom: 20px !important;
 }
 body button {
   cursor: pointer;
